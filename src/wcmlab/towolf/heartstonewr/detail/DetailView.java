@@ -1,9 +1,10 @@
 package wcmlab.towolf.heartstonewr.detail;
 
-import java.text.DecimalFormat;
-
 import itri.u9lab.towolf.ratiofixer.RatioFixer;
 import itri.u9lab.towolf.ratiofixer.RatioRelativeLayout;
+
+import java.text.DecimalFormat;
+
 import wcmlab.towolf.hearthstonewr.R;
 import android.content.Context;
 import android.graphics.Color;
@@ -11,6 +12,7 @@ import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -18,6 +20,9 @@ import android.widget.TextView;
 public class DetailView extends RatioRelativeLayout{
 
 	public TextView titleTextView;
+	public EditText titleEditText;
+	
+	
 	public ImageView mainImageView;
 	public TextView winRateTextView;
 	public TextView winCounterTextView;
@@ -51,6 +56,14 @@ public class DetailView extends RatioRelativeLayout{
 		titleTextView.setBackgroundColor(Color.parseColor("#FFC1E0"));
 		titleTextView.setGravity(Gravity.CENTER);
 		this.addView(titleTextView, 768, 200, 0, 0);
+		
+		titleEditText = new EditText(context);
+		titleEditText.setText("TITLE");
+		titleEditText.setTextSize(TypedValue.COMPLEX_UNIT_PX, 4.45f * 40.0f * rf.getRatio());
+		titleEditText.setBackgroundColor(Color.parseColor("#FFC1E0"));
+		titleEditText.setGravity(Gravity.CENTER);
+		titleEditText.setVisibility(View.INVISIBLE);
+//		this.addView(titleEditText, 768, 200, 0, 0);
 		
 		mainImageView = new ImageView(context);
 		mainImageView.setBackgroundResource(R.drawable.ic_launcher);
@@ -101,6 +114,13 @@ public class DetailView extends RatioRelativeLayout{
 		this.addView(loseDecreaseButton, 384, 112, 384, 1118);
 		
 		// controller
+		titleTextView.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+//				title
+			}
+		});
+		
 		winButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {

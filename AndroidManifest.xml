@@ -28,7 +28,12 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity><activity
+            android:name="wcmlab.towolf.heartstonewr.detail.DialogActivity"
+            android:theme="@android:style/Theme.Dialog"
+            android:label="input your name" >
         </activity>
+
     </application>
 
 </manifest>

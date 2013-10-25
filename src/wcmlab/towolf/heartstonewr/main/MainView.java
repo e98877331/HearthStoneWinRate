@@ -2,6 +2,7 @@ package wcmlab.towolf.heartstonewr.main;
 
 import itri.u9lab.towolf.ratiofixer.RatioRelativeLayout;
 import android.content.Context;
+import android.widget.Button;
 import android.widget.ListView;
 
 
@@ -12,6 +13,8 @@ public class MainView extends RatioRelativeLayout{
     Context mContext;
 	public ListView mListView;
 	
+	public Button mTestBtn;
+	
 	
 	public MainView(Context context) {
 		super(context);
@@ -19,6 +22,9 @@ public class MainView extends RatioRelativeLayout{
 		mContext = context;
 	    mListView = new ListView(context);
 	    this.addView(mListView);
+	    
+	    mTestBtn = new Button(context);
+	    this.addView(mTestBtn,100,100,0,0);
 		
 	}
 	

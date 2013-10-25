@@ -7,19 +7,22 @@ import wcmlab.towolf.hearthstonewr.model.datatype.RoleType;
 import wcmlab.towolf.heartstonewr.main.MainView;
 import wcmlab.towolf.heartstonewr.main.MainViewListItem;
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 public class MainActivity extends Activity {
 
 	MainView mView;
 	ListView mListView;
-	
+	Button mTestBtn;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,10 +40,24 @@ public class MainActivity extends Activity {
 		
 		mView = new MainView(this);
 		mView.setBackgroundColor(Color.WHITE);
-		
+		  
+		//setting main list
 		mListView = mView.mListView;
 		MainAdapter adapter = new MainAdapter(data);
 		mListView.setAdapter(adapter);
+		
+		//setting test button
+		mTestBtn = mView.mTestBtn;
+		mTestBtn.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+		     Intent intent = new Intent(MainActivity.this,DetailActivity.class);
+		     startActivity(intent);
+		     
+			}
+		});
 		
 		
 		mView.setToContentView(this);

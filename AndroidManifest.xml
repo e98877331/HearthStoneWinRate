@@ -12,7 +12,8 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme"
+        android:name="MyApplication" >
         <activity
             android:name="wcmlab.towolf.hearthstonewr.WelcomeActivity"
             android:label="@string/app_name" >

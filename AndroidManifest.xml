@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="wcmlab.towolf.hearthstonewr.MainActivity"
+            android:name="wcmlab.towolf.hearthstonewr.WelcomeActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,11 +22,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="MainActivity">
+        </activity>
         <activity android:name="DetailActivity">
-                        <intent-filter>
-
-            </intent-filter>
-        </activity><activity
+        </activity>
+        <activity
             android:name="wcmlab.towolf.heartstonewr.detail.DialogActivity"
             android:theme="@android:style/Theme.Dialog"
             android:label="input your name" >

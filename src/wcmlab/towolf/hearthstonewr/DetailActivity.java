@@ -15,8 +15,6 @@ public class DetailActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
-		
 	
 		dView = new DetailView(this);
 		dView.setToContentView(this);

@@ -1,8 +1,8 @@
-package wcmlab.towolf.hearthstonewr.model.datatype;
+package wcm.towolf.hearthstonewr.model.datatype;
 
 import java.util.ArrayList;
 
-import wcmlab.towolf.hearthstonewr.R;
+import wcm.towolf.hearthstonewr.R;
 import android.util.Log;
 
 

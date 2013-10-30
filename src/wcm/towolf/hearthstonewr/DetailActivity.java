@@ -1,8 +1,8 @@
-package wcmlab.towolf.hearthstonewr;
+package wcm.towolf.hearthstonewr;
 
-import wcmlab.towolf.heartstonewr.detail.DetailListActivity;
-import wcmlab.towolf.heartstonewr.detail.DetailView;
-import wcmlab.towolf.heartstonewr.detail.DialogActivity;
+import wcm.towolf.heartstonewr.detail.DetailListActivity;
+import wcm.towolf.heartstonewr.detail.DetailView;
+import wcm.towolf.heartstonewr.detail.DialogActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;

@@ -1,4 +1,4 @@
-package wcmlab.towolf.heartstonewr.welcome;
+package wcm.towolf.heartstonewr.welcome;
 
 import itri.u9lab.towolf.ratiofixer.RatioFixer;
 import itri.u9lab.towolf.ratiofixer.RatioRelativeLayout;

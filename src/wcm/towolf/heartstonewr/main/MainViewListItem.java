@@ -1,4 +1,4 @@
-package wcmlab.towolf.heartstonewr.main;
+package wcm.towolf.heartstonewr.main;
 
 import itri.u9lab.towolf.ratiofixer.RatioFixer;
 import android.content.Context;

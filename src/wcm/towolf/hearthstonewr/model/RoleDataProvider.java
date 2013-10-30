@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import wcm.towolf.hearthstonewr.db.DBHelper;
 import wcm.towolf.hearthstonewr.db.DBTBRoleGames;
 import wcm.towolf.hearthstonewr.db.DBTBRoleList;
-import wcmlab.towolf.hearthstonewr.model.datatype.RoleData;
-import wcmlab.towolf.hearthstonewr.model.datatype.RoleGame;
+import wcm.towolf.hearthstonewr.model.datatype.RoleData;
+import wcm.towolf.hearthstonewr.model.datatype.RoleGame;
 
 public class RoleDataProvider {
 	

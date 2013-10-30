@@ -2,12 +2,12 @@ package wcm.towolf.hearthstonewr.db;
 
 import java.util.ArrayList;
 
-import wcmlab.towolf.hearthstonewr.model.datatype.RoleData;
+import wcm.towolf.hearthstonewr.model.datatype.RoleData;
 import android.database.Cursor;
 
 public class DBTBRoleList {
 
-	public static String TABLE = "heroList";
+	public static String TABLE = "Hero_List";
 	public static String fieldNames[] = {"Role_ID","Role_Name","Role_Type_Num"};
 	public static String fieldTypes[] ={"INTEGER PRIMARY KEY ASC AUTOINCREMENT","VARCHAR(64)","INTEGER"};
 	

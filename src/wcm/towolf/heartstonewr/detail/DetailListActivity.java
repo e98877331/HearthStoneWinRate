@@ -1,4 +1,4 @@
-package wcmlab.towolf.heartstonewr.detail;
+package wcm.towolf.heartstonewr.detail;
 
 import java.util.ArrayList;
 import java.util.HashMap;

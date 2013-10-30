@@ -1,11 +1,11 @@
-package wcmlab.towolf.heartstonewr.detail;
+package wcm.towolf.heartstonewr.detail;
 
 import itri.u9lab.towolf.ratiofixer.RatioFixer;
 import itri.u9lab.towolf.ratiofixer.RatioRelativeLayout;
 
 import java.text.DecimalFormat;
 
-import wcmlab.towolf.hearthstonewr.R;
+import wcm.towolf.hearthstonewr.R;
 import android.content.Context;
 import android.graphics.Color;
 import android.util.TypedValue;

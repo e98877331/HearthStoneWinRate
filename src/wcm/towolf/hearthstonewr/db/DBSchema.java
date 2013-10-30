@@ -39,7 +39,7 @@ public class DBSchema {
 //	    MemoVideo.fieldTypes, MemoTagBase.fieldTypes,
 //	    MemoMetadata.fieldTypes, Promote.fieldTypes };
 
-    private DBHelper dbHelper;
+ //   private DBHelper dbHelper;
 
     
     

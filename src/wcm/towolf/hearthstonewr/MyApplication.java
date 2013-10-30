@@ -1,4 +1,4 @@
-package wcmlab.towolf.hearthstonewr;
+package wcm.towolf.hearthstonewr;
 
 import wcm.towolf.hearthstonewr.db.DBHelper;
 import android.app.Application;

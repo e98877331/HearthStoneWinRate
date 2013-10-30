@@ -1,6 +1,6 @@
-package wcmlab.towolf.hearthstonewr;
+package wcm.towolf.hearthstonewr;
 
-import wcmlab.towolf.heartstonewr.welcome.WelcomeView;
+import wcm.towolf.heartstonewr.welcome.WelcomeView;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;

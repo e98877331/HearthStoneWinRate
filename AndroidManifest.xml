@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="wcmlab.towolf.hearthstonewr"
+    package="wcm.towolf.hearthstonewr"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -15,7 +15,7 @@
         android:theme="@style/AppTheme"
         android:name="MyApplication" >
         <activity
-            android:name="wcmlab.towolf.hearthstonewr.WelcomeActivity"
+            android:name="wcm.towolf.hearthstonewr.WelcomeActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,11 +28,11 @@
         <activity android:name="DetailActivity">
         </activity>
         <activity
-            android:name="wcmlab.towolf.heartstonewr.detail.DialogActivity"
+            android:name="wcm.towolf.heartstonewr.detail.DialogActivity"
             android:theme="@android:style/Theme.Dialog"
             android:label="input your name" >
         </activity>
-        <activity android:name="wcmlab.towolf.heartstonewr.detail.DetailListActivity"></activity>
+        <activity android:name="wcm.towolf.heartstonewr.detail.DetailListActivity"></activity>
 
     </application>
 

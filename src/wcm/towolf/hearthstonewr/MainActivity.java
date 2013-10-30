@@ -1,16 +1,14 @@
-package wcmlab.towolf.hearthstonewr;
+package wcm.towolf.hearthstonewr;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-import wcm.towolf.hearthstonewr.db.DBHelper;
 import wcm.towolf.hearthstonewr.db.DBSchema;
-import wcm.towolf.hearthstonewr.db.RoleList;
 import wcm.towolf.hearthstonewr.model.RoleDataProvider;
-import wcmlab.towolf.hearthstonewr.model.datatype.RoleData;
-import wcmlab.towolf.hearthstonewr.model.datatype.RoleType;
-import wcmlab.towolf.heartstonewr.main.MainView;
-import wcmlab.towolf.heartstonewr.main.MainViewListItem;
+import wcm.towolf.hearthstonewr.model.datatype.RoleData;
+import wcm.towolf.hearthstonewr.model.datatype.RoleType;
+import wcm.towolf.heartstonewr.main.MainView;
+import wcm.towolf.heartstonewr.main.MainViewListItem;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
@@ -168,7 +166,7 @@ public class MainActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onCreateContextMenu(menu, v, menuInfo);
 		
-			    AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo)menuInfo;
+			//    AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo)menuInfo;
 			    
 			    menu.setHeaderTitle(R.string.main_context_menu_title);
 			//    for (int i = 0; i<5; i++) {

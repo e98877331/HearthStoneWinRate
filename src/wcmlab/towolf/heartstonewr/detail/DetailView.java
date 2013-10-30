@@ -72,28 +72,28 @@ public class DetailView extends RatioRelativeLayout{
 		winRateTextView = new TextView(context);
 //		winRateTextView.setText(Float.toString(winRate * 100) + "%");
 		winRateTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, 4.45f * 40.0f * rf.getRatio());
-		winRateTextView.setBackgroundColor(Color.parseColor("#96FED1"));
+//		winRateTextView.setBackgroundColor(Color.parseColor("#96FED1"));
 		winRateTextView.setGravity(Gravity.CENTER);
 		this.addView(winRateTextView, 768, 568, 0, 200);
 		
 		winCounterTextView = new TextView(context);
 //		winCounterTextView.setText("W: " + Integer.toString(winCounter));
 		winCounterTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, 4.45f * 10.0f * rf.getRatio());
-		winCounterTextView.setBackgroundColor(Color.parseColor("#CECEFF"));
+//		winCounterTextView.setBackgroundColor(Color.parseColor("#CECEFF"));
 		winCounterTextView.setGravity(Gravity.CENTER);
 		this.addView(winCounterTextView, 256, 200, 0, 768);
 		
 		loseCounterTextView = new TextView(context);
 //		loseCounterTextView.setText("L: " + Integer.toString(loseCounter));
 		loseCounterTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, 4.45f * 10.0f * rf.getRatio());
-		loseCounterTextView.setBackgroundColor(Color.parseColor("#FFFFB9"));
+//		loseCounterTextView.setBackgroundColor(Color.parseColor("#FFFFB9"));
 		loseCounterTextView.setGravity(Gravity.CENTER);
 		this.addView(loseCounterTextView, 256, 200, 256, 768);
 		
 		totalCounterTextView = new TextView(context);
 //		totalCounterTextView.setText("Total: " + Integer.toString(totalCounter));
 		totalCounterTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, 4.45f * 10.0f * rf.getRatio());
-		totalCounterTextView.setBackgroundColor(Color.parseColor("#E2C2DE"));
+//		totalCounterTextView.setBackgroundColor(Color.parseColor("#E2C2DE"));
 		totalCounterTextView.setGravity(Gravity.CENTER);
 		this.addView(totalCounterTextView, 256, 200, 512, 768);
 		
@@ -114,12 +114,6 @@ public class DetailView extends RatioRelativeLayout{
 		this.addView(loseDecreaseButton, 384, 112, 384, 1118);
 		
 		// controller
-		titleTextView.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-//				title
-			}
-		});
 		
 		winButton.setOnClickListener(new OnClickListener() {
 			@Override

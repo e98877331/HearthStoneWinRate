@@ -1,5 +1,6 @@
 package wcmlab.towolf.hearthstonewr;
 
+import wcmlab.towolf.heartstonewr.detail.DetailListActivity;
 import wcmlab.towolf.heartstonewr.detail.DetailView;
 import wcmlab.towolf.heartstonewr.detail.DialogActivity;
 import android.app.Activity;
@@ -24,6 +25,15 @@ public class DetailActivity extends Activity {
 			public void onClick(View v) {
 				Intent i = new Intent(DetailActivity.this, DialogActivity.class);
 				startActivityForResult(i, 50);
+			}
+		});
+		
+		dView.mainImageView.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(DetailActivity.this, DetailListActivity.class);
+				startActivity(i);
 			}
 		});
 	}

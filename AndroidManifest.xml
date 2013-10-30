@@ -31,6 +31,7 @@
             android:theme="@android:style/Theme.Dialog"
             android:label="input your name" >
         </activity>
+        <activity android:name="wcmlab.towolf.heartstonewr.detail.DetailListActivity"></activity>
 
     </application>
 

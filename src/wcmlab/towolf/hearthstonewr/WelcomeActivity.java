@@ -52,9 +52,12 @@ public class WelcomeActivity extends Activity {
 		public void run() {
 			if (counter < 10) {
 				// TODO Auto-generated method stub
+				Log.d("weichi", "A");
 				switcher.setBackgroundResource(getCharID());
+				Log.d("weichi", "B");
 				counter++;
-				switcher.postDelayed(this, 500);
+				Log.d("weichi", "C");
+				switcher.postDelayed(this, 200);
 			} else {
 				switcher.removeCallbacks(this);
 				// TODO: start next activity
@@ -69,11 +72,12 @@ public class WelcomeActivity extends Activity {
 	int previous_num = 0;
 	private int getCharID() {
 		int index = (int)(Math.random() * 9);
+		Log.d("weichi", "index1=" + index);
 		if (index == previous_num) {
 			index = (index + 1) % 9;
 		}
 		previous_num = index;
-		Log.d("weichi", "num=" + index);
+		Log.d("weichi", "index2=" + index);
 		return IMAGES[index];
 	}
 

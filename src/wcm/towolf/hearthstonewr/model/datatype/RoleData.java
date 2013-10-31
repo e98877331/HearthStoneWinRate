@@ -3,6 +3,7 @@ package wcm.towolf.hearthstonewr.model.datatype;
 import java.util.ArrayList;
 
 import wcm.towolf.hearthstonewr.R;
+import wcm.towolf.hearthstonewr.model.RoleDataProvider;
 import android.util.Log;
 
 
@@ -52,10 +53,31 @@ public class RoleData
 		}
 		this.win = win;
 		this.count = count;
-		winRate = (count == 0) ? (winRate = -1):((float)win/count);
+        calculateWinRate();
 			
 		//winRate = (float)win/count;
 	}
+	
+	
+	public void addGame(int enemyType, boolean isWin)
+	{
+		++count;
+		if(isWin)
+         ++win;
+		
+		calculateWinRate();
+		
+		
+		//sync to db
+		RoleDataProvider edp = new RoleDataProvider();
+		edp.addGame(this.roleID, enemyType, isWin);
+	}
+	
+	
+	
+	/*
+	 * getter and setter
+	 */
 	
 	public int getRoleRes(int pRoleType)
 	{
@@ -63,7 +85,29 @@ public class RoleData
 		return R.drawable.ic_launcher;	
 	}
 	
+	public int getWin(){
+		return win;
+	}
 	
+	public int getTotalGame(){
+		return count;
+	}
+	
+	public int getLose(){
+		return count -win;
+	}
+	
+	public float getWinRate() {
+		return winRate;
+	}
+	
+	/*
+	 * private method
+	 */
+	private void calculateWinRate()
+	{
+		winRate = (count == 0) ? (winRate = -1):((float)win/count);
+	}
 	
 	/*
 	 * static method

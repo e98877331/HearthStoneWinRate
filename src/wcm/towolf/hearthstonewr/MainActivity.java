@@ -142,7 +142,8 @@ public class MainActivity extends Activity {
 				
 				//add game with random win or lose
 				Random rd = new Random();
-				mDataProvider.addGame(mAdapter.getItem(rd.nextInt(5)).roleID, RoleType.HUNTER, (rd.nextInt(2)>0));
+				//mDataProvider.addGame(mAdapter.getItem(rd.nextInt(5)).roleID, RoleType.HUNTER, (rd.nextInt(2)>0));
+				mData.get(rd.nextInt(5)).addGame(RoleType.HUNTER, (rd.nextInt(2)>0));
 				
 				//delete role
 //				mDataProvider.deleteRole(mAdapter.getItem(0).roleID);

@@ -20,7 +20,7 @@ import android.widget.TextView;
 public class DetailView extends RatioRelativeLayout{
 
 	public TextView titleTextView;
-	public EditText titleEditText;
+//	public EditText titleEditText;
 	
 	
 	public ImageView mainImageView;
@@ -31,7 +31,7 @@ public class DetailView extends RatioRelativeLayout{
 	public Button winButton;
 	public Button loseButton;
 	public Button winDecreaseButton;
-	public Button loseDecreaseButton;
+//	public Button loseDecreaseButton;
 	
 	RatioFixer rf;
 	
@@ -57,12 +57,12 @@ public class DetailView extends RatioRelativeLayout{
 		titleTextView.setGravity(Gravity.CENTER);
 		this.addView(titleTextView, 768, 200, 0, 0);
 		
-		titleEditText = new EditText(context);
-		titleEditText.setText("TITLE");
-		titleEditText.setTextSize(TypedValue.COMPLEX_UNIT_PX, 4.45f * 40.0f * rf.getRatio());
-		titleEditText.setBackgroundColor(Color.parseColor("#FFC1E0"));
-		titleEditText.setGravity(Gravity.CENTER);
-		titleEditText.setVisibility(View.INVISIBLE);
+//		titleEditText = new EditText(context);
+//		titleEditText.setText("TITLE");
+//		titleEditText.setTextSize(TypedValue.COMPLEX_UNIT_PX, 4.45f * 40.0f * rf.getRatio());
+//		titleEditText.setBackgroundColor(Color.parseColor("#FFC1E0"));
+//		titleEditText.setGravity(Gravity.CENTER);
+//		titleEditText.setVisibility(View.INVISIBLE);
 //		this.addView(titleEditText, 768, 200, 0, 0);
 		
 		mainImageView = new ImageView(context);
@@ -106,76 +106,76 @@ public class DetailView extends RatioRelativeLayout{
 		this.addView(loseButton, 384, 150, 384, 968);
 		
 		winDecreaseButton = new Button(context);
-		winDecreaseButton.setText("-");
+		winDecreaseButton.setText("undo");
 		this.addView(winDecreaseButton, 384, 112, 0, 1118);
 		
-		loseDecreaseButton = new Button(context);
-		loseDecreaseButton.setText("-");
-		this.addView(loseDecreaseButton, 384, 112, 384, 1118);
+//		loseDecreaseButton = new Button(context);
+//		loseDecreaseButton.setText("-");
+//		this.addView(loseDecreaseButton, 384, 112, 384, 1118);
 		
 		// controller
 		
-		winButton.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				winCounter++;
-				totalCounter++;
-				winRate = (float) winCounter / (float) totalCounter;
-				
-				refresh();
-			}
-		});
+//		winButton.setOnClickListener(new OnClickListener() {
+//			@Override
+//			public void onClick(View v) {
+//				winCounter++;
+//				totalCounter++;
+//				winRate = (float) winCounter / (float) totalCounter;
+//				
+//				refresh();
+//			}
+//		});
 		
-		loseButton.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				loseCounter++;
-				totalCounter++;
-				
-				refresh();
-			}
-		});
+//		loseButton.setOnClickListener(new OnClickListener() {
+//			@Override
+//			public void onClick(View v) {
+//				loseCounter++;
+//				totalCounter++;
+//				
+//				refresh();
+//			}
+//		});
 		
-		winDecreaseButton.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				if (winCounter > 0) {
-					winCounter--;
-					totalCounter--;
-				
-					refresh();
-				}
-			}
-		});
+//		winDecreaseButton.setOnClickListener(new OnClickListener() {
+//			@Override
+//			public void onClick(View v) {
+//				if (winCounter > 0) {
+//					winCounter--;
+//					totalCounter--;
+//				
+//					refresh();
+//				}
+//			}
+//		});
 		
-		loseDecreaseButton.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				if (loseCounter > 0) {
-					loseCounter--;
-					totalCounter--;
-				
-					refresh();
-				}
-			}
-		});
+//		loseDecreaseButton.setOnClickListener(new OnClickListener() {
+//			@Override
+//			public void onClick(View v) {
+//				if (loseCounter > 0) {
+//					loseCounter--;
+//					totalCounter--;
+//				
+//					refresh();
+//				}
+//			}
+//		});
 		
-		refresh();
+//		refresh();
 	}
 	
-	private void refresh() {
-		if (totalCounter == 0) {
-			winRate = 0;
-		} else {
-			winRate = (float) winCounter / (float) totalCounter;
-		}
-		DecimalFormat fnum = new DecimalFormat("##0.00");
-		String dd = fnum.format(winRate * 100);
-		
-		winRateTextView.setText(dd + "%");
-		winCounterTextView.setText("W: " + Integer.toString(winCounter));
-		loseCounterTextView.setText("L: " + Integer.toString(loseCounter));
-		totalCounterTextView.setText("Total: " + Integer.toString(totalCounter));
-	}
+//	private void refresh() {
+//		if (totalCounter == 0) {
+//			winRate = 0;
+//		} else {
+//			winRate = (float) winCounter / (float) totalCounter;
+//		}
+//		DecimalFormat fnum = new DecimalFormat("##0.00");
+//		String dd = fnum.format(winRate * 100);
+//		
+//		winRateTextView.setText(dd + "%");
+//		winCounterTextView.setText("W: " + Integer.toString(winCounter));
+//		loseCounterTextView.setText("L: " + Integer.toString(loseCounter));
+//		totalCounterTextView.setText("Total: " + Integer.toString(totalCounter));
+//	}
 
 }

@@ -50,7 +50,7 @@ public class WelcomeActivity extends Activity {
 
 		@Override
 		public void run() {
-			if (counter < 10) {
+			if (counter < 5) {
 				// TODO Auto-generated method stub
 				Log.d("weichi", "A");
 				switcher.setBackgroundResource(getCharID());

@@ -1,6 +1,10 @@
 package wcm.towolf.hearthstonewr;
 
-import wcm.towolf.heartstonewr.detail.DetailListActivity;
+import java.text.DecimalFormat;
+
+import wcm.towolf.hearthstonewr.model.RoleDataProvider;
+import wcm.towolf.hearthstonewr.model.datatype.RoleData;
+import wcm.towolf.hearthstonewr.model.datatype.RoleType;
 import wcm.towolf.heartstonewr.detail.DetailView;
 import wcm.towolf.heartstonewr.detail.DialogActivity;
 import android.app.Activity;
@@ -13,29 +17,28 @@ import android.view.View.OnClickListener;
 public class DetailActivity extends Activity {
 	DetailView dView;
 	
+	RoleData mRole;
+	
+	RoleDataProvider mProvider;
+	
+	int roleID;
+	int roleType;
+	String roleName;
+	float winRate;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-	
-		dView = new DetailView(this);
-		dView.setToContentView(this);
+				
+		mRole = RoleData.getPassingData();
+		roleID = mRole.roleID;
+		roleType = mRole.roleType;
+		roleName = mRole.roleName;
+		winRate = mRole.winRate;
 		
-		dView.titleTextView.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Intent i = new Intent(DetailActivity.this, DialogActivity.class);
-				startActivityForResult(i, 50);
-			}
-		});
+		mProvider = new RoleDataProvider();
 		
-		dView.mainImageView.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				Intent i = new Intent(DetailActivity.this, DetailListActivity.class);
-				startActivity(i);
-			}
-		});
+		initUI();
 	}
 	
 	@Override
@@ -54,5 +57,66 @@ public class DetailActivity extends Activity {
 				dView.titleTextView.setText(data.getStringExtra("name"));
 		}
 	}
+	
+	
+	private void initUI() {
+		dView = new DetailView(this);
+		dView.setToContentView(this);
+		
+		dView.titleTextView.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(DetailActivity.this, DialogActivity.class);
+				startActivityForResult(i, 50);
+			}
+		});
+		
+		dView.mainImageView.setOnClickListener(new OnClickListener() {
 
+			@Override
+			public void onClick(View v) {
+				// TODO: next patch
+//				Intent i = new Intent(DetailActivity.this, DetailListActivity.class);
+//				startActivity(i);
+			}
+		});
+		
+		dView.winButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				mRole.addGame(RoleType.HUNTER, true);
+				
+				updateView();
+			}
+		});
+		
+		dView.loseButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				mRole.addGame(RoleType.HUNTER, false);
+				
+				updateView();
+			}
+		});
+		
+		dView.winDecreaseButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				mProvider.deleteLastGame(mRole.roleID);
+				
+				updateView();
+			}
+		});
+		
+		updateView();
+	}
+	
+	private void updateView() {
+		DecimalFormat fnum = new DecimalFormat("##0.00");
+		String dd = fnum.format(mRole.getWinRate() * 100);
+		dView.winRateTextView.setText(dd + "%");
+		dView.winCounterTextView.setText("W: " + Integer.toString(mRole.getWin()));
+		dView.loseCounterTextView.setText("L: " + Integer.toString(mRole.getLose()));
+		dView.totalCounterTextView.setText("Total: " + Integer.toString(mRole.getTotalGame()));
+	}
 }

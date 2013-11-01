@@ -143,7 +143,11 @@ public class MainActivity extends Activity {
 				//add game with random win or lose
 				Random rd = new Random();
 				//mDataProvider.addGame(mAdapter.getItem(rd.nextInt(5)).roleID, RoleType.HUNTER, (rd.nextInt(2)>0));
-				mData.get(rd.nextInt(5)).addGame(RoleType.HUNTER, (rd.nextInt(2)>0));
+				RoleData data =mData.get(rd.nextInt(5));
+				data.addGame(RoleType.HUNTER, (rd.nextInt(2)>0));
+				data.changeRoleName(data.roleName+"N");
+				
+				
 				
 				//delete role
 //				mDataProvider.deleteRole(mAdapter.getItem(0).roleID);
@@ -155,6 +159,7 @@ public class MainActivity extends Activity {
 			}
 		});
 		
+		mView.setBackgroundResource(R.drawable.main_bg);
 		mView.setToContentView(this);
 		
 		

@@ -63,6 +63,12 @@ public class RoleData {
 		edp.addGame(this.roleID, enemyType, isWin);
 	}
 
+	public void changeRoleName(String pName)
+	{
+		RoleDataProvider edp = new RoleDataProvider();
+		edp.changeRoleName(this.roleID, pName);
+	}
+	
 	/*
 	 * getter and setter
 	 */

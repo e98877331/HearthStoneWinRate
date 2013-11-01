@@ -48,7 +48,7 @@ public class DBTBRoleGames {
 			
 			//TODO fix win rate;
 			RoleGame rg = new RoleGame(c.getInt(0),c.getInt(1), c.getInt(2),c.getInt(3)==1);
-			Log.e(TAG,Integer.toString(c.getInt(3)));
+			//Log.e(TAG,Integer.toString(c.getInt(3)));
 			retData.add(rg);
 		}
 		

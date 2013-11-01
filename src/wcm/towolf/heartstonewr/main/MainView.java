@@ -1,5 +1,6 @@
 package wcm.towolf.heartstonewr.main;
 
+import wcm.towolf.hearthstonewr.R;
 import itri.u9lab.towolf.ratiofixer.RatioRelativeLayout;
 import android.content.Context;
 import android.widget.Button;
@@ -17,6 +18,9 @@ public class MainView extends RatioRelativeLayout {
 		super(context);
 		// TODO Auto-generated constructor stub
 		mContext = context;
+		
+		
+		
 		mListView = new ListView(context);
 		
 		mListView.setDivider(null);

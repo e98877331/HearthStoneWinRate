@@ -53,10 +53,10 @@ public class RoleDataProvider {
     	mRoleListTB.changeRoleName(pRoleID, pName);
     }
     
-    public void deleteLastGame(int roleID)
+    public RoleGame deleteLastGame(int roleID)
     {
     	//TODO: specify role id
-    	mRoleGamesTB.deleteLastGame();
+    	return mRoleGamesTB.deleteLastGame(roleID);
     	
     }
     

@@ -69,6 +69,19 @@ public class RoleData {
 		edp.changeRoleName(this.roleID, pName);
 	}
 	
+	public void deleteLastGame()
+	{
+		RoleDataProvider edp = new RoleDataProvider();
+		RoleGame rg = edp.deleteLastGame(this.roleID);
+		
+		if(rg == null)
+			return;
+		
+		--count;
+		if(rg.getIsWin())
+			--win;
+	}
+	
 	/*
 	 * getter and setter
 	 */
@@ -116,6 +129,7 @@ public class RoleData {
 	public float getWinRate() {
 		return winRate;
 	}
+
 
 	/*
 	 * private method

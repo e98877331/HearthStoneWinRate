@@ -48,6 +48,11 @@ public class RoleDataProvider {
     	mRoleGamesTB.addGame(roleID, enemyRoleType, isWin);
     }
     
+    public void changeRoleName(int pRoleID,String pName)
+    {
+    	mRoleListTB.changeRoleName(pRoleID, pName);
+    }
+    
     public void deleteLastGame(int roleID)
     {
     	//TODO: specify role id

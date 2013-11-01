@@ -48,12 +48,21 @@ public class DBTBRoleList {
 		while(c.moveToNext())
 		{
 			
-			//TODO fix win rate;
+			
 			RoleData rd = new RoleData(c.getInt(0),c.getInt(2), c.getString(1));
 			retData.add(rd);
 		}
 		
 		return retData;
+	}
+	
+	public void changeRoleName(int pRoleID,String pName)
+	{
+		String fields[] = {"Role_Name"};
+		String values[] = {pName};
+		String whereValue[] = {Integer.toString(pRoleID)}; 
+		mDBHelper.update(TABLE, fields, values, "Role_ID = ?", whereValue);
+		//mDBHelper.update(TABLE, {"Role_Name"}, {pName}, "Role_ID = ?", {pRoleID});
 	}
 	
 	public void deleteRole(int pRoleID )

@@ -18,7 +18,11 @@ public class MainView extends RatioRelativeLayout {
 		// TODO Auto-generated constructor stub
 		mContext = context;
 		mListView = new ListView(context);
+		
+		mListView.setDivider(null);
 		this.addView(mListView);
+		
+		
 
 		mTestBtn = new Button(context);
 		this.addView(mTestBtn, 150, 150, 0, 0);

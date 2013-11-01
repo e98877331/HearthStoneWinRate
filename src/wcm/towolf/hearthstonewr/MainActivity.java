@@ -265,7 +265,7 @@ public class MainActivity extends Activity {
 			
 			RoleData rd = mData.get(index);
 			
-			((MainViewListItem)convertView).setData(rd.getRoleRes(RoleType.HUNTER), rd.roleName, rd.winRate);
+			((MainViewListItem)convertView).setData(rd.getRoleRes(), rd.roleName, rd.winRate);
 			
 			
 			return convertView;

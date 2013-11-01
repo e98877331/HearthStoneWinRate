@@ -19,20 +19,18 @@ public class MainView extends RatioRelativeLayout {
 		// TODO Auto-generated constructor stub
 		mContext = context;
 		
-		
-		
-		mListView = new ListView(context);
-		
-		mListView.setDivider(null);
-		this.addView(mListView);
-		
-		
 
 		mTestBtn = new Button(context);
-		this.addView(mTestBtn, 150, 150, 0, 0);
+		mTestBtn.setText("New Role");
+		this.addView(mTestBtn, 768, 200, 0, 0);
 		
 		mTestBtn1 = new Button(context);
-		this.addView(mTestBtn1, 150, 150, 200, 0);
+//		this.addView(mTestBtn1, 150, 150, 200, 0);
+		
+		mListView = new ListView(context);
+		mListView.setDivider(null);
+		this.addView(mListView,768,1030,0,200);
+
 
 	}
 

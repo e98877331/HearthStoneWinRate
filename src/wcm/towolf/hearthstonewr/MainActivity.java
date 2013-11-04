@@ -88,7 +88,7 @@ public class MainActivity extends Activity {
 //		MainAdapter adapter = new MainAdapter(data);
 //		mListView.setAdapter(adapter);
 		
-       reloadListData();		
+      // reloadListData();		
 		
 		//setting test button
 		mTestBtn = mView.mTestBtn;
@@ -122,8 +122,9 @@ public class MainActivity extends Activity {
 				}
 					
 				//mRoleList.addRole(new RoleData(RoleType.WARRIOR,name));
-		
-				mDataProvider.addRole(name,RoleType.WARRIOR); 
+		        Random rd = new Random();
+		        
+				mDataProvider.addRole(name,rd.nextInt(8));
 				
                 reloadListData();
 				
@@ -142,10 +143,9 @@ public class MainActivity extends Activity {
 				
 				//add game with random win or lose
 				Random rd = new Random();
-				//mDataProvider.addGame(mAdapter.getItem(rd.nextInt(5)).roleID, RoleType.HUNTER, (rd.nextInt(2)>0));
 				RoleData data =mData.get(rd.nextInt(5));
-				data.addGame(RoleType.HUNTER, (rd.nextInt(2)>0));
-				data.changeRoleName(data.roleName+"N");
+				data.addGame(rd.nextInt(8), (rd.nextInt(2)>0));
+				//data.changeRoleName(data.roleName+"N");
 				
 				
 				
@@ -153,8 +153,12 @@ public class MainActivity extends Activity {
 //				mDataProvider.deleteRole(mAdapter.getItem(0).roleID);
 				
 				//get all role data info
-			
-				
+	
+				//deleteGame
+//				Random rd = new Random();
+//				RoleData data =mData.get(rd.nextInt(5));
+//				data.deleteLastGame();
+//				
 				reloadListData();
 			}
 		});
@@ -166,6 +170,14 @@ public class MainActivity extends Activity {
 		
 	}
 
+	
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		reloadListData();
+	}
+	
 	@Override
 	public void onCreateContextMenu(ContextMenu menu, View v,
 			ContextMenuInfo menuInfo) {

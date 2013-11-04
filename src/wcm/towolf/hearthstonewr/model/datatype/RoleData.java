@@ -11,7 +11,9 @@ public class RoleData {
 	private static final String TAG = "RoleData";
 	// passing between activity purpose
 	private static RoleData mPassingData;
-
+   
+	ArrayList<RoleEnemyData> mRoleEnemyDataList;
+	
 	public int roleID;
 	public int roleType;
 	public String roleName;
@@ -34,15 +36,18 @@ public class RoleData {
 
 	public void initWithRoleGames(ArrayList<RoleGame> gameList) {
 		// TODO: generate all enemy vs data
-
+        mRoleEnemyDataList = RoleEnemyData.generateDataList();
+		
 		int win = 0, count = 0;
 		for (int i = 0; i < gameList.size(); i++) {
 			RoleGame rg = gameList.get(i);
-			if (rg.mRoleID == roleID) {
+			if (rg.getRoleID() == roleID) {
 				++count;
-				if (rg.mIsWin)
+				if (rg.getIsWin())
 					++win;
 			}
+			
+			mRoleEnemyDataList.get(rg.mRoleType).addGame(rg.getIsWin());
 		}
 		this.win = win;
 		this.count = count;
@@ -55,7 +60,7 @@ public class RoleData {
 		++count;
 		if (isWin)
 			++win;
-
+		
 		calculateWinRate();
 
 		// sync to db
@@ -65,8 +70,22 @@ public class RoleData {
 
 	public void changeRoleName(String pName)
 	{
+		roleName = pName;
 		RoleDataProvider edp = new RoleDataProvider();
 		edp.changeRoleName(this.roleID, pName);
+	}
+	
+	public void deleteLastGame()
+	{
+		RoleDataProvider edp = new RoleDataProvider();
+		RoleGame rg = edp.deleteLastGame(this.roleID);
+		
+		if(rg == null)
+			return;
+		
+		--count;
+		if(rg.getIsWin())
+			--win;
 	}
 	
 	/*
@@ -117,6 +136,11 @@ public class RoleData {
 		return winRate;
 	}
 
+	public ArrayList<RoleEnemyData> getRoleEnemyData(int pRoleType)
+	{
+		return mRoleEnemyDataList;
+	}
+
 	/*
 	 * private method
 	 */
@@ -140,5 +164,7 @@ public class RoleData {
 			return null;
 		}
 	}
+
+	
 
 }

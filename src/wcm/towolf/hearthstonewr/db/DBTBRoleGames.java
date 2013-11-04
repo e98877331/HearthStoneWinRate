@@ -55,14 +55,28 @@ public class DBTBRoleGames {
 		return retData;
 	}
 	
-	public void deleteLastGame()
+	public RoleGame deleteLastGame(int roleID)
 	{
-		try {
-			mDBHelper.execSQL("DELETE FROM "+TABLE+" WHERE Game_ID = (SELECT MAX(Game_ID) FROM "+TABLE+")");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		String queryArg[] = {Integer.toString(roleID)};
+		Cursor c =mDBHelper.rawQuery("select * from "+TABLE+" where Role_ID = ? order by rowid desc limit 1", queryArg);
+		
+		RoleGame rg;
+		
+		while(c.moveToNext())
+		{
+		 rg = new RoleGame(c.getInt(0),c.getInt(1), c.getInt(2),c.getInt(3)==1);
+		mDBHelper.delete(TABLE, "Game_ID = ?", new String[] {Integer.toString(rg.getGameID())});
+		
+		return rg;
 		}
+//		try {
+//			mDBHelper.execSQL("DELETE FROM "+TABLE+" WHERE Game_ID = (SELECT MAX(Game_ID) FROM "+TABLE+")");
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		
+		return null;
 	}
 	
 	public void deleteRole(int pRoleID )

@@ -15,5 +15,22 @@ public class RoleGame
       mRoleType = roleType;
       mIsWin = isWin;
     }
+    
+    public int getGameID(){
+    	return mGameID;
+    }
+    
+    public int getRoleID(){
+    	return mRoleID;
+    }
+    
+    public int getEnemyRoleType(){
+    	return mRoleType;
+    }
+    
+    public boolean getIsWin()
+    {
+    	return mIsWin;
+    }
 	
 }

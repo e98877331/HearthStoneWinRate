@@ -135,6 +135,14 @@ public class RoleData {
 	public float getWinRate() {
 		return winRate;
 	}
+	
+	public int getRoleType() {
+		return roleType;
+	}
+	
+	public String getName() {
+		return roleName;
+	}
 
 	public ArrayList<RoleEnemyData> getRoleEnemyData(int pRoleType)
 	{

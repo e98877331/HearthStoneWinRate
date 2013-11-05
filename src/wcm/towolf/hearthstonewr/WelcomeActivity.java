@@ -25,8 +25,8 @@ public class WelcomeActivity extends Activity {
 		wView = new WelcomeView(this);
 		wView.setToContentView(this);
 		
-		switcher  = wView.switcher;
-		switcher.postDelayed(runnable, 0);
+		switcher = wView.switcher;
+		switcher.postDelayed(runnable, 100);
 	}
 	
 	@Override
@@ -53,17 +53,18 @@ public class WelcomeActivity extends Activity {
 			if (counter < 5) {
 				// TODO Auto-generated method stub
 				Log.d("weichi", "A");
-				switcher.setBackgroundResource(getCharID());
+//				switcher.setBackgroundResource(getCharID());
+				switcher.setBackgroundResource(IMAGES[counter]);
 				Log.d("weichi", "B");
 				counter++;
 				Log.d("weichi", "C");
 				switcher.postDelayed(this, 200);
 			} else {
-				switcher.removeCallbacks(this);
 				// TODO: start next activity
 				Intent i = new Intent(WelcomeActivity.this, MainActivity.class);
 				startActivity(i);
 				finish();
+				switcher.removeCallbacks(this);
 			}
 		}
 		

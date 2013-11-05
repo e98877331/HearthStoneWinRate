@@ -1,18 +1,26 @@
 package wcm.towolf.hearthstonewr;
 
+import itri.u9lab.towolf.ratiofixer.RatioFixer;
+
 import java.text.DecimalFormat;
 
 import wcm.towolf.hearthstonewr.model.RoleDataProvider;
 import wcm.towolf.hearthstonewr.model.datatype.RoleData;
 import wcm.towolf.hearthstonewr.model.datatype.RoleType;
+import wcm.towolf.heartstonewr.detail.DetailListActivity;
 import wcm.towolf.heartstonewr.detail.DetailView;
 import wcm.towolf.heartstonewr.detail.DialogActivity;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 public class DetailActivity extends Activity {
 	DetailView dView;
@@ -21,15 +29,22 @@ public class DetailActivity extends Activity {
 	
 	RoleDataProvider mProvider;
 	
+	BoxView bView;
+	BoxView2 bView2;
+	
 	int roleID;
 	int roleType;
 	String roleName;
 	float winRate;
 	
+	Context mContext;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-				
+		
+		mContext = this;
+		
 		mRole = RoleData.getPassingData();
 		roleID = mRole.roleID;
 		roleType = mRole.roleType;
@@ -53,15 +68,19 @@ public class DetailActivity extends Activity {
 		super.onActivityResult(requestCode, resultCode, data);
 		
 		if (requestCode == 50) {
-			if (data != null)
-				dView.titleTextView.setText(data.getStringExtra("name"));
+			if (data != null) {
+				String name = data.getStringExtra("name");
+				dView.titleTextView.setText(name);
+				mRole.changeRoleName(name);
+			}
 		}
 	}
-	
 	
 	private void initUI() {
 		dView = new DetailView(this);
 		dView.setToContentView(this);
+		
+		dView.mainImageView.setBackgroundResource(mRole.getRoleRes());
 		
 		dView.titleTextView.setOnClickListener(new OnClickListener() {
 			@Override
@@ -76,47 +95,220 @@ public class DetailActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO: next patch
-//				Intent i = new Intent(DetailActivity.this, DetailListActivity.class);
-//				startActivity(i);
+				Intent i = new Intent(DetailActivity.this, DetailListActivity.class);
+				startActivity(i);
 			}
 		});
 		
 		dView.winButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				mRole.addGame(RoleType.HUNTER, true);
-				
-				updateView();
+//				mRole.addGame(RoleType.HUNTER, true);
+				bView.setVisibility(View.VISIBLE);
 			}
 		});
 		
 		dView.loseButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				mRole.addGame(RoleType.HUNTER, false);
-				
-				updateView();
+//				mRole.addGame(RoleType.HUNTER, false);
+				bView2.setVisibility(View.VISIBLE);
 			}
 		});
 		
 		dView.winDecreaseButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				mProvider.deleteLastGame(mRole.roleID);
+				mRole.deleteLastGame();
 				
 				updateView();
 			}
 		});
 		
+		bView = new BoxView(this);
+		bView.setVisibility(View.GONE);
+		dView.addView(bView, 768, 1230, 0, 0);
+		
+		bView2 = new BoxView2(this);
+		bView2.setVisibility(View.GONE);
+		dView.addView(bView2, 768, 1230, 0, 0);
+		
 		updateView();
 	}
 	
 	private void updateView() {
+		dView.titleTextView.setText(mRole.getName());
+		
 		DecimalFormat fnum = new DecimalFormat("##0.00");
 		String dd = fnum.format(mRole.getWinRate() * 100);
 		dView.winRateTextView.setText(dd + "%");
 		dView.winCounterTextView.setText("W: " + Integer.toString(mRole.getWin()));
 		dView.loseCounterTextView.setText("L: " + Integer.toString(mRole.getLose()));
 		dView.totalCounterTextView.setText("Total: " + Integer.toString(mRole.getTotalGame()));
+		printDebugInfo();
+	}
+	
+	public class BoxView extends RelativeLayout {
+		
+		RoleImageView hunter;
+		RoleImageView warrior;
+		RoleImageView paladin;
+		RoleImageView shaman;
+		RoleImageView rogue;
+		RoleImageView druid;
+		RoleImageView warlock;
+		RoleImageView priest;
+		RoleImageView mage;
+
+		RatioFixer rf;
+		
+		public BoxView(Context context) {
+			super(context);
+			
+			rf = dView.getRatioFixer();
+			
+			this.setBackgroundColor(Color.GRAY);
+			this.setClickable(true);
+			
+			hunter = new RoleImageView(context, RoleType.HUNTER);
+			hunter.setBackgroundResource(R.drawable.hunter);
+			this.addView(hunter, rf.getLayoutParam(256, 410, 0, 0));
+			
+			warrior = new RoleImageView(context, RoleType.WARRIOR);
+			warrior.setBackgroundResource(R.drawable.warrior);
+			this.addView(warrior, rf.getLayoutParam(256, 410, 0, 410));
+			
+			paladin = new RoleImageView(context, RoleType.PALADIN);
+			paladin.setBackgroundResource(R.drawable.paladin);
+			this.addView(paladin, rf.getLayoutParam(256, 410, 0, 820));
+			
+			shaman = new RoleImageView(context, RoleType.SHAMAN);
+			shaman.setBackgroundResource(R.drawable.shaman);
+			this.addView(shaman, rf.getLayoutParam(256, 410, 256, 0));
+			
+			rogue = new RoleImageView(context, RoleType.ROGUE);
+			rogue.setBackgroundResource(R.drawable.rogue);
+			this.addView(rogue, rf.getLayoutParam(256, 410, 256, 410));
+			
+			druid = new RoleImageView(context, RoleType.DRUID);
+			druid.setBackgroundResource(R.drawable.druid);
+			this.addView(druid, rf.getLayoutParam(256, 410, 256, 820));
+			
+			warlock = new RoleImageView(context, RoleType.WARLOCK);
+			warlock.setBackgroundResource(R.drawable.warlock);
+			this.addView(warlock, rf.getLayoutParam(256, 410, 512, 0));
+			
+			priest = new RoleImageView(context, RoleType.PRIEST);
+			priest.setBackgroundResource(R.drawable.priest);
+			this.addView(priest, rf.getLayoutParam(256, 410, 512, 410));
+			
+			mage = new RoleImageView(context, RoleType.MAGE);
+			mage.setBackgroundResource(R.drawable.mage);
+			this.addView(mage, rf.getLayoutParam(256, 410, 512, 820));
+		}		
+	}
+	
+	class RoleImageView extends ImageView {
+		boolean isWin;
+
+		public RoleImageView(Context context, final int roleType) {
+			super(context);
+			
+			this.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					mRole.addGame(roleType, true);
+					
+					updateView();
+					bView.setVisibility(View.GONE);
+				}
+			});
+		}
+	}
+	
+	public class BoxView2 extends RelativeLayout {
+		
+		RoleImageView2 hunter;
+		RoleImageView2 warrior;
+		RoleImageView2 paladin;
+		RoleImageView2 shaman;
+		RoleImageView2 rogue;
+		RoleImageView2 druid;
+		RoleImageView2 warlock;
+		RoleImageView2 priest;
+		RoleImageView2 mage;
+
+		RatioFixer rf;
+		
+		public BoxView2(Context context) {
+			super(context);
+			
+			rf = dView.getRatioFixer();
+			
+			this.setBackgroundColor(Color.GRAY);
+			this.setClickable(true);
+			
+			hunter = new RoleImageView2(context, RoleType.HUNTER);
+			hunter.setBackgroundResource(R.drawable.hunter);
+			this.addView(hunter, rf.getLayoutParam(256, 410, 0, 0));
+			
+			warrior = new RoleImageView2(context, RoleType.WARRIOR);
+			warrior.setBackgroundResource(R.drawable.warrior);
+			this.addView(warrior, rf.getLayoutParam(256, 410, 0, 410));
+			
+			paladin = new RoleImageView2(context, RoleType.PALADIN);
+			paladin.setBackgroundResource(R.drawable.paladin);
+			this.addView(paladin, rf.getLayoutParam(256, 410, 0, 820));
+			
+			shaman = new RoleImageView2(context, RoleType.SHAMAN);
+			shaman.setBackgroundResource(R.drawable.shaman);
+			this.addView(shaman, rf.getLayoutParam(256, 410, 256, 0));
+			
+			rogue = new RoleImageView2(context, RoleType.ROGUE);
+			rogue.setBackgroundResource(R.drawable.rogue);
+			this.addView(rogue, rf.getLayoutParam(256, 410, 256, 410));
+			
+			druid = new RoleImageView2(context, RoleType.DRUID);
+			druid.setBackgroundResource(R.drawable.druid);
+			this.addView(druid, rf.getLayoutParam(256, 410, 256, 820));
+			
+			warlock = new RoleImageView2(context, RoleType.WARLOCK);
+			warlock.setBackgroundResource(R.drawable.warlock);
+			this.addView(warlock, rf.getLayoutParam(256, 410, 512, 0));
+			
+			priest = new RoleImageView2(context, RoleType.PRIEST);
+			priest.setBackgroundResource(R.drawable.priest);
+			this.addView(priest, rf.getLayoutParam(256, 410, 512, 410));
+			
+			mage = new RoleImageView2(context, RoleType.MAGE);
+			mage.setBackgroundResource(R.drawable.mage);
+			this.addView(mage, rf.getLayoutParam(256, 410, 512, 820));
+		}		
+	}
+	
+	class RoleImageView2 extends ImageView {
+		boolean isWin;
+
+		public RoleImageView2(Context context, final int roleType) {
+			super(context);
+			
+			this.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					mRole.addGame(roleType, false);
+					
+					updateView();
+					bView2.setVisibility(View.GONE);
+				}
+			});
+		}
+	}
+	
+	private void printDebugInfo() {
+		Log.d("debug", "total:" + mRole.getTotalGame());
+		Log.d("debug", "win:" + mRole.getWin());
+		Log.d("debug", "lose:" + mRole.getLose());
+		Log.d("debug", "win rate:" + mRole.getWinRate());
+		Log.d("debug", "role res:" + mRole.getRoleRes());
 	}
 }

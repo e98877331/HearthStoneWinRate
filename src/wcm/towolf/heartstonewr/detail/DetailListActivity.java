@@ -3,6 +3,7 @@ package wcm.towolf.heartstonewr.detail;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import wcm.towolf.hearthstonewr.model.datatype.RoleData;
 import android.app.ListActivity;
 import android.os.Bundle;
 import android.widget.SimpleAdapter;
@@ -10,6 +11,8 @@ import android.widget.SimpleAdapter;
 public class DetailListActivity extends ListActivity {
 	ArrayList<HashMap<String, String>> list = new ArrayList<HashMap<String, String>>();
 	private SimpleAdapter adapter;
+	
+	RoleData mRole;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -30,6 +33,8 @@ public class DetailListActivity extends ListActivity {
 		setListAdapter(adapter);
 
 		getListView().setTextFilterEnabled(true);
+		
+		mRole = RoleData.getPassingData();
 	}
 
 	private static final String[] mPlaces = new String[] { "台北市", "新北市", "台南市",

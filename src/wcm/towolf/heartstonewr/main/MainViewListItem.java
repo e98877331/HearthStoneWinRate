@@ -37,13 +37,13 @@ public class MainViewListItem extends RelativeLayout{
 		
 		mRoleName = new TextView(context);
 		mRoleName.setGravity(Gravity.CENTER);
-		mRoleName.setBackgroundResource(R.drawable.main_listitem_name_bg);
+		mRoleName.setBackgroundResource(R.drawable.rect_label);
 		mRoleName.setText("roleName");
 		mRoleName.setTextSize(mRF.getRealValue(15));
-		rl.addView(mRoleName,mRF.getLayoutParam(328,120,220,60));
+		rl.addView(mRoleName,mRF.getLayoutParam(328,120,230,60));
 		
 		mWinRate = new TextView(context);
-		mWinRate.setBackgroundResource(R.drawable.circle_btn);
+		mWinRate.setBackgroundResource(R.drawable.circle_label);
 		mWinRate.setGravity(Gravity.CENTER);
 		mWinRate.setText("50%");
 		mWinRate.setTextSize(mRF.getRealValue(20));

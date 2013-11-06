@@ -6,19 +6,22 @@ import java.util.Random;
 import wcm.towolf.hearthstonewr.db.DBSchema;
 import wcm.towolf.hearthstonewr.model.RoleDataProvider;
 import wcm.towolf.hearthstonewr.model.datatype.RoleData;
-import wcm.towolf.hearthstonewr.model.datatype.RoleType;
 import wcm.towolf.heartstonewr.main.MainView;
 import wcm.towolf.heartstonewr.main.MainViewListItem;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
+import android.graphics.LightingColorFilter;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -47,20 +50,11 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		//setContentView(R.layout.activity_main);
+		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+		
 		
 		mDataProvider = new RoleDataProvider();
-		//mDBSchema = new DBSchema(this.getApplicationContext());
-		//mRoleList =  new RoleList(DBHelper.sharedInstance());
-		
-		//ArrayList<RoleData> data = new ArrayList<RoleData>();
-		
-//		data.add(new RoleData(RoleType.WARRIOR,"chang david",55));
-//		data.add(new RoleData(RoleType.WARRIOR,"chang david",55));
-//		data.add(new RoleData(RoleType.WARRIOR,"chang david",55));
-//		data.add(new RoleData(RoleType.WARRIOR,"chang david",55));
-//		data.add(new RoleData(RoleType.WARRIOR,"chang david",55));
-//		data.add(new RoleData(RoleType.WARRIOR,"chang david",55));
-//		data.add(new RoleData(RoleType.WARRIOR,"chang david",55));
+
 		
 		mView = new MainView(this);
 		mView.setBackgroundColor(Color.WHITE);
@@ -92,6 +86,19 @@ public class MainActivity extends Activity {
 		
 		//setting test button
 		mTestBtn = mView.mTestBtn;
+		
+		mTestBtn.setOnTouchListener(new OnTouchListener() {
+			
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				// TODO Auto-generated method stub
+				if(event.getAction() ==MotionEvent.ACTION_DOWN)
+					  v.getBackground().setColorFilter(new LightingColorFilter(0xFF999999, 0xFF000000));
+				else if(event.getAction() ==MotionEvent.ACTION_UP)
+					v.getBackground().clearColorFilter();
+				return false;
+			}
+		});
 		mTestBtn.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -99,6 +106,7 @@ public class MainActivity extends Activity {
 				// TODO Auto-generated method stub
 //		     Intent intent = new Intent(MainActivity.this,DetailActivity.class);
 //		     startActivity(intent);
+	
 				Random r=new Random();
 				int i1=r.nextInt(4);
 				String name;
@@ -282,7 +290,7 @@ public class MainActivity extends Activity {
 			
 			RoleData rd = mData.get(index);
 			
-			((MainViewListItem)convertView).setData(rd.getRoleRes(), rd.roleName, rd.winRate);
+			((MainViewListItem)convertView).setData(rd.getRoleRes(), rd.roleName, rd.getWinRate());
 			
 			
 			return convertView;

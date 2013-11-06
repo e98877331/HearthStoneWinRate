@@ -13,6 +13,8 @@ import wcm.towolf.heartstonewr.detail.DialogActivity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -81,6 +83,7 @@ public class DetailActivity extends Activity {
 		dView.setToContentView(this);
 		
 		dView.mainImageView.setBackgroundResource(mRole.getRoleRes());
+//		dView.mainImageView.setImageBitmap(applySaturationFilter(BitmapFactory.decodeResource(getResources(), mRole.getRoleRes()),1));
 		
 		dView.titleTextView.setOnClickListener(new OnClickListener() {
 			@Override
@@ -139,9 +142,14 @@ public class DetailActivity extends Activity {
 	private void updateView() {
 		dView.titleTextView.setText(mRole.getName());
 		
-		DecimalFormat fnum = new DecimalFormat("##0.00");
-		String dd = fnum.format(mRole.getWinRate() * 100);
-		dView.winRateTextView.setText(dd + "%");
+		float f = mRole.getWinRate();
+		if (f == -1) {
+			dView.winRateTextView.setText(getResources().getString(R.string.detail_no_record));
+		} else {
+			DecimalFormat fnum = new DecimalFormat("##0.00");
+			String dd = fnum.format(f * 100);
+			dView.winRateTextView.setText(dd + "%");
+		}
 		dView.winCounterTextView.setText("W: " + Integer.toString(mRole.getWin()));
 		dView.loseCounterTextView.setText("L: " + Integer.toString(mRole.getLose()));
 		dView.totalCounterTextView.setText("Total: " + Integer.toString(mRole.getTotalGame()));
@@ -303,6 +311,36 @@ public class DetailActivity extends Activity {
 			});
 		}
 	}
+	
+	 public Bitmap applySaturationFilter(Bitmap source, int level) {
+	     // get original image size
+	     int width = source.getWidth();
+	     int height = source.getHeight();
+	     int[] pixels = new int[width * height];
+	     float[] HSV = new float[3];
+	     // get pixel array from source image
+	     source.getPixels(pixels, 0, width, 0, 0, width, height);
+	  
+	     int index = 0;
+	     // iteration through all pixels
+	     for(int y = 0; y < height; ++y) {
+	         for(int x = 0; x < width; ++x) {
+	             // get current index in 2D-matrix
+	             index = y * width + x;
+	             // convert to HSV
+	             Color.colorToHSV(pixels[index], HSV);
+	             // increase Saturation level
+	             HSV[1] *= level;
+	             HSV[1] = (float) Math.max(0.0, Math.min(HSV[1], 1.0));
+	             // take color back
+	             pixels[index] = Color.HSVToColor(HSV);
+	         }
+	     }
+	     // output bitmap
+	     Bitmap bmOut = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+	     bmOut.setPixels(pixels, 0, width, 0, 0, width, height);
+	     return bmOut;
+	 }
 	
 	private void printDebugInfo() {
 		Log.d("debug", "total:" + mRole.getTotalGame());

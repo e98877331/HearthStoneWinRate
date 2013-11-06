@@ -43,7 +43,7 @@ public class MainViewListItem extends RelativeLayout{
 		rl.addView(mRoleName,mRF.getLayoutParam(328,120,220,60));
 		
 		mWinRate = new TextView(context);
-		mWinRate.setBackgroundResource(R.drawable.main_listitem_winrate_bg);
+		mWinRate.setBackgroundResource(R.drawable.circle_btn);
 		mWinRate.setGravity(Gravity.CENTER);
 		mWinRate.setText("50%");
 		mWinRate.setTextSize(mRF.getRealValue(20));

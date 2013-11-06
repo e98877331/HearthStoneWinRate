@@ -22,7 +22,7 @@ public class MainView extends RatioRelativeLayout {
 
 		mTestBtn = new Button(context);
 		mTestBtn.setBackgroundResource(R.drawable.rect_btn);
-		mTestBtn.setText("New Role");
+		mTestBtn.setText(R.string.main_create_btn);
 		this.addView(mTestBtn, 768, 200, 0, 0);
 		
 		

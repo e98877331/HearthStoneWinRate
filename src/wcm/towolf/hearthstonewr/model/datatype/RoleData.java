@@ -46,7 +46,6 @@ public class RoleData {
 				if (rg.getIsWin())
 					++win;
 			}
-			
 			mRoleEnemyDataList.get(rg.mRoleType).addGame(rg.getIsWin());
 		}
 		this.win = win;
@@ -59,6 +58,8 @@ public class RoleData {
 		++count;
 		if (isWin)
 			++win;
+		
+		mRoleEnemyDataList.get(enemyType).addGame(isWin);
 
 		// sync to db
 		RoleDataProvider edp = new RoleDataProvider();

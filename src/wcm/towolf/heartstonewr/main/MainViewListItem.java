@@ -63,7 +63,7 @@ public class MainViewListItem extends RelativeLayout{
 		{
 		DecimalFormat df = new DecimalFormat();
 		df.setMaximumFractionDigits(2);
-		mWinRate.setText(df.format(winRate)+"%");
+		mWinRate.setText(df.format(winRate*100)+"%");
 		}
 		else
 			mWinRate.setText("X");

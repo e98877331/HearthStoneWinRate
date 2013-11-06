@@ -21,16 +21,17 @@ public class MainView extends RatioRelativeLayout {
 		
 
 		mTestBtn = new Button(context);
+		mTestBtn.setBackgroundResource(R.drawable.rect_btn);
 		mTestBtn.setText("New Role");
 		this.addView(mTestBtn, 768, 200, 0, 0);
 		
 		
 		mTestBtn1 = new Button(context);
-		this.addView(mTestBtn1, 150, 150, 200, 0);
+		//this.addView(mTestBtn1, 150, 150, 200, 0);
 		
 		mListView = new ListView(context);
 		mListView.setDivider(null);
-		this.addView(mListView,768,1030,0,200);
+		this.addView(mListView,768,1030,0,210);
 
 
 	}

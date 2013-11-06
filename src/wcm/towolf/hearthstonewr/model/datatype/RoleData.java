@@ -46,7 +46,6 @@ public class RoleData {
 				if (rg.getIsWin())
 					++win;
 			}
-			
 			mRoleEnemyDataList.get(rg.mRoleType).addGame(rg.getIsWin());
 		}
 		this.win = win;
@@ -61,6 +60,7 @@ public class RoleData {
 		if (isWin)
 			++win;
 		
+		mRoleEnemyDataList.get(enemyType).addGame(isWin);
 		calculateWinRate();
 
 		// sync to db
@@ -144,9 +144,9 @@ public class RoleData {
 		return roleName;
 	}
 
-	public ArrayList<RoleEnemyData> getRoleEnemyData(int pRoleType)
+	public RoleEnemyData getRoleEnemyData(int pRoleType)
 	{
-		return mRoleEnemyDataList;
+		return mRoleEnemyDataList.get(pRoleType);
 	}
 
 	/*

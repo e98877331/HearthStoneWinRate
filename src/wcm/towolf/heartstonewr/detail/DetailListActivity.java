@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import wcm.towolf.hearthstonewr.model.datatype.RoleData;
+import wcm.towolf.hearthstonewr.model.datatype.RoleEnemyData;
+import wcm.towolf.hearthstonewr.model.datatype.RoleType;
 import android.app.ListActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.SimpleAdapter;
 
 public class DetailListActivity extends ListActivity {
@@ -18,33 +21,30 @@ public class DetailListActivity extends ListActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		for (int i = 0; i < mPlaces.length; i++) {
+//		for (int i = 0; i < mPlaces.length; i++) {
+//			HashMap<String, String> item = new HashMap<String, String>();
+//			item.put("food", mFoods[i]);
+//			item.put("place", mPlaces[i]);
+//			list.add(item);
+//		}
+		
+		mRole = RoleData.getPassingData();
+		for (int i = 0; i < 9; i++) {
 			HashMap<String, String> item = new HashMap<String, String>();
-			item.put("food", mFoods[i]);
-			item.put("place", mPlaces[i]);
+			mRole.getRoleEnemyData(i);
+			item.put("type", RoleType.getRoleTypeString(i));
+			item.put("result", "win rate: " + mRole.getRoleEnemyData(i).getWinRate());
 			list.add(item);
 		}
 
 		adapter = new SimpleAdapter(this, list,
-				android.R.layout.simple_list_item_2, new String[] { "food",
-						"place" }, new int[] { android.R.id.text1,
+				android.R.layout.simple_list_item_2, new String[] { "type",
+						"result" }, new int[] { android.R.id.text1,
 						android.R.id.text2 });
 
 		setListAdapter(adapter);
 
 		getListView().setTextFilterEnabled(true);
 		
-		mRole = RoleData.getPassingData();
 	}
-
-	private static final String[] mPlaces = new String[] { "台北市", "新北市", "台南市",
-			"高雄市", "苗粟縣", "台北市", "新北市", "台南市", "高雄市", "苗粟縣", "台北市", "新北市",
-			"台南市", "高雄市", "苗粟縣", "台北市", "新北市", "台南市", "高雄市", "苗粟縣", "台北市",
-			"新北市", "台南市", "高雄市", "苗粟縣", "台北市", "新北市", "789", "cde", "abc" };
-
-	private static final String[] mFoods = new String[] { "大餅包小餅", "蚵仔煎",
-			"東山鴨頭", "臭豆腐", "潤餅", "豆花", "青蛙下蛋", "豬血糕", "大腸包小腸", "鹹水雞", "烤香腸",
-			"車輪餅", "珍珠奶茶", "鹹酥雞", "大熱狗", "炸雞排", "山豬肉", "花生冰", "剉冰", "水果冰",
-			"包心粉圓", "排骨酥", "沙茶魷魚", "章魚燒", "度小月", "aaa", "abc", "bbb", "bcd",
-			"123" };
 }

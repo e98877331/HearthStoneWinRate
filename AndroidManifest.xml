@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="11"
         android:targetSdkVersion="16" />
 
     <application
@@ -32,7 +32,8 @@
             android:theme="@android:style/Theme.Dialog"
             android:label="input your name" >
         </activity>
-        <activity android:name="wcm.towolf.heartstonewr.detail.DetailListActivity"></activity>
+        <activity android:name="wcm.towolf.heartstonewr.detail.DetailListActivity"
+            android:theme= "@android:style/Theme.Light.NoTitleBar"></activity>
 
     </application>
 

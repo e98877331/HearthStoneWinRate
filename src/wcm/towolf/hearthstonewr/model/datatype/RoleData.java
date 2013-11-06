@@ -50,7 +50,6 @@ public class RoleData {
 		}
 		this.win = win;
 		this.count = count;
-		calculateWinRate();
 
 		// winRate = (float)win/count;
 	}
@@ -61,7 +60,6 @@ public class RoleData {
 			++win;
 		
 		mRoleEnemyDataList.get(enemyType).addGame(isWin);
-		calculateWinRate();
 
 		// sync to db
 		RoleDataProvider edp = new RoleDataProvider();
@@ -133,7 +131,7 @@ public class RoleData {
 	}
 
 	public float getWinRate() {
-		return winRate;
+		return (count == 0) ? (winRate = -1) : ((float) win / count);
 	}
 	
 	public int getRoleType() {
@@ -147,13 +145,6 @@ public class RoleData {
 	public RoleEnemyData getRoleEnemyData(int pRoleType)
 	{
 		return mRoleEnemyDataList.get(pRoleType);
-	}
-
-	/*
-	 * private method
-	 */
-	private void calculateWinRate() {
-		winRate = (count == 0) ? (winRate = -1) : ((float) win / count);
 	}
 
 	/*

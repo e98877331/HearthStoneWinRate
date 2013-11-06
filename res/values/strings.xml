@@ -7,4 +7,5 @@
     <string name="main_context_menu_title">Menu</string>
     <string name="main_context_menu_delete_btn">Delete</string>
     <string name="main_create_btn">New Role</string>
+    <string name="detail_no_record">No record</string>
 </resources>

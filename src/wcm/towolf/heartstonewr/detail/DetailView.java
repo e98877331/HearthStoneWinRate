@@ -2,17 +2,14 @@ package wcm.towolf.heartstonewr.detail;
 
 import itri.u9lab.towolf.ratiofixer.RatioFixer;
 import itri.u9lab.towolf.ratiofixer.RatioRelativeLayout;
-
-import java.text.DecimalFormat;
-
 import wcm.towolf.hearthstonewr.R;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.util.TypedValue;
 import android.view.Gravity;
-import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -46,13 +43,14 @@ public class DetailView extends RatioRelativeLayout{
 		super(context);
 		// TODO Auto-generated constructor stub
 		
-		this.setBackgroundColor(Color.WHITE);
+//		this.setBackgroundColor(Color.WHITE);
+		this.setBackgroundResource(R.drawable.main_bg);
 		
 		rf = this.getRatioFixer();
 		
 		titleTextView = new TextView(context);
 		titleTextView.setText("TITLE");
-		titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, 4.45f * 40.0f * rf.getRatio());
+		titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, 4.45f * 30.0f * rf.getRatio());
 		titleTextView.setBackgroundColor(Color.parseColor("#FFC1E0"));
 		titleTextView.setGravity(Gravity.CENTER);
 		this.addView(titleTextView, 768, 200, 0, 0);
@@ -66,12 +64,13 @@ public class DetailView extends RatioRelativeLayout{
 //		this.addView(titleEditText, 768, 200, 0, 0);
 		
 		mainImageView = new ImageView(context);
-		mainImageView.setBackgroundResource(R.drawable.ic_launcher);
+//		mainImageView.setBackgroundResource(R.drawable.ic_launcher);
+//		mainImageView.setAlpha(0.3f);
 		this.addView(mainImageView, 768, 768, 0, 200);
 		
 		winRateTextView = new TextView(context);
 //		winRateTextView.setText(Float.toString(winRate * 100) + "%");
-		winRateTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, 4.45f * 40.0f * rf.getRatio());
+		winRateTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, 4.45f * 30.0f * rf.getRatio());
 //		winRateTextView.setBackgroundColor(Color.parseColor("#96FED1"));
 		winRateTextView.setGravity(Gravity.CENTER);
 		this.addView(winRateTextView, 768, 568, 0, 200);
@@ -99,15 +98,18 @@ public class DetailView extends RatioRelativeLayout{
 		
 		winButton = new Button(context);
 		winButton.setText("win");
-		this.addView(winButton, 384, 150, 0, 968);
+		winButton.setBackgroundResource(R.drawable.detail_button);
+		this.addView(winButton, 383, 150, 0, 968);
 		
 		loseButton = new Button(context);
 		loseButton.setText("lose");
-		this.addView(loseButton, 384, 150, 384, 968);
+		loseButton.setBackgroundResource(R.drawable.detail_button);
+		this.addView(loseButton, 383, 150, 385, 968);
 		
 		winDecreaseButton = new Button(context);
-		winDecreaseButton.setText("undo");
-		this.addView(winDecreaseButton, 384, 112, 0, 1118);
+//		winDecreaseButton.setText("undo");
+		winDecreaseButton.setBackgroundResource(R.drawable.detail_back);
+		this.addView(winDecreaseButton, 112, 112, 328, 1118);
 		
 //		loseDecreaseButton = new Button(context);
 //		loseDecreaseButton.setText("-");

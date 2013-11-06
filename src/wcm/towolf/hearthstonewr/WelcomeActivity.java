@@ -50,22 +50,22 @@ public class WelcomeActivity extends Activity {
 
 		@Override
 		public void run() {
-			if (counter < 5) {
+//			if (counter < 5) {
 				// TODO Auto-generated method stub
-				Log.d("weichi", "A");
-//				switcher.setBackgroundResource(getCharID());
-				switcher.setBackgroundResource(IMAGES[counter]);
-				Log.d("weichi", "B");
-				counter++;
-				Log.d("weichi", "C");
-				switcher.postDelayed(this, 200);
-			} else {
+//				Log.d("weichi", "A");
+				switcher.setBackgroundResource(getCharID());
+//				switcher.setBackgroundResource(IMAGES[counter]);
+//				Log.d("weichi", "B");
+//				counter++;
+//				Log.d("weichi", "C");
+//				switcher.postDelayed(this, 200);
+//			} else {
 				// TODO: start next activity
 				Intent i = new Intent(WelcomeActivity.this, MainActivity.class);
 				startActivity(i);
 				finish();
 				switcher.removeCallbacks(this);
-			}
+//			}
 		}
 		
 	};

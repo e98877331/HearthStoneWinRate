@@ -4,24 +4,17 @@ package wcm.towolf.heartstonewr.detail;
 import wcm.towolf.hearthstonewr.R;
 import wcm.towolf.hearthstonewr.model.datatype.RoleData;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 
 public class DialogActivity extends Activity {
 
-//	MainView mView;
-//	TextView mTextView;
-//	
-//	DetailView dView;
-	
 	EditText mEditText;
 	Button mButton;
 	
@@ -35,11 +28,6 @@ public class DialogActivity extends Activity {
 		
 		mButton = (Button) findViewById(R.id.button1);
 		mButton.setText("done");
-				
-	//	mView.setToContentView(this);
-		
-//		dView = new DetailView(this);
-//		dView.setToContentView(this);
 		
 		mEditText.setText(RoleData.getPassingData().getName());
 		mEditText.selectAll();
@@ -58,12 +46,4 @@ public class DialogActivity extends Activity {
 		});
 		
 	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.activity_main, menu);
-		return true;
-	}
-
 }

@@ -13,16 +13,16 @@ import wcm.towolf.heartstonewr.detail.DialogActivity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 public class DetailActivity extends Activity {
 	DetailView dView;
@@ -83,7 +83,6 @@ public class DetailActivity extends Activity {
 		dView.setToContentView(this);
 		
 		dView.mainImageView.setBackgroundResource(mRole.getRoleRes());
-//		dView.mainImageView.setImageBitmap(applySaturationFilter(BitmapFactory.decodeResource(getResources(), mRole.getRoleRes()),1));
 		
 		dView.titleTextView.setOnClickListener(new OnClickListener() {
 			@Override
@@ -157,7 +156,7 @@ public class DetailActivity extends Activity {
 	}
 	
 	public class BoxView extends RelativeLayout {
-		
+		TextView title;
 		RoleImageView hunter;
 		RoleImageView warrior;
 		RoleImageView paladin;
@@ -178,41 +177,46 @@ public class DetailActivity extends Activity {
 			this.setBackgroundColor(Color.GRAY);
 			this.setClickable(true);
 			
+			title = new TextView(context);
+			title.setText("Who you win?");
+			title.setTextSize(TypedValue.COMPLEX_UNIT_PX, 4.45f * 15.0f * rf.getRatio());
+			this.addView(title, rf.getLayoutParam(768, 132, 0, 0));
+			
 			hunter = new RoleImageView(context, RoleType.HUNTER);
 			hunter.setBackgroundResource(R.drawable.hunter);
-			this.addView(hunter, rf.getLayoutParam(256, 410, 0, 0));
+			this.addView(hunter, rf.getLayoutParam(256, 366, 0, 132));
 			
 			warrior = new RoleImageView(context, RoleType.WARRIOR);
 			warrior.setBackgroundResource(R.drawable.warrior);
-			this.addView(warrior, rf.getLayoutParam(256, 410, 0, 410));
+			this.addView(warrior, rf.getLayoutParam(256, 366, 0, 498));
 			
 			paladin = new RoleImageView(context, RoleType.PALADIN);
 			paladin.setBackgroundResource(R.drawable.paladin);
-			this.addView(paladin, rf.getLayoutParam(256, 410, 0, 820));
+			this.addView(paladin, rf.getLayoutParam(256, 366, 0, 864));
 			
 			shaman = new RoleImageView(context, RoleType.SHAMAN);
 			shaman.setBackgroundResource(R.drawable.shaman);
-			this.addView(shaman, rf.getLayoutParam(256, 410, 256, 0));
+			this.addView(shaman, rf.getLayoutParam(256, 366, 256, 132));
 			
 			rogue = new RoleImageView(context, RoleType.ROGUE);
 			rogue.setBackgroundResource(R.drawable.rogue);
-			this.addView(rogue, rf.getLayoutParam(256, 410, 256, 410));
+			this.addView(rogue, rf.getLayoutParam(256, 366, 256, 498));
 			
 			druid = new RoleImageView(context, RoleType.DRUID);
 			druid.setBackgroundResource(R.drawable.druid);
-			this.addView(druid, rf.getLayoutParam(256, 410, 256, 820));
+			this.addView(druid, rf.getLayoutParam(256, 366, 256, 864));
 			
 			warlock = new RoleImageView(context, RoleType.WARLOCK);
 			warlock.setBackgroundResource(R.drawable.warlock);
-			this.addView(warlock, rf.getLayoutParam(256, 410, 512, 0));
+			this.addView(warlock, rf.getLayoutParam(256, 366, 512, 132));
 			
 			priest = new RoleImageView(context, RoleType.PRIEST);
 			priest.setBackgroundResource(R.drawable.priest);
-			this.addView(priest, rf.getLayoutParam(256, 410, 512, 410));
+			this.addView(priest, rf.getLayoutParam(256, 366, 512, 498));
 			
 			mage = new RoleImageView(context, RoleType.MAGE);
 			mage.setBackgroundResource(R.drawable.mage);
-			this.addView(mage, rf.getLayoutParam(256, 410, 512, 820));
+			this.addView(mage, rf.getLayoutParam(256, 366, 512, 864));
 		}		
 	}
 	
@@ -235,7 +239,7 @@ public class DetailActivity extends Activity {
 	}
 	
 	public class BoxView2 extends RelativeLayout {
-		
+		TextView title;
 		RoleImageView2 hunter;
 		RoleImageView2 warrior;
 		RoleImageView2 paladin;
@@ -256,41 +260,46 @@ public class DetailActivity extends Activity {
 			this.setBackgroundColor(Color.GRAY);
 			this.setClickable(true);
 			
+			title = new TextView(context);
+			title.setText("Who you lose?");
+			title.setTextSize(TypedValue.COMPLEX_UNIT_PX, 4.45f * 15.0f * rf.getRatio());
+			this.addView(title, rf.getLayoutParam(768, 132, 0, 0));
+			
 			hunter = new RoleImageView2(context, RoleType.HUNTER);
 			hunter.setBackgroundResource(R.drawable.hunter);
-			this.addView(hunter, rf.getLayoutParam(256, 410, 0, 0));
+			this.addView(hunter, rf.getLayoutParam(256, 366, 0, 132));
 			
 			warrior = new RoleImageView2(context, RoleType.WARRIOR);
 			warrior.setBackgroundResource(R.drawable.warrior);
-			this.addView(warrior, rf.getLayoutParam(256, 410, 0, 410));
+			this.addView(warrior, rf.getLayoutParam(256, 366, 0, 498));
 			
 			paladin = new RoleImageView2(context, RoleType.PALADIN);
 			paladin.setBackgroundResource(R.drawable.paladin);
-			this.addView(paladin, rf.getLayoutParam(256, 410, 0, 820));
+			this.addView(paladin, rf.getLayoutParam(256, 366, 0, 864));
 			
 			shaman = new RoleImageView2(context, RoleType.SHAMAN);
 			shaman.setBackgroundResource(R.drawable.shaman);
-			this.addView(shaman, rf.getLayoutParam(256, 410, 256, 0));
+			this.addView(shaman, rf.getLayoutParam(256, 366, 256, 132));
 			
 			rogue = new RoleImageView2(context, RoleType.ROGUE);
 			rogue.setBackgroundResource(R.drawable.rogue);
-			this.addView(rogue, rf.getLayoutParam(256, 410, 256, 410));
+			this.addView(rogue, rf.getLayoutParam(256, 366, 256, 498));
 			
 			druid = new RoleImageView2(context, RoleType.DRUID);
 			druid.setBackgroundResource(R.drawable.druid);
-			this.addView(druid, rf.getLayoutParam(256, 410, 256, 820));
+			this.addView(druid, rf.getLayoutParam(256, 366, 256, 864));
 			
 			warlock = new RoleImageView2(context, RoleType.WARLOCK);
 			warlock.setBackgroundResource(R.drawable.warlock);
-			this.addView(warlock, rf.getLayoutParam(256, 410, 512, 0));
+			this.addView(warlock, rf.getLayoutParam(256, 366, 512, 132));
 			
 			priest = new RoleImageView2(context, RoleType.PRIEST);
 			priest.setBackgroundResource(R.drawable.priest);
-			this.addView(priest, rf.getLayoutParam(256, 410, 512, 410));
+			this.addView(priest, rf.getLayoutParam(256, 366, 512, 498));
 			
 			mage = new RoleImageView2(context, RoleType.MAGE);
 			mage.setBackgroundResource(R.drawable.mage);
-			this.addView(mage, rf.getLayoutParam(256, 410, 512, 820));
+			this.addView(mage, rf.getLayoutParam(256, 366, 512, 864));
 		}		
 	}
 	
@@ -311,42 +320,27 @@ public class DetailActivity extends Activity {
 			});
 		}
 	}
-	
-	 public Bitmap applySaturationFilter(Bitmap source, int level) {
-	     // get original image size
-	     int width = source.getWidth();
-	     int height = source.getHeight();
-	     int[] pixels = new int[width * height];
-	     float[] HSV = new float[3];
-	     // get pixel array from source image
-	     source.getPixels(pixels, 0, width, 0, 0, width, height);
-	  
-	     int index = 0;
-	     // iteration through all pixels
-	     for(int y = 0; y < height; ++y) {
-	         for(int x = 0; x < width; ++x) {
-	             // get current index in 2D-matrix
-	             index = y * width + x;
-	             // convert to HSV
-	             Color.colorToHSV(pixels[index], HSV);
-	             // increase Saturation level
-	             HSV[1] *= level;
-	             HSV[1] = (float) Math.max(0.0, Math.min(HSV[1], 1.0));
-	             // take color back
-	             pixels[index] = Color.HSVToColor(HSV);
-	         }
-	     }
-	     // output bitmap
-	     Bitmap bmOut = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
-	     bmOut.setPixels(pixels, 0, width, 0, 0, width, height);
-	     return bmOut;
-	 }
-	
+
 	private void printDebugInfo() {
 		Log.d("debug", "total:" + mRole.getTotalGame());
 		Log.d("debug", "win:" + mRole.getWin());
 		Log.d("debug", "lose:" + mRole.getLose());
 		Log.d("debug", "win rate:" + mRole.getWinRate());
 		Log.d("debug", "role res:" + mRole.getRoleRes());
+	}
+
+	@Override
+	public void onBackPressed() {
+		if (bView.getVisibility() == View.VISIBLE) {
+			bView.setVisibility(View.GONE);
+			return;
+		}
+		
+		if (bView2.getVisibility() == View.VISIBLE) {
+			bView2.setVisibility(View.GONE);
+			return;
+		}
+		
+		super.onBackPressed();
 	}
 }

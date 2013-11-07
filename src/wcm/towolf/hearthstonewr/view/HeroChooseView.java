@@ -26,41 +26,104 @@ public class HeroChooseView extends RelativeLayout{
 	IconButton priest;
 	IconButton mage;
 	
+	Context mContext;
+	
+	
     ClickCallBack mCallback;
 
 	public HeroChooseView(Context context,RatioFixer rf,ClickCallBack callBack) {
 		super(context);
 		// TODO Auto-generated constructor stub
 		mCallback = callBack;
+		mContext = context;
+		mRF = rf;
 		this.setBackgroundColor(Color.GRAY);
 		this.setClickable(true);
 		
-		hunter = new IconButton(context, RoleType.HUNTER);
-		this.addView(hunter, rf.getLayoutParam(256, 410, 0, 0));
+		int w = 160;
+		int h = 240;
+//		
+//		hunter = new IconButton(context, RoleType.HUNTER);
+//		this.addView(hunter, rf.getLayoutParam(w, h, 0, 0));
+//		
+//		warrior = new IconButton(context, RoleType.WARRIOR);
+//		this.addView(warrior, rf.getLayoutParam(w,h, 0, h));
+//		
+//		paladin = new IconButton(context, RoleType.PALADIN);
+//		this.addView(paladin, rf.getLayoutParam(w,h, 0, 2*h));
+//		
+//		shaman = new IconButton(context, RoleType.SHAMAN);
+//		this.addView(shaman, rf.getLayoutParam(w,h, w, 0));
+//		
+//		rogue = new IconButton(context, RoleType.ROGUE);
+//		this.addView(rogue, rf.getLayoutParam(w,h, w, h));
+//		
+//		druid = new IconButton(context, RoleType.DRUID);
+//		this.addView(druid, rf.getLayoutParam(w,h, w, 2*h));
+//		
+//		warlock = new IconButton(context, RoleType.WARLOCK);
+//		this.addView(warlock, rf.getLayoutParam(w,h, 2*w, 0));
+//		
+//		priest = new IconButton(context, RoleType.PRIEST);
+//		this.addView(priest, rf.getLayoutParam(w,h, 2*w, h));
+//		
+//		mage = new IconButton(context, RoleType.MAGE);
+//		this.addView(mage, rf.getLayoutParam(w,h, 2*w, 2*h));
+		hunter = new IconButton(mContext, RoleType.HUNTER);
+		this.addView(hunter, mRF.getLayoutParam(w, h, 0, 0));
 		
-		warrior = new IconButton(context, RoleType.WARRIOR);
-		this.addView(warrior, rf.getLayoutParam(256, 410, 0, 410));
+		warrior = new IconButton(mContext, RoleType.WARRIOR);
+		this.addView(warrior, mRF.getLayoutParam(w,h, 0, h));
 		
-		paladin = new IconButton(context, RoleType.PALADIN);
-		this.addView(paladin, rf.getLayoutParam(256, 410, 0, 820));
+		paladin = new IconButton(mContext, RoleType.PALADIN);
+		this.addView(paladin, mRF.getLayoutParam(w,h, 0, 2*h));
 		
-		shaman = new IconButton(context, RoleType.SHAMAN);
-		this.addView(shaman, rf.getLayoutParam(256, 410, 256, 0));
+		shaman = new IconButton(mContext, RoleType.SHAMAN);
+		this.addView(shaman, mRF.getLayoutParam(w,h, w, 0));
 		
-		rogue = new IconButton(context, RoleType.ROGUE);
-		this.addView(rogue, rf.getLayoutParam(256, 410, 256, 410));
+		rogue = new IconButton(mContext, RoleType.ROGUE);
+		this.addView(rogue, mRF.getLayoutParam(w,h, w, h));
 		
-		druid = new IconButton(context, RoleType.DRUID);
-		this.addView(druid, rf.getLayoutParam(256, 410, 256, 820));
+		druid = new IconButton(mContext, RoleType.DRUID);
+		this.addView(druid, mRF.getLayoutParam(w,h, w, 2*h));
 		
-		warlock = new IconButton(context, RoleType.WARLOCK);
-		this.addView(warlock, rf.getLayoutParam(256, 410, 512, 0));
+		warlock = new IconButton(mContext, RoleType.WARLOCK);
+		this.addView(warlock, mRF.getLayoutParam(w,h, 2*w, 0));
 		
-		priest = new IconButton(context, RoleType.PRIEST);
-		this.addView(priest, rf.getLayoutParam(256, 410, 512, 410));
+		priest = new IconButton(mContext, RoleType.PRIEST);
+		this.addView(priest, mRF.getLayoutParam(w,h, 2*w, h));
 		
-		mage = new IconButton(context, RoleType.MAGE);
-		this.addView(mage, rf.getLayoutParam(256, 410, 512, 820));	
+		mage = new IconButton(mContext, RoleType.MAGE);
+		this.addView(mage, mRF.getLayoutParam(w,h, 2*w, 2*h));	
+	}
+	
+	@Override
+	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+		// TODO Auto-generated method stub
+		super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+	    int parentWidth = MeasureSpec.getSize(widthMeasureSpec);
+	    int parentHeight = MeasureSpec.getSize(heightMeasureSpec);
+	    int w = parentWidth /3;
+	    int h = parentHeight /3;
+//
+//	    hunter.setLayoutParams(mRF.getLayoutParam(w, h, 0, 0));
+//		
+//	    warrior.setLayoutParams(mRF.getLayoutParam(w,h, 0, h));
+//		
+//		paladin.setLayoutParams(mRF.getLayoutParam(w,h, 0, 2*h));
+//		
+//		shaman.setLayoutParams(mRF.getLayoutParam(w,h, w, 0));
+//		
+//		rogue.setLayoutParams(mRF.getLayoutParam(w,h, w, h));
+//		
+//		druid.setLayoutParams(mRF.getLayoutParam(w,h, w, 2*h));
+//		
+//		warlock.setLayoutParams(mRF.getLayoutParam(w,h, 2*w, 0));
+//
+//		priest.setLayoutParams(mRF.getLayoutParam(w,h, 2*w, h));
+//		
+//		mage.setLayoutParams(mRF.getLayoutParam(w,h, 2*w, 2*h));
+		
 	}
 	
 

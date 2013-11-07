@@ -11,6 +11,7 @@ import wcm.towolf.hearthstonewr.view.HeroChooseView.ClickCallBack;
 import wcm.towolf.heartstonewr.main.MainView;
 import wcm.towolf.heartstonewr.main.MainViewListItem;
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
@@ -137,14 +138,21 @@ public class MainActivity extends Activity {
 //		        
 //				mDataProvider.addRole(name,rd.nextInt(8));
 
-				mView.addView(new HeroChooseView(MainActivity.this, mView.getRatioFixer(), new ClickCallBack() {
+				final HeroChooseView addView = new HeroChooseView(MainActivity.this, mView.getRatioFixer(),new ClickCallBack() {
 					
 					@Override
 					public void run(int roleType) {
 						// TODO Auto-generated method stub
 						Log.e(TAG,Integer.toString(roleType));
 					}
-				}));
+				});
+				
+				final Dialog dialog = new Dialog(MainActivity.this);
+				dialog.setTitle("Create Deck");
+				dialog.setContentView(addView);
+				dialog.show();
+
+				
 				
                 reloadListData();
 				

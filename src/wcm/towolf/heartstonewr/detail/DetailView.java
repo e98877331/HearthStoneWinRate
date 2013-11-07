@@ -25,7 +25,7 @@ public class DetailView extends RatioRelativeLayout{
 
 	public Button winButton;
 	public Button loseButton;
-	public Button winDecreaseButton;
+	public Button undoButton;
 //	public Button loseDecreaseButton;
 	
 	RatioFixer rf;
@@ -40,7 +40,6 @@ public class DetailView extends RatioRelativeLayout{
 	public DetailView(Context context) {
 		super(context);
 		
-//		this.setBackgroundColor(Color.WHITE);
 		this.setBackgroundResource(R.drawable.main_bg);
 		
 		rf = this.getRatioFixer();
@@ -86,18 +85,18 @@ public class DetailView extends RatioRelativeLayout{
 		this.addView(totalCounterTextView, 256, 200, 512, 768);
 		
 		winButton = new Button(context);
-		winButton.setText("win");
+		winButton.setText(getResources().getString(R.string.detail_win_btn));
 		winButton.setBackgroundResource(R.drawable.detail_button);
 		this.addView(winButton, 383, 150, 0, 968);
 		
 		loseButton = new Button(context);
-		loseButton.setText("lose");
+		loseButton.setText(getResources().getString(R.string.detail_lose_btn));
 		loseButton.setBackgroundResource(R.drawable.detail_button);
 		this.addView(loseButton, 383, 150, 385, 968);
 		
-		winDecreaseButton = new Button(context);
-//		winDecreaseButton.setText("undo");
-		winDecreaseButton.setBackgroundResource(R.drawable.detail_back);
-		this.addView(winDecreaseButton, 112, 112, 328, 1118);
+		undoButton = new Button(context);
+//		undoButton.setText(getResources().getString(R.string.detail_undo_btn));
+		undoButton.setBackgroundResource(R.drawable.detail_back);
+		this.addView(undoButton, 112, 112, 328, 1118);
 	}
 }

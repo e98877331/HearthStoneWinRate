@@ -8,4 +8,15 @@
     <string name="main_context_menu_delete_btn">Delete</string>
     
     <string name="detail_no_record">No record</string>
+    <string name="detail_win_btn">win</string>
+    <string name="detail_lose_btn">lose</string>
+    <string name="detail_undo_btn">undo</string>
+    <string name="detail_text_win">Win</string>
+    <string name="detail_text_lose">Lose</string>
+    <string name="detail_text_total">Total</string>
+    <string name="detail_dialog_label">Input your name:</string>
+    <string name="detail_dialog_button">done</string>
+    <string name="detail_list_winrate">win rate</string>
+    <string name="detail_list_win">win</string>
+    <string name="detail_list_lose">lose</string>
 </resources>

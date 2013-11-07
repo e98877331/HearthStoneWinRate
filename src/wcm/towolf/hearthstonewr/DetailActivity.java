@@ -118,7 +118,7 @@ public class DetailActivity extends Activity {
 			}
 		});
 		
-		dView.winDecreaseButton.setOnClickListener(new OnClickListener() {
+		dView.undoButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				mRole.deleteLastGame();
@@ -149,9 +149,15 @@ public class DetailActivity extends Activity {
 			String dd = fnum.format(f * 100);
 			dView.winRateTextView.setText(dd + "%");
 		}
-		dView.winCounterTextView.setText("W: " + Integer.toString(mRole.getWin()));
-		dView.loseCounterTextView.setText("L: " + Integer.toString(mRole.getLose()));
-		dView.totalCounterTextView.setText("Total: " + Integer.toString(mRole.getTotalGame()));
+		dView.winCounterTextView.setText(getResources().getString(
+				R.string.detail_text_win)
+				+ ": " + Integer.toString(mRole.getWin()));
+		dView.loseCounterTextView.setText(getResources().getString(
+				R.string.detail_text_lose)
+				+ ": " + Integer.toString(mRole.getLose()));
+		dView.totalCounterTextView.setText(getResources().getString(
+				R.string.detail_text_total)
+				+ ": " + Integer.toString(mRole.getTotalGame()));
 		printDebugInfo();
 	}
 	

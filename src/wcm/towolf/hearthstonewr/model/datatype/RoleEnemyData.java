@@ -21,7 +21,8 @@ public class RoleEnemyData {
 	
 	public float getWinRate()
 	{
-		return (float)mWin/mTotal;
+//		return (float)mWin/mTotal;
+		return (mTotal == 0) ? -1 : ((float) mWin / mTotal);
 	}
 	public int getType(){
 		return mEnemyRoleType;

@@ -27,7 +27,7 @@ public class DialogActivity extends Activity {
 		mEditText = (EditText) findViewById(R.id.editText1);
 		
 		mButton = (Button) findViewById(R.id.button1);
-		mButton.setText("done");
+		mButton.setText(getResources().getString(R.string.detail_dialog_button));
 		
 		mEditText.setText(RoleData.getPassingData().getName());
 		mEditText.selectAll();

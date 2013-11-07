@@ -6,6 +6,8 @@ import java.util.Random;
 import wcm.towolf.hearthstonewr.db.DBSchema;
 import wcm.towolf.hearthstonewr.model.RoleDataProvider;
 import wcm.towolf.hearthstonewr.model.datatype.RoleData;
+import wcm.towolf.hearthstonewr.view.HeroChooseView;
+import wcm.towolf.hearthstonewr.view.HeroChooseView.ClickCallBack;
 import wcm.towolf.heartstonewr.main.MainView;
 import wcm.towolf.heartstonewr.main.MainViewListItem;
 import android.app.Activity;
@@ -14,6 +16,7 @@ import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.LightingColorFilter;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
@@ -31,6 +34,8 @@ import android.widget.ListView;
 
 public class MainActivity extends Activity {
 
+	final static String TAG = "MainActivity";
+	
 	MainView mView;
 	ListView mListView;
 	Button mTestBtn,mTestBtn1;
@@ -104,35 +109,42 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-//		     Intent intent = new Intent(MainActivity.this,DetailActivity.class);
-//		     startActivity(intent);
 	
-				Random r=new Random();
-				int i1=r.nextInt(4);
-				String name;
-				switch(i1%4)
-				{
-				
-				case 0:
-					name = "first" + i1%4;
-					break;
-				case 1:
-					name = "second" + i1%4;
-					break;
-				case 2:
-					name ="third" + i1%4;
-					break;
-				case 3:
-					name="fourth" + i1%4;
-					break;
-					default:
-						name ="default" + i1%4;
-				}
+//				Random r=new Random();
+//				int i1=r.nextInt(4);
+//				String name;
+//				switch(i1%4)
+//				{
+//				
+//				case 0:
+//					name = "first" + i1%4;
+//					break;
+//				case 1:
+//					name = "second" + i1%4;
+//					break;
+//				case 2:
+//					name ="third" + i1%4;
+//					break;
+//				case 3:
+//					name="fourth" + i1%4;
+//					break;
+//					default:
+//						name ="default" + i1%4;
+//				}
+//					
+//				//mRoleList.addRole(new RoleData(RoleType.WARRIOR,name));
+//		        Random rd = new Random();
+//		        
+//				mDataProvider.addRole(name,rd.nextInt(8));
+
+				mView.addView(new HeroChooseView(MainActivity.this, mView.getRatioFixer(), new ClickCallBack() {
 					
-				//mRoleList.addRole(new RoleData(RoleType.WARRIOR,name));
-		        Random rd = new Random();
-		        
-				mDataProvider.addRole(name,rd.nextInt(8));
+					@Override
+					public void run(int roleType) {
+						// TODO Auto-generated method stub
+						Log.e(TAG,Integer.toString(roleType));
+					}
+				}));
 				
                 reloadListData();
 				

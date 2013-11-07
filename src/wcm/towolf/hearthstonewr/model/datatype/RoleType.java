@@ -1,5 +1,7 @@
 package wcm.towolf.hearthstonewr.model.datatype;
 
+import wcm.towolf.hearthstonewr.R;
+
 public class RoleType {
 	
 	public static final int WARRIOR = 0;
@@ -37,4 +39,33 @@ public class RoleType {
 			return null;
 		}
 	}
+	
+	public static int getRoleRes(int roleType) {
+		// if(pRoleType == RoleType.worrior)
+		// return R.drawable.ic_launcher;
+		switch (roleType) {
+		case RoleType.DRUID:
+			return R.drawable.druid;
+		case RoleType.HUNTER:
+			return R.drawable.hunter;
+		case RoleType.MAGE:
+			return R.drawable.mage;
+		case RoleType.PALADIN:
+			return R.drawable.paladin;
+		case RoleType.PRIEST:
+			return R.drawable.priest;
+		case RoleType.ROGUE:
+			return R.drawable.rogue;
+		case RoleType.SHAMAN:
+			return R.drawable.shaman;
+		case RoleType.WARLOCK:
+			return R.drawable.warlock;
+		case RoleType.WARRIOR:
+			return R.drawable.warrior;
+		default:
+			return R.drawable.ic_launcher;
+		}
+
+	}
+
 }

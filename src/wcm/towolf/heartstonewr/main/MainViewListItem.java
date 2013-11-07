@@ -6,6 +6,7 @@ import java.text.DecimalFormat;
 
 import wcm.towolf.hearthstonewr.R;
 import android.content.Context;
+import android.graphics.Color;
 import android.view.Gravity;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -39,10 +40,12 @@ public class MainViewListItem extends RelativeLayout{
 		mRoleName.setGravity(Gravity.CENTER);
 		mRoleName.setBackgroundResource(R.drawable.rect_label);
 		mRoleName.setText("roleName");
+		mRoleName.setTextColor(Color.parseColor("#F3E5AB"));
 		mRoleName.setTextSize(mRF.getRealValue(15));
 		rl.addView(mRoleName,mRF.getLayoutParam(328,120,230,60));
 		
 		mWinRate = new TextView(context);
+		mWinRate.setTextColor(Color.parseColor("#F3E5AB"));
 		mWinRate.setBackgroundResource(R.drawable.circle_label);
 		mWinRate.setGravity(Gravity.CENTER);
 		mWinRate.setText("50%");

@@ -6,8 +6,8 @@ import java.util.Random;
 import wcm.towolf.hearthstonewr.db.DBSchema;
 import wcm.towolf.hearthstonewr.model.RoleDataProvider;
 import wcm.towolf.hearthstonewr.model.datatype.RoleData;
-import wcm.towolf.hearthstonewr.view.HeroChooseView;
 import wcm.towolf.hearthstonewr.view.HeroChooseView.ClickCallBack;
+import wcm.towolf.heartstonewr.main.CreateDeckView;
 import wcm.towolf.heartstonewr.main.MainView;
 import wcm.towolf.heartstonewr.main.MainViewListItem;
 import android.app.Activity;
@@ -27,6 +27,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
@@ -57,7 +59,7 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		//setContentView(R.layout.activity_main);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-		
+		 this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN | WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 		
 		mDataProvider = new RoleDataProvider();
 
@@ -138,23 +140,29 @@ public class MainActivity extends Activity {
 //		        
 //				mDataProvider.addRole(name,rd.nextInt(8));
 
-				final HeroChooseView addView = new HeroChooseView(MainActivity.this, mView.getRatioFixer(),new ClickCallBack() {
+				final CreateDeckView cdv = new CreateDeckView(MainActivity.this, mView.getRatioFixer());
+
+				final Dialog dialog = new Dialog(MainActivity.this);
+				dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+				dialog.setContentView(cdv);
+				dialog.show();
+
+				cdv.setItemClickListener(new ClickCallBack() {
 					
 					@Override
 					public void run(int roleType) {
 						// TODO Auto-generated method stub
-						Log.e(TAG,Integer.toString(roleType));
+						//Log.e(TAG,Integer.toString(roleType));
+						mDataProvider.addRole(cdv.getDeckName(),roleType);
+						
+						reloadListData();
+						dialog.dismiss();
 					}
 				});
-				
-				final Dialog dialog = new Dialog(MainActivity.this);
-				dialog.setTitle("Create Deck");
-				dialog.setContentView(addView);
-				dialog.show();
 
 				
 				
-                reloadListData();
+                
 				
 			}
 		});

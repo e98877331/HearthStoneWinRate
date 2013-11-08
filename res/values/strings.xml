@@ -7,6 +7,8 @@
     <string name="main_context_menu_title">Menu</string>
     <string name="main_context_menu_delete_btn">Delete</string>
     <string name="main_create_btn">New Role</string>
+    <string name="main_create_view_title">Add New Deck</string>
+    <string name="main_create_view_name">Deck Name</string>
     <string name="detail_no_record">No record</string>
     <string name="detail_win_btn">win</string>
     <string name="detail_lose_btn">lose</string>
@@ -21,4 +23,5 @@
     <string name="detail_list_lose">lose</string>
     <string name="detail_box_win">Who you won?</string>
     <string name="detail_box_lose">Who you lose?</string>
+
 </resources>

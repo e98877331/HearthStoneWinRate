@@ -6,6 +6,7 @@ import wcm.towolf.hearthstonewr.view.HeroChooseView;
 import wcm.towolf.hearthstonewr.view.HeroChooseView.ClickCallBack;
 import android.content.Context;
 import android.text.InputFilter;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
@@ -32,17 +33,18 @@ ImageView mBGView;
 		mBGView = new ImageView(context);
 		mBGView.setImageResource(R.drawable.main_create_bg);
 		mBGView.setScaleType(ScaleType.FIT_XY);
-		this.addView(mBGView,mRF.getLayoutParam(650, 1150, 0, 0));
+		this.addView(mBGView,mRF.getLayoutParam(750, 1150, 0, 0));
 		
 		mTitle = new TextView(context);
 		mTitle.setGravity(Gravity.CENTER);
 		mTitle.setText(R.string.main_create_view_title);
-		mTitle.setTextSize(mRF.getRealValue(30));
+		mTitle.setTextSize(TypedValue.COMPLEX_UNIT_PX,mRF.getRealValue(50));
 		this.addView(mTitle,mRF.getLayoutParam(630, 100, 10, 10));
 		
 		mName = new EditText(context);
 		mName.setId(1);
 //		mName.setBackgroundColor(Color.RED);
+		mName.setBackgroundResource(R.drawable.rect_leather_label);
 		mName.setGravity(Gravity.CENTER); 
 		mName.setText(R.string.main_create_view_name);
 		mName.setFilters( new InputFilter[] {

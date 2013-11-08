@@ -7,6 +7,7 @@ import java.text.DecimalFormat;
 import wcm.towolf.hearthstonewr.R;
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.LightingColorFilter;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.widget.ImageView;
@@ -35,7 +36,7 @@ public class MainViewListItem extends RelativeLayout{
 		rl.addView(mIconBG,mRF.getLayoutParam(220, 240, 0, 0));
 		
 		mIcon = new ImageView(context);
-		rl.addView(mIcon,mRF.getLayoutParam(200, 230, 5, 5));
+		rl.addView(mIcon,mRF.getLayoutParam(160, 230, 33, 5));
 		
 		mRoleName = new TextView(context);
 		mRoleName.setGravity(Gravity.CENTER);
@@ -65,12 +66,17 @@ public class MainViewListItem extends RelativeLayout{
 		
 		if(winRate != -1)
 		{
+			mWinRate.setBackgroundResource(R.drawable.circle_label);
 		DecimalFormat df = new DecimalFormat();
 		df.setMaximumFractionDigits(2);
 		mWinRate.setText(df.format(winRate*100)+"%");
 		}
 		else
-			mWinRate.setText("X");
+		{
+			mWinRate.setBackgroundResource(R.drawable.circle_dark_label);
+			mWinRate.setText("");
+		}
+			//mWinRate.setText("X");
 	}
 
 }

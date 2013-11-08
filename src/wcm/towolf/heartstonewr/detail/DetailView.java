@@ -56,7 +56,7 @@ public class DetailView extends RatioRelativeLayout{
 		mainImageView = new ImageView(context);
 //		mainImageView.setBackgroundResource(R.drawable.ic_launcher);
 //		mainImageView.setAlpha(0.3f);
-		this.addView(mainImageView, 768, 768, 0, 200);
+		this.addView(mainImageView, 512, 768, 128, 200);
 		
 		winRateTextView = new TextView(context);
 //		winRateTextView.setText(Float.toString(winRate * 100) + "%");

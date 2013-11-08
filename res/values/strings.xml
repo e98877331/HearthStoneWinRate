@@ -18,6 +18,7 @@
     <string name="detail_text_total">Total</string>
     <string name="detail_dialog_label">Input your name:</string>
     <string name="detail_dialog_button">done</string>
+    <string name="detail_list_title">Rate to each class</string>
     <string name="detail_list_winrate">win rate</string>
     <string name="detail_list_win">win</string>
     <string name="detail_list_lose">lose</string>

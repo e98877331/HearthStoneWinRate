@@ -19,4 +19,6 @@
     <string name="detail_list_winrate">win rate</string>
     <string name="detail_list_win">win</string>
     <string name="detail_list_lose">lose</string>
+    <string name="detail_box_win">Who you won?</string>
+    <string name="detail_box_lose">Who you lose?</string>
 </resources>

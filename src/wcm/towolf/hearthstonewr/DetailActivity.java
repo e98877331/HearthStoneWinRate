@@ -184,7 +184,7 @@ public class DetailActivity extends Activity {
 			this.setClickable(true);
 			
 			title = new TextView(context);
-			title.setText("Who you win?");
+			title.setText(getResources().getString(R.string.detail_box_win));
 			title.setTextSize(TypedValue.COMPLEX_UNIT_PX, 4.45f * 15.0f * rf.getRatio());
 			this.addView(title, rf.getLayoutParam(768, 132, 0, 0));
 			
@@ -267,7 +267,7 @@ public class DetailActivity extends Activity {
 			this.setClickable(true);
 			
 			title = new TextView(context);
-			title.setText("Who you lose?");
+			title.setText(getResources().getString(R.string.detail_box_lose));
 			title.setTextSize(TypedValue.COMPLEX_UNIT_PX, 4.45f * 15.0f * rf.getRatio());
 			this.addView(title, rf.getLayoutParam(768, 132, 0, 0));
 			

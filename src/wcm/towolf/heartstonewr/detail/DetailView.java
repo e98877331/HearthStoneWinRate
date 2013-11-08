@@ -7,6 +7,8 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.widget.Button;
@@ -59,6 +61,7 @@ public class DetailView extends RatioRelativeLayout{
 		winRateTextView = new TextView(context);
 //		winRateTextView.setText(Float.toString(winRate * 100) + "%");
 		winRateTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, 4.45f * 30.0f * rf.getRatio());
+		winRateTextView.setTypeface(Typeface.SERIF);
 //		winRateTextView.setBackgroundColor(Color.parseColor("#96FED1"));
 		winRateTextView.setGravity(Gravity.CENTER);
 		this.addView(winRateTextView, 768, 568, 0, 200);
@@ -86,17 +89,17 @@ public class DetailView extends RatioRelativeLayout{
 		
 		winButton = new Button(context);
 		winButton.setText(getResources().getString(R.string.detail_win_btn));
-		winButton.setBackgroundResource(R.drawable.detail_button);
+		winButton.setBackgroundResource(R.drawable.rect_btn);
 		this.addView(winButton, 383, 150, 0, 968);
 		
 		loseButton = new Button(context);
 		loseButton.setText(getResources().getString(R.string.detail_lose_btn));
-		loseButton.setBackgroundResource(R.drawable.detail_button);
+		loseButton.setBackgroundResource(R.drawable.rect_btn);
 		this.addView(loseButton, 383, 150, 385, 968);
 		
 		undoButton = new Button(context);
-//		undoButton.setText(getResources().getString(R.string.detail_undo_btn));
-		undoButton.setBackgroundResource(R.drawable.detail_back);
-		this.addView(undoButton, 112, 112, 328, 1118);
+		undoButton.setText(getResources().getString(R.string.detail_undo_btn));
+		undoButton.setBackgroundResource(R.drawable.circle_btn);
+		this.addView(undoButton, 224, 112, 272, 1118);
 	}
 }

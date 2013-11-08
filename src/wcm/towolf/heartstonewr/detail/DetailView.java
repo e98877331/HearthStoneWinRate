@@ -7,10 +7,14 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.LightingColorFilter;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.util.TypedValue;
 import android.view.Gravity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -42,16 +46,31 @@ public class DetailView extends RatioRelativeLayout{
 	public DetailView(Context context) {
 		super(context);
 		
-		this.setBackgroundResource(R.drawable.main_bg);
+		this.setBackgroundResource(R.drawable.detail_bg);
 		
 		rf = this.getRatioFixer();
 		
 		titleTextView = new TextView(context);
-		titleTextView.setText("TITLE");
-		titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, 4.45f * 30.0f * rf.getRatio());
-		titleTextView.setBackgroundColor(Color.parseColor("#FFC1E0"));
+//		titleTextView.setText("TITLE");
+		titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, 4.45f * 20.0f * rf.getRatio());
+		titleTextView.setTextColor(Color.BLACK);
+//		titleTextView.setBackgroundColor(Color.parseColor("#FFC1E0"));
+		titleTextView.setBackgroundResource(R.drawable.rect_label);
 		titleTextView.setGravity(Gravity.CENTER);
+		titleTextView.setSingleLine();
 		this.addView(titleTextView, 768, 200, 0, 0);
+		titleTextView.setOnTouchListener(new OnTouchListener() {
+			
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				// TODO Auto-generated method stub
+				if(event.getAction() ==MotionEvent.ACTION_DOWN)
+					  v.getBackground().setColorFilter(new LightingColorFilter(0xFF999999, 0xFF000000));
+				else if(event.getAction() ==MotionEvent.ACTION_UP)
+					v.getBackground().clearColorFilter();
+				return false;
+			}
+		});
 		
 		mainImageView = new ImageView(context);
 //		mainImageView.setBackgroundResource(R.drawable.ic_launcher);
@@ -60,7 +79,8 @@ public class DetailView extends RatioRelativeLayout{
 		
 		winRateTextView = new TextView(context);
 //		winRateTextView.setText(Float.toString(winRate * 100) + "%");
-		winRateTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, 4.45f * 30.0f * rf.getRatio());
+		winRateTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, 4.45f * 35.0f * rf.getRatio());
+		winRateTextView.setTextColor(Color.BLACK);
 		winRateTextView.setTypeface(Typeface.SERIF);
 //		winRateTextView.setBackgroundColor(Color.parseColor("#96FED1"));
 		winRateTextView.setGravity(Gravity.CENTER);
@@ -89,17 +109,53 @@ public class DetailView extends RatioRelativeLayout{
 		
 		winButton = new Button(context);
 		winButton.setText(getResources().getString(R.string.detail_win_btn));
-		winButton.setBackgroundResource(R.drawable.rect_btn);
-		this.addView(winButton, 383, 150, 0, 968);
+		winButton.setBackgroundResource(R.drawable.rect_label);
+		this.addView(winButton, 363, 140, 10, 968);
+		winButton.setOnTouchListener(new OnTouchListener() {
+			
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				// TODO Auto-generated method stub
+				if(event.getAction() ==MotionEvent.ACTION_DOWN)
+					  v.getBackground().setColorFilter(new LightingColorFilter(0xFF999999, 0xFF000000));
+				else if(event.getAction() ==MotionEvent.ACTION_UP)
+					v.getBackground().clearColorFilter();
+				return false;
+			}
+		});
 		
 		loseButton = new Button(context);
 		loseButton.setText(getResources().getString(R.string.detail_lose_btn));
-		loseButton.setBackgroundResource(R.drawable.rect_btn);
-		this.addView(loseButton, 383, 150, 385, 968);
+		loseButton.setBackgroundResource(R.drawable.rect_label);
+		this.addView(loseButton, 363, 140, 395, 968);
+		loseButton.setOnTouchListener(new OnTouchListener() {
+			
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				// TODO Auto-generated method stub
+				if(event.getAction() ==MotionEvent.ACTION_DOWN)
+					  v.getBackground().setColorFilter(new LightingColorFilter(0xFF999999, 0xFF000000));
+				else if(event.getAction() ==MotionEvent.ACTION_UP)
+					v.getBackground().clearColorFilter();
+				return false;
+			}
+		});
 		
 		undoButton = new Button(context);
 		undoButton.setText(getResources().getString(R.string.detail_undo_btn));
-		undoButton.setBackgroundResource(R.drawable.circle_btn);
-		this.addView(undoButton, 224, 112, 272, 1118);
+		undoButton.setBackgroundResource(R.drawable.rect_label);
+		this.addView(undoButton, 224, 102, 272, 1118);
+		undoButton.setOnTouchListener(new OnTouchListener() {
+			
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				// TODO Auto-generated method stub
+				if(event.getAction() ==MotionEvent.ACTION_DOWN)
+					  v.getBackground().setColorFilter(new LightingColorFilter(0xFF999999, 0xFF000000));
+				else if(event.getAction() ==MotionEvent.ACTION_UP)
+					v.getBackground().clearColorFilter();
+				return false;
+			}
+		});
 	}
 }

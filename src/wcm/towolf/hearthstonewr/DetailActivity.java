@@ -11,15 +11,20 @@ import wcm.towolf.heartstonewr.detail.DetailListActivity;
 import wcm.towolf.heartstonewr.detail.DetailView;
 import wcm.towolf.heartstonewr.detail.DialogActivity;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.LightingColorFilter;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.Menu;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -72,6 +77,8 @@ public class DetailActivity extends Activity {
 		if (requestCode == 50) {
 			if (data != null) {
 				String name = data.getStringExtra("name");
+				if (name.length() > 12)
+					name = name.substring(0, 12);
 				dView.titleTextView.setText(name);
 				mRole.changeRoleName(name);
 			}
@@ -121,9 +128,20 @@ public class DetailActivity extends Activity {
 		dView.undoButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				mRole.deleteLastGame();
-				
-				updateView();
+				AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+				builder.setMessage(getResources().getString(R.string.detail_undo_message));
+				builder.setPositiveButton(getResources().getString(R.string.detail_undo_yes),
+						new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialog, int which) {
+								mRole.deleteLastGame();
+
+								updateView();
+							}
+						});
+				builder.setNegativeButton(getResources().getString(R.string.detail_undo_no), null);
+				builder.setCancelable(true);
+				builder.show();
 			}
 		});
 		
@@ -180,12 +198,13 @@ public class DetailActivity extends Activity {
 			
 			rf = dView.getRatioFixer();
 			
-			this.setBackgroundColor(Color.GRAY);
+			this.setBackgroundColor(Color.parseColor("#D2B48C"));
 			this.setClickable(true);
 			
 			title = new TextView(context);
 			title.setText(getResources().getString(R.string.detail_box_win));
 			title.setTextSize(TypedValue.COMPLEX_UNIT_PX, 4.45f * 15.0f * rf.getRatio());
+			title.setTextColor(Color.BLACK);
 			this.addView(title, rf.getLayoutParam(768, 132, 0, 0));
 			
 			hunter = new RoleImageView(context, RoleType.HUNTER);
@@ -241,6 +260,19 @@ public class DetailActivity extends Activity {
 					bView.setVisibility(View.GONE);
 				}
 			});
+			
+			this.setOnTouchListener(new OnTouchListener() {
+				
+				@Override
+				public boolean onTouch(View v, MotionEvent event) {
+					// TODO Auto-generated method stub
+					if(event.getAction() ==MotionEvent.ACTION_DOWN)
+						  v.getBackground().setColorFilter(new LightingColorFilter(0xFF999999, 0xFF000000));
+					else if(event.getAction() ==MotionEvent.ACTION_UP)
+						v.getBackground().clearColorFilter();
+					return false;
+				}
+			});
 		}
 	}
 	
@@ -263,12 +295,13 @@ public class DetailActivity extends Activity {
 			
 			rf = dView.getRatioFixer();
 			
-			this.setBackgroundColor(Color.GRAY);
+			this.setBackgroundColor(Color.parseColor("#D2B48C"));
 			this.setClickable(true);
 			
 			title = new TextView(context);
 			title.setText(getResources().getString(R.string.detail_box_lose));
 			title.setTextSize(TypedValue.COMPLEX_UNIT_PX, 4.45f * 15.0f * rf.getRatio());
+			title.setTextColor(Color.BLACK);
 			this.addView(title, rf.getLayoutParam(768, 132, 0, 0));
 			
 			hunter = new RoleImageView2(context, RoleType.HUNTER);
@@ -322,6 +355,19 @@ public class DetailActivity extends Activity {
 					
 					updateView();
 					bView2.setVisibility(View.GONE);
+				}
+			});
+			
+			this.setOnTouchListener(new OnTouchListener() {
+				
+				@Override
+				public boolean onTouch(View v, MotionEvent event) {
+					// TODO Auto-generated method stub
+					if(event.getAction() ==MotionEvent.ACTION_DOWN)
+						  v.getBackground().setColorFilter(new LightingColorFilter(0xFF999999, 0xFF000000));
+					else if(event.getAction() ==MotionEvent.ACTION_UP)
+						v.getBackground().clearColorFilter();
+					return false;
 				}
 			});
 		}

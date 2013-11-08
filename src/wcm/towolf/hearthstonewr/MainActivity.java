@@ -17,6 +17,7 @@ import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.LightingColorFilter;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
@@ -33,7 +34,6 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.RelativeLayout.LayoutParams;
 
 public class MainActivity extends Activity {
 
@@ -116,13 +116,21 @@ public class MainActivity extends Activity {
 
 				final CreateDeckView cdv = new CreateDeckView(MainActivity.this, mView.getRatioFixer());
 
+//				
+//				AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+//				builder.setView(cdv);
+//	            final Dialog dialog = builder.create();
+//	            
+//	            dialog.show();
+				
 				final Dialog dialog = new Dialog(MainActivity.this);
 				dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 				dialog.setContentView(cdv);
 				
 				dialog.show();
 				Window window = dialog.getWindow();
-				window.setLayout(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT); 
+				
+				window.setLayout(mView.getRatioFixer().getRealValue(710), mView.getRatioFixer().getRealValue(1200)); 
 				
 				cdv.setItemClickListener(new ClickCallBack() {
 					

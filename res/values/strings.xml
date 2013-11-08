@@ -6,7 +6,7 @@
     <string name="menu_settings">Settings</string>
     <string name="main_context_menu_title">Menu</string>
     <string name="main_context_menu_delete_btn">Delete</string>
-    <string name="main_create_btn">New Role</string>
+    <string name="main_create_btn">New Deck</string>
     <string name="main_create_view_title">Add New Deck</string>
     <string name="main_create_view_name">Deck Name</string>
     <string name="detail_no_record">No record</string>

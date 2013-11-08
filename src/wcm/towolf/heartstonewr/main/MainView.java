@@ -4,6 +4,7 @@ import wcm.towolf.hearthstonewr.R;
 import itri.u9lab.towolf.ratiofixer.RatioRelativeLayout;
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -25,6 +26,9 @@ public class MainView extends RatioRelativeLayout {
 		mTestBtn.setBackgroundResource(R.drawable.rect_btn);
 		mTestBtn.setTextColor(Color.parseColor("#F3E5AB"));
 		mTestBtn.setText(R.string.main_create_btn);
+		mTestBtn.setTypeface(Typeface.SERIF);
+		
+		mTestBtn.setTextSize(getRatioFixer().getRealValue(30));
 		this.addView(mTestBtn, 768, 200, 0, 0);
 		
 		

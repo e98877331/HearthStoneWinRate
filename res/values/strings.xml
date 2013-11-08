@@ -24,5 +24,8 @@
     <string name="detail_list_lose">lose</string>
     <string name="detail_box_win">Who you won?</string>
     <string name="detail_box_lose">Who you lose?</string>
+    <string name="detail_undo_message">Are you sure?</string>
+    <string name="detail_undo_yes">Yes</string>
+    <string name="detail_undo_no">No</string>
 
 </resources>

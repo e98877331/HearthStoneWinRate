@@ -34,8 +34,8 @@ public class RoleData {
 
 	}
 
+	
 	public void initWithRoleGames(ArrayList<RoleGame> gameList) {
-		// TODO: generate all enemy vs data
         mRoleEnemyDataList = RoleEnemyData.generateDataList();
 		
 		int win = 0, count = 0;
@@ -45,8 +45,10 @@ public class RoleData {
 				++count;
 				if (rg.getIsWin())
 					++win;
+				
+				mRoleEnemyDataList.get(rg.mRoleType).addGame(rg.getIsWin());
 			}
-			mRoleEnemyDataList.get(rg.mRoleType).addGame(rg.getIsWin());
+			//mRoleEnemyDataList.get(rg.mRoleType).addGame(rg.getIsWin());
 		}
 		this.win = win;
 		this.count = count;
@@ -81,9 +83,7 @@ public class RoleData {
 		if(rg == null)
 			return;
 		
-		--count;
-		if(rg.getIsWin())
-			--win;
+		invalidate();
 	}
 	
 	/*
@@ -147,6 +147,16 @@ public class RoleData {
 		return mRoleEnemyDataList.get(pRoleType);
 	}
 
+	/*
+	 * private method
+	 */
+	
+	private void invalidate()
+	{
+		RoleDataProvider rdp = new RoleDataProvider();
+		initWithRoleGames(rdp.getAllGames());
+	}
+	
 	/*
 	 * static method
 	 */

@@ -38,6 +38,13 @@ public class RoleDataProvider {
         return roleData;
 	}
 	
+	public ArrayList<RoleGame> getAllGames()
+	{
+		
+		
+		return mRoleGamesTB.getAllGames();
+	}
+	
     public void addRole(String roleName, int roleType)
     {
     	mRoleListTB.addRole(roleName,roleType);

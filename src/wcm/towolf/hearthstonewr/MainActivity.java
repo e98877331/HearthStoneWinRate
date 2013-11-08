@@ -17,7 +17,6 @@ import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.LightingColorFilter;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
@@ -34,6 +33,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.RelativeLayout.LayoutParams;
 
 public class MainActivity extends Activity {
 
@@ -113,40 +113,17 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 	
-//				Random r=new Random();
-//				int i1=r.nextInt(4);
-//				String name;
-//				switch(i1%4)
-//				{
-//				
-//				case 0:
-//					name = "first" + i1%4;
-//					break;
-//				case 1:
-//					name = "second" + i1%4;
-//					break;
-//				case 2:
-//					name ="third" + i1%4;
-//					break;
-//				case 3:
-//					name="fourth" + i1%4;
-//					break;
-//					default:
-//						name ="default" + i1%4;
-//				}
-//					
-//				//mRoleList.addRole(new RoleData(RoleType.WARRIOR,name));
-//		        Random rd = new Random();
-//		        
-//				mDataProvider.addRole(name,rd.nextInt(8));
 
 				final CreateDeckView cdv = new CreateDeckView(MainActivity.this, mView.getRatioFixer());
 
 				final Dialog dialog = new Dialog(MainActivity.this);
 				dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 				dialog.setContentView(cdv);
+				
 				dialog.show();
-
+				Window window = dialog.getWindow();
+				window.setLayout(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT); 
+				
 				cdv.setItemClickListener(new ClickCallBack() {
 					
 					@Override
@@ -160,9 +137,6 @@ public class MainActivity extends Activity {
 					}
 				});
 
-				
-				
-                
 				
 			}
 		});

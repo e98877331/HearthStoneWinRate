@@ -23,9 +23,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="WelcomeActivity">
+        <activity android:name="WelcomeActivity"
+            android:screenOrientation="portrait" >
         </activity>
-        <activity android:name="DetailActivity">
+        <activity android:name="DetailActivity"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="wcm.towolf.heartstonewr.detail.DialogActivity"
@@ -33,7 +35,9 @@
             android:label="@string/detail_dialog_label" >
         </activity>
         <activity android:name="wcm.towolf.heartstonewr.detail.DetailListActivity"
-            android:theme= "@android:style/Theme.Light.NoTitleBar"></activity>
+            android:theme= "@android:style/Theme.Light.NoTitleBar"
+            android:screenOrientation="portrait" >
+        </activity>
 
     </application>
 

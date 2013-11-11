@@ -94,7 +94,7 @@ public class DetailActivity extends Activity {
 		dView = new DetailView(this);
 		dView.setToContentView(this);
 		
-		dView.mainImageView.setBackgroundResource(mRole.getRoleRes());
+		dView.mainImageView.setBackgroundResource(mRole.getRoleStoneRes());
 		
 		dView.titleTextView.setOnClickListener(new OnClickListener() {
 			@Override

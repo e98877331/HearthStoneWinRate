@@ -75,12 +75,13 @@ public class DetailView extends RatioRelativeLayout{
 		mainImageView = new ImageView(context);
 //		mainImageView.setBackgroundResource(R.drawable.ic_launcher);
 //		mainImageView.setAlpha(0.3f);
-		this.addView(mainImageView, 512, 768, 128, 200);
+//		this.addView(mainImageView, 512, 768, 128, 200);
+		this.addView(mainImageView, 471, 675, 148, 200);
 		
 		winRateTextView = new TextView(context);
 //		winRateTextView.setText(Float.toString(winRate * 100) + "%");
 		winRateTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, 4.45f * 35.0f * rf.getRatio());
-		winRateTextView.setTextColor(Color.BLACK);
+		winRateTextView.setTextColor(Color.parseColor("#FFF8C6"));
 		winRateTextView.setTypeface(Typeface.SERIF);
 //		winRateTextView.setBackgroundColor(Color.parseColor("#96FED1"));
 		winRateTextView.setGravity(Gravity.CENTER);

@@ -53,7 +53,7 @@ public class DetailView extends RatioRelativeLayout{
 		titleTextView = new TextView(context);
 //		titleTextView.setText("TITLE");
 		titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, 4.45f * 20.0f * rf.getRatio());
-		titleTextView.setTextColor(Color.BLACK);
+		titleTextView.setTextColor(Color.parseColor("#F315AB"));
 //		titleTextView.setBackgroundColor(Color.parseColor("#FFC1E0"));
 		titleTextView.setBackgroundResource(R.drawable.rect_label);
 		titleTextView.setGravity(Gravity.CENTER);

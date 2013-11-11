@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">HearthStoneWinRate</string>
+    <string name="app_name">Hearth Stone Win Rate Counter</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
     <string name="main_context_menu_title">Menu</string>
-    <string name="main_context_menu_delete_btn">Delete</string>
+    <string name="main_context_menu_delete_btn">Delete the deck</string>
     <string name="main_create_btn">New Deck</string>
     <string name="main_create_view_title">Add New Deck</string>
     <string name="main_create_view_name">Deck Name</string>
-    <string name="detail_no_record">No record</string>
+    <string name="detail_no_record">No record so far</string>
     <string name="detail_win_btn">win</string>
     <string name="detail_lose_btn">lose</string>
     <string name="detail_undo_btn">undo</string>
     <string name="detail_text_win">Win</string>
     <string name="detail_text_lose">Lose</string>
     <string name="detail_text_total">Total</string>
-    <string name="detail_dialog_label">Input your name:</string>
+    <string name="detail_dialog_label">Input new deck name:</string>
     <string name="detail_dialog_button">done</string>
     <string name="detail_list_title">Rate to each class</string>
     <string name="detail_list_winrate">win rate</string>

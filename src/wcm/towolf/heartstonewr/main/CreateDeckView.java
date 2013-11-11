@@ -39,14 +39,17 @@ ImageView mBGView;
 		mTitle.setGravity(Gravity.CENTER);
 		mTitle.setText(R.string.main_create_view_title);
 		mTitle.setTextSize(TypedValue.COMPLEX_UNIT_PX,mRF.getRealValue(50));
+		//let mNmae not to auto focus
+		mTitle.setFocusable(true);
+		mTitle.setFocusableInTouchMode(true);
 		this.addView(mTitle,mRF.getLayoutParam(630, 100, 10, 10));
 		
 		mName = new EditText(context);
 		mName.setId(1);
-//		mName.setBackgroundColor(Color.RED);
 		mName.setBackgroundResource(R.drawable.rect_leather_label);
 		mName.setGravity(Gravity.CENTER); 
 		mName.setText(R.string.main_create_view_name);
+		mName.setSelectAllOnFocus(true);
 		mName.setFilters( new InputFilter[] {
 				   new InputFilter.LengthFilter(12)});
 		mName.setSingleLine();

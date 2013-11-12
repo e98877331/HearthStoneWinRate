@@ -27,5 +27,15 @@
     <string name="detail_undo_message">Are you sure?</string>
     <string name="detail_undo_yes">Yes</string>
     <string name="detail_undo_no">No</string>
+    <string name="common_warrior">Warrior</string>
+    <string name="common_hunter">Hunter</string>
+    <string name="common_druid">Druid</string>
+    <string name="common_mage">Mage</string>
+    <string name="common_paladin">Paladin</string>
+    <string name="common_priest">Priest</string>
+    <string name="common_rogue">Rogue</string>
+    <string name="common_shaman">Shaman</string>
+    <string name="common_warlock">Warlock</string>
+    
 
 </resources>

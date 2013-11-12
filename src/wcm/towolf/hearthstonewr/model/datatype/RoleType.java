@@ -15,28 +15,28 @@ public class RoleType {
 	public static final int WARLOCK = 8;
 	//worrior(0),hunter(1);
 	
-	public static String getRoleTypeString(int type) {
+	public static int getRoleTypeString(int type) {
 		switch(type) {
 		case 0:
-			return "WARRIOR";
+			return R.string.common_warrior;
 		case 1:
-			return "HUNTER";
+			return R.string.common_hunter;
 		case 2:
-			return "DRUID";
+			return R.string.common_druid;
 		case 3:
-			return "MAGE";
+			return R.string.common_mage;
 		case 4:
-			return "PALADIN";
+			return R.string.common_paladin;
 		case 5:
-			return "PRIEST";
+			return R.string.common_priest;
 		case 6:
-			return "ROGUE";
+			return R.string.common_rogue;
 		case 7:
-			return "SHAMAN";
+			return R.string.common_shaman;
 		case 8:
-			return "WARLOCK";
+			return R.string.common_warlock;
 		default:
-			return null;
+			return 0;
 		}
 	}
 	

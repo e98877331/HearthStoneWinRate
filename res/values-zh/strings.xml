@@ -28,5 +28,14 @@
     <string name="detail_undo_message">確定取消最後一筆此職業紀錄嗎?</string>
     <string name="detail_undo_yes">是</string>
     <string name="detail_undo_no">否</string>
+        <string name="common_warrior">戰士</string>
+    <string name="common_hunter">獵人</string>
+    <string name="common_druid">德魯伊</string>
+    <string name="common_mage">法師</string>
+    <string name="common_paladin">聖騎士</string>
+    <string name="common_priest">牧師</string>
+    <string name="common_rogue">盜賊</string>
+    <string name="common_shaman">薩滿</string>
+    <string name="common_warlock">術士</string>
 
 </resources>

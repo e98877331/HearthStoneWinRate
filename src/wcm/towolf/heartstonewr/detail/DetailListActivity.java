@@ -50,7 +50,7 @@ public class DetailListActivity extends Activity {
 		for (int i = 0; i < 9; i++) {
 			HashMap<String, String> item = new HashMap<String, String>();
 			mRole.getRoleEnemyData(i);
-			item.put("type", RoleType.getRoleTypeString(i));
+			item.put("type", getResources().getString(RoleType.getRoleTypeString(i)));
 			
 			RoleEnemyData red = mRole.getRoleEnemyData(i);
 			StringBuilder sb = new StringBuilder();

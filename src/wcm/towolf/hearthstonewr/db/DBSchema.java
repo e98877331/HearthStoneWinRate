@@ -9,7 +9,7 @@ public class DBSchema {
     /* 資料庫 */
      String dbName = "MyDatabase";
     /* version必須大於等於1 */
-     int version = 1;
+     int version = 2;
 
     /* Table資料表 */
     String tables[] = { DBTBRoleList.TABLE,DBTBRoleGames.TABLE };

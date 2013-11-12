@@ -12,8 +12,9 @@ public class DBTBRoleGames {
 	public static final String TAG =  "DBTBRoleGames";
 	
 	public static String TABLE = "Role_Games";
-	public static String fieldNames[] = {"Game_ID","Role_ID","Role_Type_Num","Is_Win"};
-	public static String fieldTypes[] ={"INTEGER PRIMARY KEY ASC AUTOINCREMENT","INTEGER","INTEGER","INTEGER"};
+	public static String fieldNames[] = {"Game_ID","Role_ID","Role_Type_Num","Is_Win","Add_Date"};
+	
+	public static String fieldTypes[] ={"INTEGER PRIMARY KEY ASC AUTOINCREMENT","INTEGER","INTEGER","INTEGER","timestamp DATE DEFAULT (datetime('now','localtime'))"};
 	
 	private DBHelper mDBHelper;
 	

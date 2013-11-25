@@ -14,6 +14,8 @@ public class RoleData {
    
 	ArrayList<RoleEnemyData> mRoleEnemyDataList;
 	
+	public static final int NAME_LENGTH = 40;
+	
 	public int roleID;
 	public int roleType;
 	public String roleName;

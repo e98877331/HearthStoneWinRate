@@ -6,6 +6,7 @@ import wcm.towolf.hearthstonewr.model.datatype.RoleData;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -30,6 +31,8 @@ public class DialogActivity extends Activity {
 		mButton.setText(getResources().getString(R.string.detail_dialog_button));
 		
 		mEditText.setText(RoleData.getPassingData().getName());
+		mEditText.setFilters( new InputFilter[] {
+				   new InputFilter.LengthFilter(RoleData.NAME_LENGTH)});
 		mEditText.selectAll();
 		getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
 		

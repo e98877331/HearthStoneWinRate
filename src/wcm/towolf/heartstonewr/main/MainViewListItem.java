@@ -7,9 +7,11 @@ import java.text.DecimalFormat;
 import wcm.towolf.hearthstonewr.R;
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.LightingColorFilter;
+import android.text.TextUtils.TruncateAt;
+import android.text.method.ScrollingMovementMethod;
 import android.util.TypedValue;
 import android.view.Gravity;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -44,6 +46,11 @@ public class MainViewListItem extends RelativeLayout{
 		mRoleName.setText("roleName");
 		mRoleName.setTextColor(Color.parseColor("#F3E5AB"));
 		mRoleName.setTextSize(TypedValue.COMPLEX_UNIT_PX,mRF.getRealValue(30));
+		mRoleName.setEllipsize(TruncateAt.MARQUEE);
+        mRoleName.setSelected(true);
+        mRoleName.setSingleLine(true);
+        int wpadding = mRF.getRealValue(15);
+        mRoleName.setPadding(wpadding, 0, wpadding, 0);
 		rl.addView(mRoleName,mRF.getLayoutParam(328,120,230,60));
 		
 		mWinRate = new TextView(context);

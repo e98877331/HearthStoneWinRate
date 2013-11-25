@@ -2,6 +2,7 @@ package wcm.towolf.heartstonewr.main;
 
 import itri.u9lab.towolf.ratiofixer.RatioFixer;
 import wcm.towolf.hearthstonewr.R;
+import wcm.towolf.hearthstonewr.model.datatype.RoleData;
 import wcm.towolf.hearthstonewr.view.HeroChooseView;
 import wcm.towolf.hearthstonewr.view.HeroChooseView.ClickCallBack;
 import android.content.Context;
@@ -51,7 +52,7 @@ ImageView mBGView;
 		mName.setText(R.string.main_create_view_name);
 		mName.setSelectAllOnFocus(true);
 		mName.setFilters( new InputFilter[] {
-				   new InputFilter.LengthFilter(12)});
+				   new InputFilter.LengthFilter(RoleData.NAME_LENGTH)});
 		mName.setSingleLine();
 		mName.setImeOptions(EditorInfo.IME_ACTION_DONE);
 //		mName.setInputType(1);

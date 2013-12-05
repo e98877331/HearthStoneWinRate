@@ -82,8 +82,8 @@ public class DetailActivity extends Activity {
 		if (requestCode == 50) {
 			if (data != null) {
 				String name = data.getStringExtra("name");
-				if (name.length() > 12)
-					name = name.substring(0, 12);
+//				if (name.length() > 12)
+//					name = name.substring(0, 12);
 				dView.titleTextView.setText(name);
 				mRole.changeRoleName(name);
 			}

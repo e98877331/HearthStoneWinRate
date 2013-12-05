@@ -10,6 +10,7 @@ import android.graphics.Color;
 import android.graphics.LightingColorFilter;
 import android.graphics.Paint;
 import android.graphics.Typeface;
+import android.text.TextUtils.TruncateAt;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -57,8 +58,15 @@ public class DetailView extends RatioRelativeLayout{
 //		titleTextView.setBackgroundColor(Color.parseColor("#FFC1E0"));
 		titleTextView.setBackgroundResource(R.drawable.rect_label);
 		titleTextView.setGravity(Gravity.CENTER);
-		titleTextView.setSingleLine();
+		//titleTextView.setSingleLine();
 		this.addView(titleTextView, 768, 200, 0, 0);
+		//cyy:become marquee textview
+		titleTextView.setEllipsize(TruncateAt.MARQUEE);
+		titleTextView.setSelected(true);
+		titleTextView.setSingleLine(true);
+        int wpadding = rf.getRealValue(25);
+        titleTextView.setPadding(wpadding, 0, wpadding, 0);
+		
 		titleTextView.setOnTouchListener(new OnTouchListener() {
 			
 			@Override

@@ -12,13 +12,13 @@ public class DBSchema {
      int version = 2;
 
     /* Table資料表 */
-    String tables[] = { DBTBRoleList.TABLE,DBTBRoleGames.TABLE };
+    String tables[] = { DBTBRoleList.TABLE,DBTBRoleGames.TABLE,DBTBArenaEventList.TABLE,DBTBArenaGames.TABLE };
 
     /* 欄位名稱 */
-    String fieldNames[][] = { DBTBRoleList.fieldNames,DBTBRoleGames.fieldNames};
+    String fieldNames[][] = { DBTBRoleList.fieldNames,DBTBRoleGames.fieldNames,DBTBArenaEventList.fieldNames,DBTBArenaGames.fieldNames};
 
     /* 欄位型態 */
-    String fieldTypes[][] = { DBTBRoleList.fieldTypes,DBTBRoleGames.fieldTypes};
+    String fieldTypes[][] = { DBTBRoleList.fieldTypes,DBTBRoleGames.fieldTypes,DBTBArenaEventList.fieldTypes,DBTBArenaGames.fieldTypes};
 
     
     //    /* Table資料表 */

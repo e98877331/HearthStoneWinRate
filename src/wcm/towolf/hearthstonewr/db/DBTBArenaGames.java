@@ -17,7 +17,7 @@ public class DBTBArenaGames extends DBTableBase {
 			"INTEGER PRIMARY KEY ASC AUTOINCREMENT", "INTEGER", "INTEGER",
 			"INTEGER", "timestamp DATE DEFAULT (datetime('now','localtime'))" };
 
-	private DBHelper mDBHelper;
+
 
 	public DBTBArenaGames() {
 		super();

@@ -46,14 +46,14 @@ public class ArenaEventDataProvider {
 		return mGameTB.getAllGames();
 	}
 	
-    public void addRole(String roleName, int roleType)
+    public void addEvent(int roleType)
     {
     	mEventListTB.addEvent(roleType);
     }
     
-    public void addGame(int roleID,int enemyRoleType, boolean isWin)
+    public void addGame(int eventID,int enemyRoleType, boolean isWin)
     {
-    	mGameTB.addGame(roleID, enemyRoleType, isWin);
+    	mGameTB.addGame(eventID, enemyRoleType, isWin);
     }
 
     public RoleGame deleteLastGame(int roleID)

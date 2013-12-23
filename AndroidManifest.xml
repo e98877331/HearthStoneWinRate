@@ -17,11 +17,11 @@
         <activity
             android:name="wcm.towolf.hearthstonewr.MainActivity"
             android:label="@string/app_name" >
-            <intent-filter>
+   <!--          <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter> -->
         </activity>
         <activity android:name="WelcomeActivity"
             android:screenOrientation="portrait" >
@@ -37,6 +37,14 @@
         <activity android:name="wcm.towolf.heartstonewr.detail.DetailListActivity"
             android:theme= "@android:style/Theme.Light.NoTitleBar"
             android:screenOrientation="portrait" >
+        </activity>
+        <activity android:name="ArenaActivity">
+            
+                     <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
     </application>

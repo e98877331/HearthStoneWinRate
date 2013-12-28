@@ -1,12 +1,16 @@
 package wcm.towolf.hearthstonewr.db;
 
+import java.io.File;
+
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.net.Uri;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -20,12 +24,22 @@ public class DBHelper extends SQLiteOpenHelper {
     public static String NO_CREATE_TABLES = "no tables";
     private String message = "";
 
+
+    
     private static DBHelper mInstance;
     
     public static void init(Context context)
     {
+    	
+    	DBSchema schema= new DBSchema();
+    	//create folder in external storage for database
+    	File dir = new File(schema.dbLocation);
+    	boolean b = dir.mkdirs();
+    	context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_MOUNTED, Uri.parse("file://"+ schema.dbLocation)));
+    	
+    	
     	if(mInstance == null)
-    	mInstance = new DBHelper(context, new DBSchema());
+    	mInstance = new DBHelper(context, schema);
     }
     
     public static DBHelper sharedInstance()
@@ -41,6 +55,8 @@ public class DBHelper extends SQLiteOpenHelper {
     
     private DBHelper(Context context,DBSchema schema)
     {
+
+    	
     	   this(context, schema.dbName, null, schema.version,
         		schema.tables, schema.fieldNames, schema.fieldTypes);
     }

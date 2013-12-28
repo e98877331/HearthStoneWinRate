@@ -1,13 +1,17 @@
 package wcm.towolf.hearthstonewr.db;
 
+import android.os.Environment;
+
 
 /**
  * The Class DBSchema. 定義CutX的資料
  */
 public class DBSchema {
 
+	
+	String dbLocation =  Environment.getExternalStorageDirectory()+ "/HearthStoneWRT/db/";
     /* 資料庫 */
-     String dbName = "MyDatabase";
+     String dbName = dbLocation +"MyDatabase";
     /* version必須大於等於1 */
      int version = 2;
 

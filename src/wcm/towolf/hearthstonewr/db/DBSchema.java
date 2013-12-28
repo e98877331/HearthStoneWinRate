@@ -9,7 +9,7 @@ import android.os.Environment;
 public class DBSchema {
 
 	
-	String dbLocation =  Environment.getExternalStorageDirectory()+ "/HearthStoneWRT/db/";
+	String dbLocation =  Environment.getExternalStorageDirectory()+ "/HearthStoneWR/db/";
     /* 資料庫 */
      String dbName = dbLocation +"MyDatabase";
     /* version必須大於等於1 */

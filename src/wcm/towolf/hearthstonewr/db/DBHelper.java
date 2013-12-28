@@ -1,6 +1,9 @@
 package wcm.towolf.hearthstonewr.db;
 
 import java.io.File;
+import java.io.IOException;
+
+import wcm.towolf.hearthstonewr.util.FileUtility;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -11,6 +14,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.net.Uri;
+import android.os.Environment;
+import android.provider.MediaStore.Files;
+import android.util.Log;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -31,10 +37,34 @@ public class DBHelper extends SQLiteOpenHelper {
     public static void init(Context context)
     {
     	
+    	
+    	
     	DBSchema schema= new DBSchema();
     	//create folder in external storage for database
     	File dir = new File(schema.dbLocation);
     	boolean b = dir.mkdirs();
+    	
+    	File dbFile = new File(schema.dbName);
+    	if(!dbFile.exists())
+    	{
+    		File oldDBFile = new File(context.getDatabasePath("MyDatabase").toString());
+    		if(oldDBFile.exists())
+    		{
+    			
+                 try {
+					FileUtility.copyFile(oldDBFile, dbFile);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+    				
+   
+    		}
+    		
+    	}
+    	
+    	
+    	
     	context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_MOUNTED, Uri.parse("file://"+ schema.dbLocation)));
     	
     	

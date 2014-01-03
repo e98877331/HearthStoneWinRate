@@ -13,7 +13,7 @@ public class DBSchema {
     /* 資料庫 */
      String dbName = dbLocation +"MyDatabase";
     /* version必須大於等於1 */
-     int version = 2;
+     int version = 3;
 
     /* Table資料表 */
     String tables[] = { DBTBRoleList.TABLE,DBTBRoleGames.TABLE,DBTBArenaEventList.TABLE,DBTBArenaGames.TABLE };

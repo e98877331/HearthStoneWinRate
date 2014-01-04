@@ -4,51 +4,57 @@
     android:versionCode="5"
     android:versionName="1.5" >
 
-        <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> 
-    
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <uses-sdk
         android:minSdkVersion="11"
         android:targetSdkVersion="16" />
 
     <application
+        android:name="MyApplication"
         android:allowBackup="true"
         android:icon="@drawable/icon"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme"
-        android:name="MyApplication" >
+        android:theme="@style/AppTheme" >
         <activity
             android:name="wcm.towolf.hearthstonewr.MainActivity"
             android:label="@string/app_name" >
-   <!--          <intent-filter>
+
+            <!--
+                 <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter> -->
+            </intent-filter>
+            -->
         </activity>
-        <activity android:name="WelcomeActivity"
+        <activity
+            android:name="WelcomeActivity"
             android:screenOrientation="portrait" >
         </activity>
-        <activity android:name="DetailActivity"
+        <activity
+            android:name="DetailActivity"
             android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="wcm.towolf.heartstonewr.detail.DialogActivity"
-            android:theme="@android:style/Theme.Dialog"
-            android:label="@string/detail_dialog_label" >
+            android:label="@string/detail_dialog_label"
+            android:theme="@android:style/Theme.Dialog" >
         </activity>
-        <activity android:name="wcm.towolf.heartstonewr.detail.DetailListActivity"
-            android:theme= "@android:style/Theme.Light.NoTitleBar"
-            android:screenOrientation="portrait" >
+        <activity
+            android:name="wcm.towolf.heartstonewr.detail.DetailListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
         </activity>
-        <activity android:name="ArenaActivity">
-            
-                     <intent-filter>
+        <activity android:name="ArenaActivity" >
+        </activity>
+        <activity android:name="OpenActivity" >
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-   
     </application>
 
 </manifest>

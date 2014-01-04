@@ -1,6 +1,7 @@
 package wcm.towolf.heartstonewr.main;
 
 import wcm.towolf.hearthstonewr.R;
+import wcm.towolf.hearthstonewr.view.TopPanel;
 import itri.u9lab.towolf.ratiofixer.RatioRelativeLayout;
 import android.content.Context;
 import android.graphics.Color;

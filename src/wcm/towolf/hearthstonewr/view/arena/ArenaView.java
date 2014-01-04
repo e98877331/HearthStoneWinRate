@@ -1,5 +1,36 @@
 package wcm.towolf.hearthstonewr.view.arena;
 
-public class ArenaView {
+import itri.u9lab.towolf.ratiofixer.RatioFixer;
+import itri.u9lab.towolf.ratiofixer.RatioRelativeLayout;
+import wcm.towolf.hearthstonewr.view.TopPanel;
+import android.content.Context;
+import android.widget.ListView;
 
+public class ArenaView extends RatioRelativeLayout{
+
+	public TopPanel topPanel;
+	public NewEventPanel newEventPanel;
+	
+	public ListView listView;
+	
+	RatioFixer mRf;
+	
+	public ArenaView(Context context) {
+		super(context);
+		// TODO Auto-generated constructor stub
+		mRf  = this.getRatioFixer();
+		
+		topPanel = new TopPanel(context,mRf);
+		this.addView(topPanel,768, 190, 0, 0);
+		
+		newEventPanel = new NewEventPanel(context,mRf);
+		this.addView(newEventPanel, 768, 200, 0, 190);
+		
+		listView = new ListView(context);
+		this.addView(listView,768,840,0,390);
+		
+	}
+
+	
+	
 }

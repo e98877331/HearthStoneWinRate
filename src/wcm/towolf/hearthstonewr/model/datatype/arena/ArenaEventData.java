@@ -6,7 +6,6 @@ import wcm.towolf.hearthstonewr.R;
 import wcm.towolf.hearthstonewr.model.ArenaEventDataProvider;
 import wcm.towolf.hearthstonewr.model.RoleDataProvider;
 import wcm.towolf.hearthstonewr.model.datatype.RoleData;
-import wcm.towolf.hearthstonewr.model.datatype.RoleEnemyData;
 import wcm.towolf.hearthstonewr.model.datatype.RoleGame;
 import wcm.towolf.hearthstonewr.model.datatype.RoleType;
 import android.util.Log;
@@ -178,7 +177,7 @@ public class ArenaEventData {
 	
 	private void invalidate()
 	{
-		RoleDataProvider rdp = new RoleDataProvider();
+		ArenaEventDataProvider rdp = new ArenaEventDataProvider();
 		initWithRoleGames(rdp.getAllGames());
 	}
 	

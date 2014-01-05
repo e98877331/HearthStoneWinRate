@@ -45,7 +45,7 @@ public class HeroChooseDialog extends Dialog {
 		
 	}
 	
-	public void setTitle(String title)
+	public void setInnerTitle(String title)
 	{
 	   	mView.setTitle(title);
 	}

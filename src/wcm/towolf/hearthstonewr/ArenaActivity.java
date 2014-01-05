@@ -103,7 +103,7 @@ public class ArenaActivity extends Activity {
 				
 				final HeroChooseDialog hcd = new HeroChooseDialog(ArenaActivity.this,
 						mView.getRatioFixer());
-				hcd.setTitle("What's your hero");
+				hcd.setInnerTitle("What's your hero");
 				hcd.setItemClickListener(new ClickCallBack() {
 
 					@Override
@@ -112,15 +112,34 @@ public class ArenaActivity extends Activity {
 						//this only set start event btn to invisible
 						mNewEventPanel.startEvent();
 						
-                      mNewEventPanel.setData(roleType, 0, 0);
+                      long eventID =  mProvider.addEvent(roleType);
+                      ArenaEventData aed = mProvider.getEvent((int)eventID);
+                      mNewEventPanel.setData(aed);                      
                       
-                      mProvider.addEvent(roleType);
                       hcd.dismiss();
                       
 					}
 				});
 				if(!hcd.isShowing());
 				hcd.showAndAdjustWindow();
+			}
+		});
+		
+		mNewEventPanel.setWinClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				mNewEventPanel.win();
+			}
+		});
+		
+		mNewEventPanel.setLoseClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				mNewEventPanel.lose();
 			}
 		});
 	}

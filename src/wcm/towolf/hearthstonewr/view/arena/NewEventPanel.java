@@ -3,10 +3,11 @@ package wcm.towolf.hearthstonewr.view.arena;
 import itri.u9lab.towolf.ratiofixer.RatioFixer;
 import wcm.towolf.hearthstonewr.R;
 import wcm.towolf.hearthstonewr.model.datatype.RoleType;
-import android.R.color;
+import wcm.towolf.hearthstonewr.model.datatype.arena.ArenaEventData;
+import wcm.towolf.hearthstonewr.view.HeroChooseDialog;
+import wcm.towolf.hearthstonewr.view.HeroChooseView.ClickCallBack;
 import android.content.Context;
 import android.graphics.Color;
-import android.opengl.Visibility;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +19,9 @@ public class NewEventPanel extends RelativeLayout{
 
 	//768*200
 	RatioFixer mRf;
+	Context mContext;
+	
+	ArenaEventData currentEvent;
 	
 	ImageView roleView;
 	WinLoseBtn winView, loseView;
@@ -28,7 +32,7 @@ public class NewEventPanel extends RelativeLayout{
 		super(context);
 		// TODO Auto-generated constructor stub
 		mRf = rf; 
-		
+		mContext = context;
 		
 		roleView = new ImageView(context);
 		this.addView(roleView,rf.getLayoutParam(130, 190, 10, 5));
@@ -45,6 +49,16 @@ public class NewEventPanel extends RelativeLayout{
 		
 		
 		undoBtn = new Button(context);
+		undoBtn.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				currentEvent.deleteLastGame();
+				setData(currentEvent);
+			}
+		});
+		
 		this.addView(undoBtn,mRf.getLayoutParam(100, 100, 680, 50));
 		
 		
@@ -70,7 +84,52 @@ public class NewEventPanel extends RelativeLayout{
 	
 	public void endEvent()
 	{
+		currentEvent = null;
 		startEventBtn.setVisibility(VISIBLE);
+		
+	}
+	
+	public void win()
+	{
+		final HeroChooseDialog hcd = new HeroChooseDialog(mContext, mRf);
+		hcd.setInnerTitle("Who you win");
+		hcd.setItemClickListener(new ClickCallBack() {
+			
+			@Override
+			public void run(int roleType) {
+				// TODO Auto-generated method stub
+			   currentEvent.addGame(roleType, true);
+			   setData(currentEvent);
+			   
+			   if(currentEvent.win ==12)
+				   endEvent();
+			   
+			   hcd.dismiss();
+			}
+		});
+		if(!hcd.isShowing())
+		hcd.showAndAdjustWindow();
+	}
+	public void lose()
+	{
+		final HeroChooseDialog hcd = new HeroChooseDialog(mContext, mRf);
+		hcd.setInnerTitle("Who you lose");
+		hcd.setItemClickListener(new ClickCallBack() {
+			
+			@Override
+			public void run(int roleType) {
+				// TODO Auto-generated method stub
+			   currentEvent.addGame(roleType, false);
+			   setData(currentEvent);
+			   
+			   if((currentEvent.count-currentEvent.win) == 3)
+				   endEvent();
+				   
+			   hcd.dismiss();
+			}
+		});
+		if(!hcd.isShowing())
+		hcd.showAndAdjustWindow();
 	}
 	
 	public void setStartEventOnClickListener(OnClickListener listener)
@@ -78,6 +137,22 @@ public class NewEventPanel extends RelativeLayout{
 		startEventBtn.setOnClickListener(listener);
 	}
 	
+	public void setWinClickListener(OnClickListener l)
+	{
+		winView.setOnClickListener(l);
+	}
+	
+	public void setLoseClickListener(OnClickListener l)
+	{
+		loseView.setOnClickListener(l);
+	}
+	
+	
+	public void setData(ArenaEventData data)
+	{
+		currentEvent = data;
+		this.setData(data.roleType,data.win,data.count-data.win);
+	}
 	
 	public void setData(int roleType,int win,int lose)
 	{
@@ -85,6 +160,13 @@ public class NewEventPanel extends RelativeLayout{
 		winView.setValue(win);
 		loseView.setValue(lose);
 	}
+	
+	
+
+	
+	/*
+	 * custom button class
+	 */
 	
 	public class WinLoseBtn extends RelativeLayout
 	{

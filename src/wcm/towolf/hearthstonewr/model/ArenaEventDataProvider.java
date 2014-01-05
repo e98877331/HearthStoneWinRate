@@ -46,9 +46,20 @@ public class ArenaEventDataProvider {
 		return mGameTB.getAllGames();
 	}
 	
-    public void addEvent(int roleType)
+	
+	//TODO:slow
+	public ArenaEventData getEvent(int id)
+	{
+		
+		ArenaEventData aed = mEventListTB.getEvent(id);
+		
+		aed.initWithRoleGames(mGameTB.getAllGames());
+		return aed;
+	}
+	
+    public long addEvent(int roleType)
     {
-    	mEventListTB.addEvent(roleType);
+    	return mEventListTB.addEvent(roleType);
     }
     
     public void addGame(int eventID,int enemyRoleType, boolean isWin)

@@ -6,7 +6,7 @@ import wcm.towolf.hearthstonewr.R;
 import wcm.towolf.hearthstonewr.model.RoleDataProvider;
 import android.util.Log;
 
-public class RoleData {
+public class RoleData implements IDataEntitiy{
 
 	private static final String TAG = "RoleData";
 	// passing between activity purpose

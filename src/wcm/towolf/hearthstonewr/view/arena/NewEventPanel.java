@@ -1,6 +1,7 @@
 package wcm.towolf.hearthstonewr.view.arena;
 
 import itri.u9lab.towolf.ratiofixer.RatioFixer;
+import wcm.towolf.hearthstonewr.ArenaActivity;
 import wcm.towolf.hearthstonewr.R;
 import wcm.towolf.hearthstonewr.model.datatype.RoleType;
 import wcm.towolf.hearthstonewr.model.datatype.arena.ArenaEventData;
@@ -56,6 +57,8 @@ public class NewEventPanel extends RelativeLayout{
 				// TODO Auto-generated method stub
 				currentEvent.deleteLastGame();
 				setData(currentEvent);
+				((ArenaActivity)mContext).reloadListData();
+				
 			}
 		});
 		
@@ -104,6 +107,7 @@ public class NewEventPanel extends RelativeLayout{
 			   if(currentEvent.win ==12)
 				   endEvent();
 			   
+			   ((ArenaActivity)mContext).reloadListData();
 			   hcd.dismiss();
 			}
 		});
@@ -124,7 +128,8 @@ public class NewEventPanel extends RelativeLayout{
 			   
 			   if((currentEvent.count-currentEvent.win) == 3)
 				   endEvent();
-				   
+			   
+			   ((ArenaActivity)mContext).reloadListData();   
 			   hcd.dismiss();
 			}
 		});

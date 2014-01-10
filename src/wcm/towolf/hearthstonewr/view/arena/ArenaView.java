@@ -27,10 +27,10 @@ public class ArenaView extends RatioRelativeLayout{
 		this.addView(topPanel,768, 190, 0, 0);
 		
 		newEventPanel = new NewEventPanel(context,mRf);
-		this.addView(newEventPanel, 768, 200, 0, 190);
+		this.addView(newEventPanel, 768, 220, 0, 190);
 		
 		listView = new ListView(context);
-		this.addView(listView,768,840,0,390);
+		this.addView(listView,768,820,0,410);
 		
 	}
 

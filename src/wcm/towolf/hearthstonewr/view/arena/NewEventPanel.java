@@ -18,13 +18,16 @@ import android.widget.TextView;
 
 public class NewEventPanel extends RelativeLayout{
 
-	//768*200
+	//768*220
 	RatioFixer mRf;
 	Context mContext;
 	
 	ArenaEventData currentEvent;
 	
 	ImageView roleView;
+	
+	TextView title;
+	
 	WinLoseBtn winView, loseView;
 	Button undoBtn;
 	
@@ -34,22 +37,34 @@ public class NewEventPanel extends RelativeLayout{
 		// TODO Auto-generated constructor stub
 		mRf = rf; 
 		mContext = context;
+		this.setBackgroundResource(R.drawable.main_list_item_bg);
+		
+		title = new TextView(context);
+		title.setText("Now Playing");
+		title.setTextColor(Color.BLACK);
+		title.setBackgroundResource(R.drawable.rect_leather_label);
+		title.setGravity(Gravity.CENTER);
+		this.addView(title,rf.getLayoutParam(400, 60, 200, 15));
+		
 		
 		roleView = new ImageView(context);
-		this.addView(roleView,rf.getLayoutParam(130, 190, 10, 5));
+		this.addView(roleView,rf.getLayoutParam(130, 190, 10, 15));
 		roleView.setImageResource(R.drawable.mage);
 		
 		
 		winView = new WinLoseBtn(context);
-		this.addView(winView,mRf.getLayoutParam(250, 160, 150, 20));
+		winView.setBackgroundResource(R.drawable.arena_new_win);
+		this.addView(winView,mRf.getLayoutParam(250, 120, 150, 80));
 		winView.setValue(5);
 		
 		loseView = new WinLoseBtn(context);
-		this.addView(loseView,mRf.getLayoutParam(250, 160, 420, 20));
+		loseView.setBackgroundResource(R.drawable.arena_new_lose);
+		this.addView(loseView,mRf.getLayoutParam(250, 120, 420, 80));
 		loseView.setValue(3);
 		
 		
 		undoBtn = new Button(context);
+		undoBtn.setBackgroundResource(R.drawable.arena_undo);
 		undoBtn.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -62,7 +77,7 @@ public class NewEventPanel extends RelativeLayout{
 			}
 		});
 		
-		this.addView(undoBtn,mRf.getLayoutParam(100, 100, 680, 50));
+		this.addView(undoBtn,mRf.getLayoutParam(80, 80, 670, 105));
 		
 		
 		startEventBtn = new Button(context);
@@ -76,7 +91,7 @@ public class NewEventPanel extends RelativeLayout{
 			 startEvent();	
 			}
 		});
-		this.addView(startEventBtn,mRf.getLayoutParam(768,200,0,0));
+		this.addView(startEventBtn,mRf.getLayoutParam(768,220,0,0));
 		
 	}
 	
@@ -180,12 +195,12 @@ public class NewEventPanel extends RelativeLayout{
 		TextView valueView;
 		public WinLoseBtn(Context context) {
 			super(context);
-			this.setBackgroundColor(Color.BLUE);
+		//	this.setBackgroundColor(Color.BLUE);
 			valueView = new TextView(context);
-			valueView.setBackgroundColor(Color.RED);
+		//valueView.setBackgroundColor(Color.RED);
 			valueView.setGravity(Gravity.CENTER);
 			
-			this.addView(valueView,mRf.getLayoutParam(240, 100, 5, 25));
+			this.addView(valueView,mRf.getLayoutParam(240, 90, 5, 0));
 			
 			
 			// TODO Auto-generated constructor stub

@@ -74,10 +74,10 @@ public class ArenaEventDataProvider {
     	
     }
     
-    public void deleteRole(int roleID)
+    public void deleteEvent(int eventID)
     {
-    	mEventListTB.deleteEvent(roleID);
-    	mGameTB.deleteRole(roleID);
+    	mEventListTB.deleteEvent(eventID);
+    	mGameTB.deleteRole(eventID);
     }
     
 }

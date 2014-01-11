@@ -69,7 +69,7 @@ public class DBTBArenaEventList extends DBTableBase{
 	public void deleteEvent(int pEventID )
 	{
 		String value[] = {Integer.toString(pEventID)};
-		mDBHelper.delete(TABLE, "Role_ID = ?", value);
+		mDBHelper.delete(TABLE, "Event_ID = ?", value);
 	}
 	
 }

@@ -70,6 +70,14 @@ public class NewEventPanel extends RelativeLayout{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				if(currentEvent.count == 0)
+				{
+					currentEvent.delete();
+					currentEvent = null;
+					endEvent();
+					return;
+				}
+				
 				currentEvent.deleteLastGame();
 				setData(currentEvent);
 				((ArenaActivity)mContext).reloadListData();

@@ -3,7 +3,6 @@ package wcm.towolf.hearthstonewr;
 import java.util.ArrayList;
 import java.util.Random;
 
-import wcm.towolf.hearthstonewr.MainActivity.MainAdapter;
 import wcm.towolf.hearthstonewr.model.ArenaEventDataProvider;
 import wcm.towolf.hearthstonewr.model.datatype.arena.ArenaEventData;
 import wcm.towolf.hearthstonewr.view.HeroChooseDialog;
@@ -12,12 +11,17 @@ import wcm.towolf.hearthstonewr.view.TopPanel;
 import wcm.towolf.hearthstonewr.view.arena.ArenaView;
 import wcm.towolf.hearthstonewr.view.arena.ArenaViewListItem;
 import wcm.towolf.hearthstonewr.view.arena.NewEventPanel;
-import wcm.towolf.heartstonewr.main.MainViewListItem;
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -107,6 +111,11 @@ public class ArenaActivity extends Activity {
         //mListView.setAdapter(new MainAdapter());
 		reloadListData();
 		
+		
+		// for onLongClick delete item purpose
+		registerForContextMenu(mListView);
+		
+		
 		mView.setToContentView(this);
 	}
 
@@ -115,6 +124,42 @@ public class ArenaActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onResume();
 		
+	}
+	
+	@Override
+	public void onCreateContextMenu(ContextMenu menu, View v,
+			ContextMenuInfo menuInfo) {
+		// TODO Auto-generated method stub
+		super.onCreateContextMenu(menu, v, menuInfo);
+
+		// AdapterView.AdapterContextMenuInfo info =
+		// (AdapterView.AdapterContextMenuInfo)menuInfo;
+
+		menu.setHeaderTitle(R.string.main_context_menu_title);
+		// for (int i = 0; i<5; i++) {
+		menu.add(Menu.NONE, 0, 0, R.string.main_context_menu_delete_btn);
+		// }
+	}
+
+	@Override
+	public boolean onContextItemSelected(MenuItem item) {
+		AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item
+				.getMenuInfo();
+		int menuItemIndex = item.getItemId();
+		// String[] menuItems = getResources().getStringArray(R.array.menu);
+		// String menuItemName = menuItems[menuItemIndex];
+		// String listItemName = "listitem Name";//Countries[info.position];
+		if (menuItemIndex == 0) {
+			
+			mData.get(mData.size() - info.position -1).delete();
+			//deleteRoleDataFromList(info.position);
+			reloadListData();
+
+		}
+
+		// Toast.makeText(getApplicationContext(),String.format("Selected menuItemIndex %d for info %d",
+		// menuItemIndex, info.position), Toast.LENGTH_LONG).show();
+		return true;
 	}
 	
 	private void setNewEventPanel() {
@@ -232,13 +277,14 @@ public class ArenaActivity extends Activity {
 
 			     ArenaEventData rd = mData.get(mData.size() - index -1);
 
-			    
+			    Log.e("ArenaActivity","Event ID = "+Integer.toString(rd.eventID));
 			     
 				((ArenaViewListItem) convertView).setData(rd);
 				if(rd.isFinished())
 					convertView.setAlpha(1f);
 				else
 				{
+					//not to show the view
 					View view = new View(ArenaActivity.this);
 					return view;
 				}

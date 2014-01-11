@@ -90,6 +90,12 @@ public class ArenaEventData implements IDataEntitiy{
 		invalidate();
 	}
 
+	public void delete()
+	{
+	   ArenaEventDataProvider edp = new ArenaEventDataProvider();
+	   edp.deleteEvent(this.eventID);
+	}
+	
 	/*
 	 * getter and setter
 	 */

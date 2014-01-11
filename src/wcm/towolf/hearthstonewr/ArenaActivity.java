@@ -225,7 +225,7 @@ public class ArenaActivity extends Activity {
 			// TODO Auto-generated method stub
 
 
-				if (convertView == null) {
+				if (convertView == null || !(convertView instanceof ArenaViewListItem)) {
 					convertView = new ArenaViewListItem(ArenaActivity.this,
 							mView.getRatioFixer());
 				}
@@ -238,7 +238,12 @@ public class ArenaActivity extends Activity {
 				if(rd.isFinished())
 					convertView.setAlpha(1f);
 				else
-					convertView.setAlpha(0.5f);
+				{
+					View view = new View(ArenaActivity.this);
+					return view;
+				}
+//					convertView.setAlpha(0.5f);
+					//convertView.setVisibility(View.GONE);
 
 			
 			return convertView;

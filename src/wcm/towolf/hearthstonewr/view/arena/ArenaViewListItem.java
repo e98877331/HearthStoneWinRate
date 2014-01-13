@@ -21,7 +21,7 @@ public class ArenaViewListItem extends RelativeLayout{
 	RatioFixer mRF;
 //ImageView mIconBG;
 	ImageView mIcon;
-	TextView mRoleName;
+	TextView mWinLabel;
 	TextView mWinNumber;
 	
 	//ImageView mIcon 
@@ -58,6 +58,14 @@ public class ArenaViewListItem extends RelativeLayout{
 		mWinNumber.setText("50%");
 		mWinNumber.setTextSize(TypedValue.COMPLEX_UNIT_PX,mRF.getRealValue(40));
 		rl.addView(mWinNumber,mRF.getLayoutParam(150,150,585,42));
+		
+		
+		mWinLabel = new TextView(context);
+		mWinLabel.setText("Win");
+		mWinLabel.setTextColor(Color.parseColor("#F3E5AB"));
+		mWinLabel.setGravity(Gravity.CENTER);
+		mWinLabel.setTextSize(TypedValue.COMPLEX_UNIT_PX,mRF.getRealValue(33));
+		rl.addView(mWinLabel,mRF.getLayoutParam(150, 100, 585, 20));
 		
 		this.addView(rl,mRF.getLayoutParam(768, 240, 0, 0));
 		

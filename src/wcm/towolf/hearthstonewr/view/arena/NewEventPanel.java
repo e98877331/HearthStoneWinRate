@@ -9,6 +9,7 @@ import wcm.towolf.hearthstonewr.view.HeroChooseDialog;
 import wcm.towolf.hearthstonewr.view.HeroChooseView.ClickCallBack;
 import android.content.Context;
 import android.graphics.Color;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -52,12 +53,12 @@ public class NewEventPanel extends RelativeLayout{
 		roleView.setImageResource(R.drawable.mage);
 		
 		
-		winView = new WinLoseBtn(context);
+		winView = new WinLoseBtn(context,true);
 		winView.setBackgroundResource(R.drawable.arena_new_win);
 		this.addView(winView,mRf.getLayoutParam(250, 120, 150, 80));
 		winView.setValue(5);
 		
-		loseView = new WinLoseBtn(context);
+		loseView = new WinLoseBtn(context,false);
 		loseView.setBackgroundResource(R.drawable.arena_new_lose);
 		this.addView(loseView,mRf.getLayoutParam(250, 120, 420, 80));
 		loseView.setValue(3);
@@ -200,15 +201,27 @@ public class NewEventPanel extends RelativeLayout{
 	{
         //300*180
         	
+		TextView label;
 		TextView valueView;
-		public WinLoseBtn(Context context) {
+		public WinLoseBtn(Context context,boolean isWinBtn) {
 			super(context);
 		//	this.setBackgroundColor(Color.BLUE);
+			label = new TextView(context);
+		    label.setGravity(Gravity.CENTER);
+		    label.setTextSize(TypedValue.COMPLEX_UNIT_PX,mRf.getRealValue(25));
+			if(isWinBtn)
+				label.setText("Win");
+			else
+				label.setText("Lose");
+			
+			this.addView(label,mRf.getLayoutParam(240, 35, 5, 0));
+			
 			valueView = new TextView(context);
 		//valueView.setBackgroundColor(Color.RED);
 			valueView.setGravity(Gravity.CENTER);
+			valueView.setTextSize(TypedValue.COMPLEX_UNIT_PX,mRf.getRealValue(35));
 			
-			this.addView(valueView,mRf.getLayoutParam(240, 90, 5, 0));
+			this.addView(valueView,mRf.getLayoutParam(240, 90, 5, 5));
 			
 			
 			// TODO Auto-generated constructor stub

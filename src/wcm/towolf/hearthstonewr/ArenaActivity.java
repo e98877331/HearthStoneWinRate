@@ -172,7 +172,7 @@ public class ArenaActivity extends Activity {
 				
 				final HeroChooseDialog hcd = new HeroChooseDialog(ArenaActivity.this,
 						mView.getRatioFixer());
-				hcd.setInnerTitle("What's your hero");
+				hcd.setInnerTitle(R.string.arena_which_hero);
 				hcd.setItemClickListener(new ClickCallBack() {
 
 					@Override
@@ -214,12 +214,19 @@ public class ArenaActivity extends Activity {
 			}
 		});
 		
-		initNewEventPanel(mData.get(mData.size()-1));
+		
+		initNewEventPanel();
 	
 	}
 	
-	private void initNewEventPanel(ArenaEventData lastData)
+	private void initNewEventPanel()
 	{
+		//no any data yet
+		if(mData.size()<1)
+			return;
+		
+		ArenaEventData lastData = mData.get(mData.size()-1);
+		
 		if(!lastData.isFinished())
 		{
 			mNewEventPanel.startEvent();

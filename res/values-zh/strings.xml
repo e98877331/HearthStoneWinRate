@@ -37,5 +37,10 @@
     <string name="common_rogue">盜賊</string>
     <string name="common_shaman">薩滿</string>
     <string name="common_warlock">術士</string>
+    <string name="common_win">戰勝</string>
+    <string name="common_lose">戰敗</string>
+    <string name="arena_newevent_now_playing">正在進行</string>
+    <string name="arena_newevent_new_event">新的一輪</string>
+    <string name="arena_which_hero">使用哪位英雄</string>
 
 </resources>

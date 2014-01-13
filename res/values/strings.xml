@@ -36,6 +36,11 @@
     <string name="common_rogue">Rogue</string>
     <string name="common_shaman">Shaman</string>
     <string name="common_warlock">Warlock</string>
+    <string name="common_win">Win</string>
+    <string name="common_lose">Lose</string>
+    <string name="arena_newevent_now_playing">Now Playing</string>
+    <string name="arena_newevent_new_event">New Round</string>
+    <string name="arena_which_hero">Choose Your Hero</string>
     
 
 </resources>

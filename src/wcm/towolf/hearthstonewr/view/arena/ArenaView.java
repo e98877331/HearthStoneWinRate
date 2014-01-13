@@ -30,7 +30,9 @@ public class ArenaView extends RatioRelativeLayout{
 		this.addView(newEventPanel, 768, 220, 0, 190);
 		
 		listView = new ListView(context);
+		listView.setBackgroundResource(R.drawable.main_bg);
 		this.addView(listView,768,820,0,410);
+		
 		
 	}
 

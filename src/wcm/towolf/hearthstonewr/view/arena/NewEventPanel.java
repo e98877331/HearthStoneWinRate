@@ -41,7 +41,7 @@ public class NewEventPanel extends RelativeLayout{
 		this.setBackgroundResource(R.drawable.main_list_item_bg);
 		
 		title = new TextView(context);
-		title.setText("Now Playing");
+		title.setText(R.string.arena_newevent_now_playing);
 		title.setTextColor(Color.BLACK);
 		title.setBackgroundResource(R.drawable.rect_leather_label);
 		title.setGravity(Gravity.CENTER);
@@ -91,7 +91,7 @@ public class NewEventPanel extends RelativeLayout{
 		
 		startEventBtn = new Button(context);
 		startEventBtn.setBackgroundResource(R.drawable.rect_btn);
-		startEventBtn.setText("New Event");
+		startEventBtn.setText(R.string.arena_newevent_new_event);
 		startEventBtn.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -119,7 +119,7 @@ public class NewEventPanel extends RelativeLayout{
 	public void win()
 	{
 		final HeroChooseDialog hcd = new HeroChooseDialog(mContext, mRf);
-		hcd.setInnerTitle("Who you win");
+		hcd.setInnerTitle(R.string.detail_box_win);
 		hcd.setItemClickListener(new ClickCallBack() {
 			
 			@Override
@@ -131,9 +131,9 @@ public class NewEventPanel extends RelativeLayout{
 			   if(currentEvent.win ==12)
 			   {
 				   endEvent();
+			   }
 			   
 			   ((ArenaActivity)mContext).reloadListData();
-			   }
 			   hcd.dismiss();
 			}
 		});
@@ -143,7 +143,7 @@ public class NewEventPanel extends RelativeLayout{
 	public void lose()
 	{
 		final HeroChooseDialog hcd = new HeroChooseDialog(mContext, mRf);
-		hcd.setInnerTitle("Who you lose");
+		hcd.setInnerTitle(R.string.detail_box_lose);
 		hcd.setItemClickListener(new ClickCallBack() {
 			
 			@Override
@@ -154,9 +154,9 @@ public class NewEventPanel extends RelativeLayout{
 			   
 			   if((currentEvent.count-currentEvent.win) == 3)
 			   {   endEvent();
+			   }
 			   
 			   ((ArenaActivity)mContext).reloadListData();
-			   }
 			   hcd.dismiss();
 			}
 		});
@@ -213,9 +213,9 @@ public class NewEventPanel extends RelativeLayout{
 		    label.setGravity(Gravity.CENTER);
 		    label.setTextSize(TypedValue.COMPLEX_UNIT_PX,mRf.getRealValue(25));
 			if(isWinBtn)
-				label.setText("Win");
+				label.setText(R.string.common_win);
 			else
-				label.setText("Lose");
+				label.setText(R.string.common_lose);
 			
 			this.addView(label,mRf.getLayoutParam(240, 35, 5, 0));
 			

@@ -129,9 +129,11 @@ public class NewEventPanel extends RelativeLayout{
 			   setData(currentEvent);
 			   
 			   if(currentEvent.win ==12)
+			   {
 				   endEvent();
 			   
 			   ((ArenaActivity)mContext).reloadListData();
+			   }
 			   hcd.dismiss();
 			}
 		});
@@ -151,9 +153,10 @@ public class NewEventPanel extends RelativeLayout{
 			   setData(currentEvent);
 			   
 			   if((currentEvent.count-currentEvent.win) == 3)
-				   endEvent();
+			   {   endEvent();
 			   
-			   ((ArenaActivity)mContext).reloadListData();   
+			   ((ArenaActivity)mContext).reloadListData();
+			   }
 			   hcd.dismiss();
 			}
 		});

@@ -56,6 +56,10 @@ public class ArenaEventData implements IDataEntitiy{
 					winLoseArray[count] =1;
 					++win;
 				}
+				else
+				{
+					winLoseArray[count] = 0;
+				}
 
 				++count;
 

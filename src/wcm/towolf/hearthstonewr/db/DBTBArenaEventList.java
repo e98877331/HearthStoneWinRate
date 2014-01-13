@@ -34,7 +34,7 @@ public class DBTBArenaEventList extends DBTableBase{
 		ArenaEventData rg;
 		
 		c.moveToNext();
-		rg = new ArenaEventData(c.getInt(0),c.getInt(1));
+		rg = new ArenaEventData(c.getInt(0),c.getInt(1),c.getString(2));
 		return rg;
 		
     }
@@ -43,14 +43,14 @@ public class DBTBArenaEventList extends DBTableBase{
 	{
 		ArrayList<ArenaEventData> retData = new ArrayList<ArenaEventData>();
 		
-		String fields[] = {"Event_ID","Role_Type_Num"};
+		String fields[] = {"Event_ID","Role_Type_Num","Add_Date"};
 		
 		Cursor c = mDBHelper.select(TABLE, fields, null, null, null, null, null);
 		while(c.moveToNext())
 		{
 			
 			
-			ArenaEventData rd = new ArenaEventData(c.getInt(0),c.getInt(1));
+			ArenaEventData rd = new ArenaEventData(c.getInt(0),c.getInt(1),c.getString(2));
 			retData.add(rd);
 		}
 		

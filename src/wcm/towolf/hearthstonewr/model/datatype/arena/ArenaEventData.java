@@ -26,7 +26,8 @@ public class ArenaEventData implements IDataEntitiy{
 
 	public int eventID;
 	public int roleType;
-
+    public String startDate;
+	
 	public float winRate;
 
 	public int win, count;
@@ -35,10 +36,10 @@ public class ArenaEventData implements IDataEntitiy{
 	public int winLoseArray[] = { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
 			-1, -1, -1 };
 
-	public ArenaEventData(int pEventID, int pRoleType) {
+	public ArenaEventData(int pEventID, int pRoleType,String pStartDate) {
 		eventID = pEventID;
 		roleType = pRoleType;
-
+        startDate = pStartDate;
 	}
 
 	public void initWithRoleGames(ArrayList<RoleGame> gameList) {

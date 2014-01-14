@@ -93,7 +93,7 @@ public class ArenaViewListItem extends RelativeLayout {
 	public class EventDetailView extends RelativeLayout
 	{
         //300*100
-		ImageView[] tokens = new ImageView[13];
+		ImageView[] tokens = new ImageView[14];
 		
 		public EventDetailView(Context context) {
 			super(context);
@@ -106,19 +106,19 @@ public class ArenaViewListItem extends RelativeLayout {
 			 // tokens[i].setBackgroundResource(R.drawable.arena_event_detail_token_default);
 			}
 			
-			for( int i = 0 ; i< 6; i++)
+			for( int i = 0 ; i< 7; i++)
 			{
-				this.addView(tokens[i],mRF.getLayoutParam(50, 50, (48) *i, 48));
-                this.addView(tokens[12-i],mRF.getLayoutParam(50, 50, (48) *i, 106));	
+				this.addView(tokens[i],mRF.getLayoutParam(50, 50, (45) *i, 48));
+                this.addView(tokens[13-i],mRF.getLayoutParam(50, 50, (45) *i, 106));	
 			}
 			
-			this.addView(tokens[6],mRF.getLayoutParam(50, 50, 270, 76));
+			//this.addView(tokens[6],mRF.getLayoutParam(50, 50, 270, 76));
 			
 		}
 		
 		public void setData(int[] data)
 		{
-			for(int i = 0 ; i<13; i++ )
+			for(int i = 0 ; i<14; i++ )
 			{
 				if(data[i] == -1)
 					tokens[i].setBackgroundResource(R.drawable.arena_event_detail_token_default);

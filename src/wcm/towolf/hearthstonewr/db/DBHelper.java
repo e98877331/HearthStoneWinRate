@@ -157,6 +157,11 @@ public class DBHelper extends SQLiteOpenHelper {
 					sql += ")";
 					db.execSQL(sql);
 				}
+				
+//				  String sqlString = "ALTER TABLE Hero_List ADD COLUMN Position INTEGER ASC AUTOINCREMENT";
+//				  db.execSQL(sqlString);
+//				  sqlString = "UPDATE Hero_List SET Position  = Role_ID";
+//				  db.execSQL(sqlString);
 			}
 			success = true;
 			

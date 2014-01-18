@@ -8,6 +8,7 @@ import wcm.towolf.hearthstonewr.model.RoleDataProvider;
 import wcm.towolf.hearthstonewr.model.datatype.RoleData;
 import wcm.towolf.hearthstonewr.view.TopPanel;
 import wcm.towolf.hearthstonewr.view.HeroChooseView.ClickCallBack;
+import wcm.towolf.heartstonewr.main.CreateDeckDialog;
 import wcm.towolf.heartstonewr.main.CreateDeckView;
 import wcm.towolf.heartstonewr.main.MainView;
 import wcm.towolf.heartstonewr.main.MainViewListItem;
@@ -53,6 +54,8 @@ public class MainActivity extends Activity {
 
 	RoleDataProvider mDataProvider;
 
+	CreateDeckDialog mCDD;
+	
 	/*
 	 * Override method
 	 */
@@ -77,6 +80,23 @@ public class MainActivity extends Activity {
 		mListView = mView.mListView;
 		// mListView.setOnItemLongClickListener(listener);
 
+		//CreateDeckDialog
+		mCDD = new CreateDeckDialog(this, mView.getRatioFixer());
+		mCDD.setItemClickListener(new ClickCallBack() {
+
+			@Override
+			public void run(int roleType) {
+				// TODO Auto-generated method stub
+				// Log.e(TAG,Integer.toString(roleType));
+
+				mDataProvider.addRole(mCDD.getDeckName(), roleType);
+
+				reloadListData();
+				mCDD.dismiss();
+
+			}
+		});
+		
 		// for onLongClick delete item purpose
 		registerForContextMenu(mListView);
 
@@ -207,51 +227,11 @@ public class MainActivity extends Activity {
 
 	}
 
-	// to avoid quick click createDeckButton
-	private static boolean isCdvOpen = false;
 
+	
 	private void showCreateDeckDialog() {
-		if (isCdvOpen)
-			return;
-		isCdvOpen = true;
-
-		final CreateDeckView cdv = new CreateDeckView(MainActivity.this,
-				mView.getRatioFixer());
-
-		final Dialog dialog = new Dialog(MainActivity.this);
-		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-		dialog.setContentView(cdv);
-		dialog.setOnDismissListener(new OnDismissListener() {
-
-			@Override
-			public void onDismiss(DialogInterface dialog) {
-				// TODO Auto-generated method stub
-				isCdvOpen = false;
-			}
-		});
-
-		dialog.show();
-
-		Window window = dialog.getWindow();
-
-		window.setLayout(mView.getRatioFixer().getRealValue(710), mView
-				.getRatioFixer().getRealValue(1200));
-
-		cdv.setItemClickListener(new ClickCallBack() {
-
-			@Override
-			public void run(int roleType) {
-				// TODO Auto-generated method stub
-				// Log.e(TAG,Integer.toString(roleType));
-
-				mDataProvider.addRole(cdv.getDeckName(), roleType);
-
-				reloadListData();
-				dialog.dismiss();
-
-			}
-		});
-
+		if(!mCDD.isShowing())
+			mCDD.showAndAdjustWindow();
 	}
 
 	/*

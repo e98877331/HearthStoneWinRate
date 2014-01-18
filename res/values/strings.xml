@@ -43,5 +43,6 @@
     <string name="arena_which_hero">Choose Your Hero</string>
         <string name="open_normal_game">Normal Game</string>
     <string name="open_arena_game">Arena</string>
+    <string name="open_export_csv">"Export csv (Coming SOOOOON!!)"</string>
 
 </resources>

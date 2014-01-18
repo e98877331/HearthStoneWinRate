@@ -2,6 +2,7 @@ package wcm.towolf.hearthstonewr.view.open;
 
 import itri.u9lab.towolf.ratiofixer.RatioRelativeLayout;
 import wcm.towolf.hearthstonewr.R;
+import wcm.towolf.hearthstonewr.util.BasicClickEffect;
 import android.content.Context;
 import android.widget.Button;
 
@@ -19,17 +20,19 @@ public class OpenView extends RatioRelativeLayout{
 		normalBtn = new Button(context);
 		normalBtn.setBackgroundResource(R.drawable.rect_label);
 		normalBtn.setText(R.string.open_normal_game);
+		BasicClickEffect.setClickEffect(normalBtn);
 		this.addView(normalBtn, 428	, 122, 172, 240);
 		
 		
 		arenaBtn = new Button(context);
 		arenaBtn.setBackgroundResource(R.drawable.rect_label);
 		arenaBtn.setText(R.string.open_arena_game);
+		BasicClickEffect.setClickEffect(arenaBtn);
 		this.addView(arenaBtn, 428	, 122, 172, 400);
 		
 		exportBtn = new Button(context);
 		exportBtn.setBackgroundResource(R.drawable.rect_label);
-		exportBtn.setText("Export csv (Coming SOOOOON)");
+		exportBtn.setText(R.string.open_export_csv);
 		exportBtn.setClickable(false);
 		exportBtn.setAlpha(0.5f);
 		this.addView(exportBtn,428, 122, 172, 560);

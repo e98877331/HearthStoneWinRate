@@ -44,6 +44,7 @@
     <string name="arena_which_hero">使用哪位英雄</string>
     <string name="open_normal_game">一般對戰</string>
     <string name="open_arena_game">競技場</string>
+    <string name="open_export_csv">匯出CSV (Coming SOOOON!!)</string>
     
 
 </resources>

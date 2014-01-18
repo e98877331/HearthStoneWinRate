@@ -41,6 +41,7 @@
     <string name="arena_newevent_now_playing">Now Playing</string>
     <string name="arena_newevent_new_event">New Round</string>
     <string name="arena_which_hero">Choose Your Hero</string>
-    
+        <string name="open_normal_game">Normal Game</string>
+    <string name="open_arena_game">Arena</string>
 
 </resources>

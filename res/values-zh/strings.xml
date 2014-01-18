@@ -42,5 +42,8 @@
     <string name="arena_newevent_now_playing">正在進行</string>
     <string name="arena_newevent_new_event">新的一輪</string>
     <string name="arena_which_hero">使用哪位英雄</string>
+    <string name="open_normal_game">一般對戰</string>
+    <string name="open_arena_game">競技場</string>
+    
 
 </resources>

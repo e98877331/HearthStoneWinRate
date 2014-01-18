@@ -9,6 +9,7 @@ public class OpenView extends RatioRelativeLayout{
 
 	public Button normalBtn;
 	public Button arenaBtn;
+    public Button exportBtn;
 	
 	public OpenView(Context context) {
 		super(context);
@@ -16,17 +17,22 @@ public class OpenView extends RatioRelativeLayout{
 		this.setBackgroundResource(R.drawable.main_bg);
 		
 		normalBtn = new Button(context);
-		normalBtn.setBackgroundResource(R.drawable.rect_btn);
-		normalBtn.setText("Normal Game");
-		this.addView(normalBtn, 388	, 102, 192, 240);
+		normalBtn.setBackgroundResource(R.drawable.rect_label);
+		normalBtn.setText(R.string.open_normal_game);
+		this.addView(normalBtn, 428	, 122, 172, 240);
 		
 		
 		arenaBtn = new Button(context);
-		arenaBtn.setBackgroundResource(R.drawable.rect_btn);
-		arenaBtn.setText("Arena");
-		this.addView(arenaBtn, 388	, 102, 192, 400);
+		arenaBtn.setBackgroundResource(R.drawable.rect_label);
+		arenaBtn.setText(R.string.open_arena_game);
+		this.addView(arenaBtn, 428	, 122, 172, 400);
 		
-		
+		exportBtn = new Button(context);
+		exportBtn.setBackgroundResource(R.drawable.rect_label);
+		exportBtn.setText("Export csv (Coming SOOOOON)");
+		exportBtn.setClickable(false);
+		exportBtn.setAlpha(0.5f);
+		this.addView(exportBtn,428, 122, 172, 560);
 		
 	}
 

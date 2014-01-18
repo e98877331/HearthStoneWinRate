@@ -33,6 +33,9 @@ public class NewEventPanel extends RelativeLayout{
 	Button undoBtn;
 	
 	Button startEventBtn;
+	
+	 HeroChooseDialog mWinHCD,mLoseHCD;
+	 
 	public NewEventPanel(Context context,RatioFixer rf) {
 		super(context);
 		// TODO Auto-generated constructor stub
@@ -102,6 +105,7 @@ public class NewEventPanel extends RelativeLayout{
 		});
 		this.addView(startEventBtn,mRf.getLayoutParam(768,220,0,0));
 		
+		initWinLoseHCD();
 	}
 	
 	public void startEvent()
@@ -118,50 +122,17 @@ public class NewEventPanel extends RelativeLayout{
 	
 	public void win()
 	{
-		final HeroChooseDialog hcd = new HeroChooseDialog(mContext, mRf);
-		hcd.setInnerTitle(R.string.detail_box_win);
-		hcd.setItemClickListener(new ClickCallBack() {
-			
-			@Override
-			public void run(int roleType) {
-				// TODO Auto-generated method stub
-			   currentEvent.addGame(roleType, true);
-			   setData(currentEvent);
-			   
-			   if(currentEvent.win ==12)
-			   {
-				   endEvent();
-			   }
-			   
-			   ((ArenaActivity)mContext).reloadListData();
-			   hcd.dismiss();
-			}
-		});
-		if(!hcd.isShowing())
-		hcd.showAndAdjustWindow();
+		
+
+		if(!mWinHCD.isShowing())
+			mWinHCD.showAndAdjustWindow();
 	}
 	public void lose()
 	{
-		final HeroChooseDialog hcd = new HeroChooseDialog(mContext, mRf);
-		hcd.setInnerTitle(R.string.detail_box_lose);
-		hcd.setItemClickListener(new ClickCallBack() {
-			
-			@Override
-			public void run(int roleType) {
-				// TODO Auto-generated method stub
-			   currentEvent.addGame(roleType, false);
-			   setData(currentEvent);
-			   
-			   if((currentEvent.count-currentEvent.win) == 3)
-			   {   endEvent();
-			   }
-			   
-			   ((ArenaActivity)mContext).reloadListData();
-			   hcd.dismiss();
-			}
-		});
-		if(!hcd.isShowing())
-		hcd.showAndAdjustWindow();
+		
+
+		if(!mLoseHCD.isShowing())
+			mLoseHCD.showAndAdjustWindow();
 	}
 	
 	public void setStartEventOnClickListener(OnClickListener listener)
@@ -194,7 +165,50 @@ public class NewEventPanel extends RelativeLayout{
 	}
 	
 	
-
+/*
+ * private method
+ */
+	public void initWinLoseHCD()
+	{
+		mWinHCD = new HeroChooseDialog(mContext, mRf);
+		mWinHCD.setInnerTitle(R.string.detail_box_win);
+		mWinHCD.setItemClickListener(new ClickCallBack() {
+			
+			@Override
+			public void run(int roleType) {
+				// TODO Auto-generated method stub
+			   currentEvent.addGame(roleType, true);
+			   setData(currentEvent);
+			   
+			   if(currentEvent.win ==12)
+			   {
+				   endEvent();
+			   }
+			   
+			   ((ArenaActivity)mContext).reloadListData();
+			   mWinHCD.dismiss();
+			}
+		});
+		
+		mLoseHCD = new HeroChooseDialog(mContext, mRf);
+		mLoseHCD.setInnerTitle(R.string.detail_box_lose);
+		mLoseHCD.setItemClickListener(new ClickCallBack() {
+			
+			@Override
+			public void run(int roleType) {
+				// TODO Auto-generated method stub
+			   currentEvent.addGame(roleType, false);
+			   setData(currentEvent);
+			   
+			   if((currentEvent.count-currentEvent.win) == 3)
+			   {   endEvent();
+			   }
+			   
+			   ((ArenaActivity)mContext).reloadListData();
+			   mLoseHCD.dismiss();
+			}
+		});
+	}
 	
 	/*
 	 * custom button class

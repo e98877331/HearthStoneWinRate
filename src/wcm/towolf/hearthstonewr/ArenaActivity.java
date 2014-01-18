@@ -40,6 +40,8 @@ public class ArenaActivity extends Activity {
     
 	
 	ArenaEventDataProvider mProvider;
+	
+	HeroChooseDialog mHCD;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -102,6 +104,8 @@ public class ArenaActivity extends Activity {
 		mData = mProvider.getAllArenaEventData();
 		
 		mView = new ArenaView(this);
+		
+
 
 		mTopPanel = mView.topPanel;
 
@@ -163,34 +167,37 @@ public class ArenaActivity extends Activity {
 	}
 	
 	private void setNewEventPanel() {
+		
+		mHCD = new HeroChooseDialog(ArenaActivity.this,
+				mView.getRatioFixer());
+		mHCD.setInnerTitle(R.string.arena_which_hero);
+		mHCD.setItemClickListener(new ClickCallBack() {
+
+			@Override
+			public void run(int roleType) {
+				// TODO Auto-generated method stub
+				
+				
+              long eventID =  mProvider.addEvent(roleType);
+              ArenaEventData aed = mProvider.getEvent((int)eventID);
+              mNewEventPanel.setData(aed);                      
+              reloadListData();
+              mHCD.dismiss();
+              
+            //this only set start event btn to invisible
+				mNewEventPanel.startEvent();
+              
+			}
+		});
+		
 		mNewEventPanel = mView.newEventPanel;
 		mNewEventPanel.setStartEventOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				
-				final HeroChooseDialog hcd = new HeroChooseDialog(ArenaActivity.this,
-						mView.getRatioFixer());
-				hcd.setInnerTitle(R.string.arena_which_hero);
-				hcd.setItemClickListener(new ClickCallBack() {
-
-					@Override
-					public void run(int roleType) {
-						// TODO Auto-generated method stub
-						//this only set start event btn to invisible
-						mNewEventPanel.startEvent();
-						
-                      long eventID =  mProvider.addEvent(roleType);
-                      ArenaEventData aed = mProvider.getEvent((int)eventID);
-                      mNewEventPanel.setData(aed);                      
-                      reloadListData();
-                      hcd.dismiss();
-                      
-					}
-				});
-				if(!hcd.isShowing());
-				hcd.showAndAdjustWindow();
+				if(!mHCD.isShowing());
+				mHCD.showAndAdjustWindow();
 			}
 		});
 		

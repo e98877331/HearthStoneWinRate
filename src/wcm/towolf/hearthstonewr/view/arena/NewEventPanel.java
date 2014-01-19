@@ -5,6 +5,7 @@ import wcm.towolf.hearthstonewr.ArenaActivity;
 import wcm.towolf.hearthstonewr.R;
 import wcm.towolf.hearthstonewr.model.datatype.RoleType;
 import wcm.towolf.hearthstonewr.model.datatype.arena.ArenaEventData;
+import wcm.towolf.hearthstonewr.util.BasicClickEffect;
 import wcm.towolf.hearthstonewr.view.HeroChooseDialog;
 import wcm.towolf.hearthstonewr.view.HeroChooseView.ClickCallBack;
 import android.content.Context;
@@ -93,7 +94,7 @@ public class NewEventPanel extends RelativeLayout{
 		
 		
 		startEventBtn = new Button(context);
-		startEventBtn.setBackgroundResource(R.drawable.rect_btn);
+		startEventBtn.setBackgroundResource(R.drawable.rect_label);
 		startEventBtn.setText(R.string.arena_newevent_new_event);
 		startEventBtn.setOnClickListener(new OnClickListener() {
 			
@@ -103,6 +104,8 @@ public class NewEventPanel extends RelativeLayout{
 			 startEvent();	
 			}
 		});
+		BasicClickEffect.setClickEffect(startEventBtn);
+		
 		this.addView(startEventBtn,mRf.getLayoutParam(768,220,0,0));
 		
 		initWinLoseHCD();

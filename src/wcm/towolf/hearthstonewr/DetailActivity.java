@@ -7,6 +7,7 @@ import java.text.DecimalFormat;
 import wcm.towolf.hearthstonewr.model.RoleDataProvider;
 import wcm.towolf.hearthstonewr.model.datatype.RoleData;
 import wcm.towolf.hearthstonewr.model.datatype.RoleType;
+import wcm.towolf.hearthstonewr.view.HeroChooseDialog;
 import wcm.towolf.hearthstonewr.view.HeroChooseView.ClickCallBack;
 import wcm.towolf.heartstonewr.detail.DetailListActivity;
 import wcm.towolf.heartstonewr.detail.DetailView;
@@ -51,6 +52,8 @@ public class DetailActivity extends Activity {
 	
 	Context mContext;
 	
+	HeroChooseDialog mHCD;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -65,7 +68,11 @@ public class DetailActivity extends Activity {
 		
 		mProvider = new RoleDataProvider();
 		
+	
+		
 		initUI();
+		
+		mHCD =new HeroChooseDialog(this, dView.getRatioFixer());
 	}
 	
 	@Override
@@ -118,55 +125,41 @@ public class DetailActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 //				mRole.addGame(RoleType.HUNTER, true);
-//				bView.setVisibility(View.VISIBLE);
+                if(mHCD.isShowing())
+                	return;
 				
-				
-				// Test new view
-				final WinLoseView wlv = new WinLoseView(DetailActivity.this, dView.getRatioFixer());
-
-				final Dialog dialog = new Dialog(DetailActivity.this);
-				dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-				dialog.setContentView(wlv);
-				dialog.show();
-				Window window = dialog.getWindow();
-				window.setLayout(dView.getRatioFixer().getRealValue(710), dView.getRatioFixer().getRealValue(1200)); 
-				wlv.setItemClickListener(new ClickCallBack() {			
+				mHCD.setItemClickListener(new ClickCallBack() {			
 					@Override
 					public void run(int roleType) {
 						mRole.addGame(roleType, true);
 						
 						updateView();
-						dialog.dismiss();
+						mHCD.dismiss();
 					}
 				});
-				wlv.mTitle.setText(getResources().getString(R.string.detail_box_win));
+				mHCD.setInnerTitle(R.string.detail_box_win);
+				mHCD.showAndAdjustWindow();
 			}
 		});
 		
 		dView.loseButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-//				mRole.addGame(RoleType.HUNTER, false);
-//				bView2.setVisibility(View.VISIBLE);
 				
-				final WinLoseView wlv = new WinLoseView(DetailActivity.this, dView.getRatioFixer());
-
-				final Dialog dialog = new Dialog(DetailActivity.this);
-				dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-				dialog.setContentView(wlv);
-				dialog.show();
-				Window window = dialog.getWindow();
-				window.setLayout(dView.getRatioFixer().getRealValue(710), dView.getRatioFixer().getRealValue(1200)); 
-				wlv.setItemClickListener(new ClickCallBack() {			
+                if(mHCD.isShowing())
+                	return;
+				
+                mHCD.setItemClickListener(new ClickCallBack() {			
 					@Override
 					public void run(int roleType) {
 						mRole.addGame(roleType, false);
 						
 						updateView();
-						dialog.dismiss();
+						mHCD.dismiss();
 					}
 				});
-				wlv.mTitle.setText(getResources().getString(R.string.detail_box_lose));
+                mHCD.setInnerTitle(R.string.detail_box_lose);
+                mHCD.showAndAdjustWindow();
 			}
 		});
 		

@@ -17,7 +17,7 @@ public class NewDeckButton extends Button{
 	public NewDeckButton(Context context, RatioFixer rf) {
 		super(context);
 		// TODO Auto-generated constructor stub
-		this.setBackgroundResource(R.drawable.rect_btn);
+		this.setBackgroundResource(R.drawable.rect_label);
 		this.setTextColor(Color.parseColor("#F3E5AB"));
 		this.setText(R.string.main_create_btn);
 		this.setTypeface(Typeface.SERIF);

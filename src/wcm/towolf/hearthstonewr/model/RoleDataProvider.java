@@ -73,4 +73,9 @@ public class RoleDataProvider {
     	mRoleGamesTB.deleteRole(roleID);
     }
     
+    
+    public void swapPostion(RoleData a, RoleData b)
+    {
+    	mRoleListTB.swapPosition(a, b);
+    }
 }

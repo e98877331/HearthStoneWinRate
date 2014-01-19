@@ -156,12 +156,14 @@ public class DBHelper extends SQLiteOpenHelper {
 					sql = sql.substring(0, sql.length() - 1);
 					sql += ")";
 					db.execSQL(sql);
+
 				}
 				
-//				  String sqlString = "ALTER TABLE Hero_List ADD COLUMN Position INTEGER ASC AUTOINCREMENT";
-//				  db.execSQL(sqlString);
-//				  sqlString = "UPDATE Hero_List SET Position  = Role_ID";
-//				  db.execSQL(sqlString);
+				//adding Position column in Hero_List TABLE
+				  String sqlString = "ALTER TABLE Hero_List ADD COLUMN Position INTEGER";
+				  db.execSQL(sqlString);
+				  sqlString = "UPDATE Hero_List SET Position  = Role_ID";
+				  db.execSQL(sqlString);
 			}
 			success = true;
 			

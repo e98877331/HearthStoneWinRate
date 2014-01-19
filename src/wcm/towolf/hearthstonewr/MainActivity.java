@@ -178,6 +178,7 @@ public class MainActivity extends Activity {
 		menu.setHeaderTitle(R.string.main_context_menu_title);
 		// for (int i = 0; i<5; i++) {
 		menu.add(Menu.NONE, 0, 0, R.string.main_context_menu_delete_btn);
+		menu.add(Menu.NONE, 1, 1, "up");
 		// }
 	}
 
@@ -193,6 +194,14 @@ public class MainActivity extends Activity {
 			deleteRoleDataFromList(info.position);
 			reloadListData();
 
+		}
+		else if(menuItemIndex == 1)
+		{
+			int swapTarget = info.position -1;
+			if(swapTarget == -1)
+				swapTarget = 0;
+			mDataProvider.swapPostion(mData.get(info.position), mData.get(swapTarget));
+			reloadListData();
 		}
 
 		// Toast.makeText(getApplicationContext(),String.format("Selected menuItemIndex %d for info %d",

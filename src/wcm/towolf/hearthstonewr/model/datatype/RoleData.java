@@ -19,6 +19,7 @@ public class RoleData implements IDataEntitiy{
 	public int roleID;
 	public int roleType;
 	public String roleName;
+	public int position;
 	public float winRate;
 
 	public int win, count;

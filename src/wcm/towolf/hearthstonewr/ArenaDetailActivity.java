@@ -25,9 +25,9 @@ public class ArenaDetailActivity extends Activity {
 		tv.setText("Coming \nS       n");
 		tv.setTextSize(TypedValue.COMPLEX_UNIT_PX,rl.getRatioFixer().getRealValue(100));
 		
-		LayoutParams lp = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-		lp.addRule(RelativeLayout.CENTER_IN_PARENT);
-		rl.addView(tv,lp);
+//		LayoutParams lp = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+//		lp.addRule(RelativeLayout.CENTER_IN_PARENT);
+		rl.addView(tv,LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT,200,505);
 		
 		ImageView iv = new ImageView(this);
 		iv.setImageResource(R.drawable.common_infinity);
@@ -37,7 +37,7 @@ public class ArenaDetailActivity extends Activity {
 		
 		LightingColorFilter lcf = new LightingColorFilter( 0, 0xFFFFFFFF); 
 		iv.setColorFilter(lcf);
-		rl.addView(iv,170,170,tv.getLeft()+260,tv.getTop()+595);
+		rl.addView(iv,170,170,tv.getLeft()+265,tv.getTop()+600);
 		
 		
 		ObjectAnimator animCR1 = ObjectAnimator.ofFloat(iv, "rotation", 360.0f);

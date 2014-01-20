@@ -48,11 +48,10 @@
     <string name="open_export_csv">匯出CSV (Coming SOOOON!!)</string>
     
         <string name="update_note_title">v2.0 更新說明</string>
-    <string name="update_note_content">v2.0.1
+    <string name="update_note_content">v2.0.1\n
 1.增加競技場模式\n
 2.普通模式下增加移動排組順序功能\n
-3.資料褲檔案現在位於android手機資料夾底下的 "HearthStoneWR/db/MyDatabase ,有需要的話可自行備份,\n
-   程式開啓時將會讀取這個位置的檔案.\n
+3.資料褲檔案現在位於android手機資料夾底下的 "HearthStoneWR/db/MyDatabase ,有需要的話可自行備份,程式開啓時將會讀取這個位置的檔案.\n
 4.增強效能</string>
     
 

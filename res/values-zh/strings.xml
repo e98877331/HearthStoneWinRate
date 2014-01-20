@@ -7,6 +7,7 @@
     <string name="menu_settings">Settings</string>
     <string name="main_context_menu_title">選項</string>
     <string name="main_context_menu_delete_btn">刪除此筆資料</string>
+    <string name="main_context_menu_move_up">向上移動一格</string>
     <string name="main_create_btn">建立牌組</string>
     <string name="main_create_view_title">建立牌組</string>
     <string name="main_create_view_name">牌組名稱</string>

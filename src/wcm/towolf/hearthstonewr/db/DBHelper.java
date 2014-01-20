@@ -35,6 +35,7 @@ public class DBHelper extends SQLiteOpenHelper {
 		File dir = new File(schema.dbLocation);
 		boolean b = dir.mkdirs();
 
+		//if upgrade from version below v1.5, copy db file from internal storage to exernal storage
 		File dbFile = new File(schema.dbName);
 		if (!dbFile.exists()) {
 			File oldDBFile = new File(context.getDatabasePath("MyDatabase")
@@ -43,6 +44,9 @@ public class DBHelper extends SQLiteOpenHelper {
 
 				try {
 					FileUtility.copyFile(oldDBFile, dbFile);
+					//backup old file
+					File dbBackup = new File(schema.dbName + "UpgradeBackup");
+					FileUtility.copyFile(oldDBFile, dbBackup);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

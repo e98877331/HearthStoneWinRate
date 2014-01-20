@@ -178,7 +178,7 @@ public class MainActivity extends Activity {
 		menu.setHeaderTitle(R.string.main_context_menu_title);
 		// for (int i = 0; i<5; i++) {
 		menu.add(Menu.NONE, 0, 0, R.string.main_context_menu_delete_btn);
-		menu.add(Menu.NONE, 1, 1, "up");
+		menu.add(Menu.NONE, 1, 1, R.string.main_context_menu_move_up);
 		// }
 	}
 

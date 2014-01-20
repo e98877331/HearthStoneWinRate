@@ -12,13 +12,15 @@ public class BasicClickEffect  implements OnTouchListener{
 		@Override
 		public boolean onTouch(View v, MotionEvent event) {
 			// TODO Auto-generated method stub
+			
 			if (event.getAction() == MotionEvent.ACTION_DOWN)
 				v.getBackground().setColorFilter(
 						new LightingColorFilter(0xFF999999, 0xFF000000));
-			else 
+			else if(event.getAction() ==MotionEvent.ACTION_UP) 
 				v.getBackground().clearColorFilter();
 			return false;
-		}
+		}		
+		
 		
 		
 		static public void setClickEffect(Button btn)

@@ -12,13 +12,14 @@ import wcm.towolf.hearthstonewr.view.arena.ArenaView;
 import wcm.towolf.hearthstonewr.view.arena.ArenaViewListItem;
 import wcm.towolf.hearthstonewr.view.arena.NewEventPanel;
 import android.app.Activity;
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -46,7 +47,8 @@ public class ArenaActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-
+		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+		
 		final ArenaEventDataProvider provider = new ArenaEventDataProvider();
 
 		final Random rd = new Random();
@@ -108,6 +110,17 @@ public class ArenaActivity extends Activity {
 
 
 		mTopPanel = mView.topPanel;
+		mTopPanel.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				Intent i = new Intent(ArenaActivity.this, ArenaDetailActivity.class);
+				// i.putExtra("RoleData",mAdapter.getItem(arg2));
+				startActivity(i);
+
+			}
+		});
 
 		setNewEventPanel();
 		
@@ -291,7 +304,7 @@ public class ArenaActivity extends Activity {
 
 			     ArenaEventData rd = mData.get(mData.size() - index -1);
 
-			    Log.e("ArenaActivity","Event ID = "+Integer.toString(rd.eventID));
+			   // Log.e("ArenaActivity","Event ID = "+Integer.toString(rd.eventID));
 			     
 				((ArenaViewListItem) convertView).setData(rd);
 				if(rd.isFinished())

@@ -42,8 +42,15 @@
     <string name="arena_newevent_now_playing">Now Playing</string>
     <string name="arena_newevent_new_event">New Round</string>
     <string name="arena_which_hero">Choose Your Hero</string>
-        <string name="open_normal_game">Normal Game</string>
+    <string name="open_normal_game">Normal Game</string>
     <string name="open_arena_game">Arena</string>
     <string name="open_export_csv">"Export csv (Coming SOOOOON!!)"</string>
+    
+    <string name="update_note_title">v2.0 Patch Note</string>
+    <string name="update_note_content">1.Add arena mode!!\n 
+2.You can now change deck position in normal mode.\n
+3.Database file is now locate at "HearthStoneWR/db/MyDatabase" on your device. You can backup it if necessary.\n
+4.Performance improvement\n</string>
+    
 
 </resources>

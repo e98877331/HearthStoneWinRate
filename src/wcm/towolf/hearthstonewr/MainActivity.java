@@ -6,6 +6,7 @@ import java.util.Random;
 import wcm.towolf.hearthstonewr.db.DBSchema;
 import wcm.towolf.hearthstonewr.model.RoleDataProvider;
 import wcm.towolf.hearthstonewr.model.datatype.RoleData;
+import wcm.towolf.hearthstonewr.view.MyAlertDialog;
 import wcm.towolf.hearthstonewr.view.TopPanel;
 import wcm.towolf.hearthstonewr.view.HeroChooseView.ClickCallBack;
 import wcm.towolf.heartstonewr.main.CreateDeckDialog;
@@ -68,6 +69,8 @@ public class MainActivity extends Activity {
 				WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN
 						| WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
+		
+		
 		mDataProvider = new RoleDataProvider();
 
 		mView = new MainView(this);

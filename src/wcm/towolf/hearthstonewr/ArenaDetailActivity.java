@@ -1,6 +1,7 @@
 package wcm.towolf.hearthstonewr;
 
 import itri.u9lab.towolf.ratiofixer.RatioRelativeLayout;
+import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.graphics.LightingColorFilter;
@@ -38,6 +39,12 @@ public class ArenaDetailActivity extends Activity {
 		iv.setColorFilter(lcf);
 		rl.addView(iv,170,170,tv.getLeft()+260,tv.getTop()+595);
 		
+		
+		ObjectAnimator animCR1 = ObjectAnimator.ofFloat(iv, "rotation", 360.0f);
+		animCR1.setDuration(2000);
+		animCR1.setRepeatCount(ObjectAnimator.INFINITE);
+		animCR1.setInterpolator(null);
+		animCR1.start();
 		
 	}
 }

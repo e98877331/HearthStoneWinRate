@@ -6,13 +6,14 @@ import java.io.IOException;
 import wcm.towolf.hearthstonewr.util.FileUtility;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.media.MediaScannerConnection;
 import android.net.Uri;
+import android.util.Log;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -35,7 +36,8 @@ public class DBHelper extends SQLiteOpenHelper {
 		File dir = new File(schema.dbLocation);
 		boolean b = dir.mkdirs();
 
-		//if upgrade from version below v1.5, copy db file from internal storage to exernal storage
+		// if upgrade from version below v1.5, copy db file from internal
+		// storage to exernal storage
 		File dbFile = new File(schema.dbName);
 		if (!dbFile.exists()) {
 			File oldDBFile = new File(context.getDatabasePath("MyDatabase")
@@ -44,7 +46,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
 				try {
 					FileUtility.copyFile(oldDBFile, dbFile);
-					//backup old file
+					// backup old file
 					File dbBackup = new File(schema.dbName + "UpgradeBackup");
 					FileUtility.copyFile(oldDBFile, dbBackup);
 				} catch (IOException e) {
@@ -56,8 +58,16 @@ public class DBHelper extends SQLiteOpenHelper {
 
 		}
 
-		context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_MOUNTED, Uri
-				.parse("file://" + schema.dbLocation)));
+		MediaScannerConnection.scanFile(context, new String[] { dbFile.toString() }, null,
+				new MediaScannerConnection.OnScanCompletedListener() {
+					@Override
+					public void onScanCompleted(final String path, final Uri uri) {
+
+					}
+				});
+
+		// context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_MOUNTED, Uri
+		// .parse("file://" + schema.dbLocation)));
 
 		if (mInstance == null)
 			mInstance = new DBHelper(context, schema);
@@ -148,10 +158,9 @@ public class DBHelper extends SQLiteOpenHelper {
 
 			boolean success = false;
 
-
-			//Create DBTBArenaEventList.TABLE,DBTBArenaGames.TABLE for db version3
-			if(oldVersion < 3)
-			{
+			// Create DBTBArenaEventList.TABLE,DBTBArenaGames.TABLE for db
+			// version3
+			if (oldVersion < 3) {
 				for (int i = 2; i < TableNames.length; i++) {
 					String sql = "CREATE TABLE " + TableNames[i] + " (";
 					for (int j = 0; j < FieldNames[i].length; j++) {
@@ -162,15 +171,15 @@ public class DBHelper extends SQLiteOpenHelper {
 					db.execSQL(sql);
 
 				}
-				
-				//adding Position column in Hero_List TABLE
-				  String sqlString = "ALTER TABLE Hero_List ADD COLUMN Position INTEGER";
-				  db.execSQL(sqlString);
-				  sqlString = "UPDATE Hero_List SET Position  = Role_ID";
-				  db.execSQL(sqlString);
+
+				// adding Position column in Hero_List TABLE
+				String sqlString = "ALTER TABLE Hero_List ADD COLUMN Position INTEGER";
+				db.execSQL(sqlString);
+				sqlString = "UPDATE Hero_List SET Position  = Role_ID";
+				db.execSQL(sqlString);
 			}
 			success = true;
-			
+
 			if (success) {
 				db.setTransactionSuccessful();
 			}

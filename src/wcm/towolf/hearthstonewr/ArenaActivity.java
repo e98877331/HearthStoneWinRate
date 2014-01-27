@@ -3,6 +3,8 @@ package wcm.towolf.hearthstonewr;
 import java.util.ArrayList;
 import java.util.Random;
 
+import com.google.analytics.tracking.android.EasyTracker;
+
 import wcm.towolf.hearthstonewr.model.ArenaEventDataProvider;
 import wcm.towolf.hearthstonewr.model.datatype.arena.ArenaEventData;
 import wcm.towolf.hearthstonewr.view.HeroChooseDialog;
@@ -49,7 +51,7 @@ public class ArenaActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		
-		final ArenaEventDataProvider provider = new ArenaEventDataProvider();
+		/*final ArenaEventDataProvider provider = new ArenaEventDataProvider();
 
 		final Random rd = new Random();
 
@@ -99,7 +101,7 @@ public class ArenaActivity extends Activity {
 		rl.addView(testBtn);
 		rl.addView(testBtn2);
 		rl.addView(testBtn3);
-		// /////////////
+		//*/
 
 		mProvider = new ArenaEventDataProvider();
 		
@@ -141,6 +143,20 @@ public class ArenaActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onResume();
 		
+	}
+	
+	@Override
+	protected void onStart() {
+		// TODO Auto-generated method stub
+		super.onStart();
+		
+		EasyTracker.getInstance(this).activityStart(this);
+	}
+	@Override
+	protected void onStop() {
+		// TODO Auto-generated method stub
+		super.onStop();
+		EasyTracker.getInstance(this).activityStop(this); 
 	}
 	
 	@Override

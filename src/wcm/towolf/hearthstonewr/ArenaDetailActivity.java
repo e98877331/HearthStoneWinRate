@@ -1,5 +1,7 @@
 package wcm.towolf.hearthstonewr;
 
+import com.google.analytics.tracking.android.EasyTracker;
+
 import itri.u9lab.towolf.ratiofixer.RatioRelativeLayout;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
@@ -46,5 +48,19 @@ public class ArenaDetailActivity extends Activity {
 		animCR1.setInterpolator(null);
 		animCR1.start();
 		
+	}
+	
+	@Override
+	protected void onStart() {
+		// TODO Auto-generated method stub
+		super.onStart();
+		
+		EasyTracker.getInstance(this).activityStart(this);
+	}
+	@Override
+	protected void onStop() {
+		// TODO Auto-generated method stub
+		super.onStop();
+		EasyTracker.getInstance(this).activityStop(this); 
 	}
 }

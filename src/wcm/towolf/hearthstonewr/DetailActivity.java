@@ -4,6 +4,8 @@ import itri.u9lab.towolf.ratiofixer.RatioFixer;
 
 import java.text.DecimalFormat;
 
+import com.google.analytics.tracking.android.EasyTracker;
+
 import wcm.towolf.hearthstonewr.model.RoleDataProvider;
 import wcm.towolf.hearthstonewr.model.datatype.RoleData;
 import wcm.towolf.hearthstonewr.model.datatype.RoleType;
@@ -99,6 +101,20 @@ public class DetailActivity extends Activity {
 				mRole.changeRoleName(name);
 			}
 		}
+	}
+	
+	@Override
+	protected void onStart() {
+		// TODO Auto-generated method stub
+		super.onStart();
+		
+		EasyTracker.getInstance(this).activityStart(this);
+	}
+	@Override
+	protected void onStop() {
+		// TODO Auto-generated method stub
+		super.onStop();
+		EasyTracker.getInstance(this).activityStop(this); 
 	}
 	
 	private void initUI() {

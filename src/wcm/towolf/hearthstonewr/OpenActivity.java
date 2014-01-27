@@ -1,5 +1,7 @@
 package wcm.towolf.hearthstonewr;
 
+import com.google.analytics.tracking.android.EasyTracker;
+
 import wcm.towolf.hearthstonewr.view.HeroChooseDialog;
 import wcm.towolf.hearthstonewr.view.MyAlertDialog;
 import wcm.towolf.hearthstonewr.view.open.OpenView;
@@ -77,7 +79,19 @@ public class OpenActivity extends Activity {
 		
 	}
 	
-
+	@Override
+	protected void onStart() {
+		// TODO Auto-generated method stub
+		super.onStart();
+		
+		EasyTracker.getInstance(this).activityStart(this);
+	}
+	@Override
+	protected void onStop() {
+		// TODO Auto-generated method stub
+		super.onStop();
+		EasyTracker.getInstance(this).activityStop(this); 
+	}
 	
 	public void showPatchNoteAtFirstTime()
 	{

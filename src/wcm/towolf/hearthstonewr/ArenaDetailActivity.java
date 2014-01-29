@@ -1,18 +1,24 @@
 package wcm.towolf.hearthstonewr;
 
 import itri.u9lab.towolf.ratiofixer.RatioRelativeLayout;
+import wcm.towolf.hearthstonewr.view.arena.ArenaDetailView;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.LightingColorFilter;
 import android.os.Bundle;
 import android.util.TypedValue;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 
 public class ArenaDetailActivity extends Activity {
+	
+	ArenaDetailView mView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +39,7 @@ public class ArenaDetailActivity extends Activity {
 		iv.setImageResource(R.drawable.common_infinity);
 			
 		
-		rl.setToContentView(this);
+//		rl.setToContentView(this);
 		
 		LightingColorFilter lcf = new LightingColorFilter( 0, 0xFFFFFFFF); 
 		iv.setColorFilter(lcf);
@@ -46,5 +52,17 @@ public class ArenaDetailActivity extends Activity {
 		animCR1.setInterpolator(null);
 		animCR1.start();
 		
+		mView = new ArenaDetailView(this);
+		mView.setToContentView(this);
+		
+		mView.listView.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position,	long id) {
+				Intent intent = new Intent(ArenaDetailActivity.this, ArenaDetailPerClassActivity.class);
+				intent.putExtra("position", position);
+				startActivity(intent);
+				overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+			}
+		});
 	}
 }

@@ -57,6 +57,7 @@
             </intent-filter>
         </activity>
         <activity android:name="ArenaDetailActivity"></activity>
+        <activity android:name="ArenaDetailPerClassActivity"></activity>
     </application>
 
 </manifest>

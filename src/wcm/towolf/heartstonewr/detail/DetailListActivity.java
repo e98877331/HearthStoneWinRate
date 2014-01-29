@@ -16,7 +16,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
@@ -24,12 +23,10 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 public class DetailListActivity extends Activity {
 	ArrayList<HashMap<String, String>> list = new ArrayList<HashMap<String, String>>();
-	private SimpleAdapter adapter;
 	
 	ArrayList<ListItem> list2 = new ArrayList<ListItem>();
 	
@@ -41,17 +38,8 @@ public class DetailListActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-//		for (int i = 0; i < mPlaces.length; i++) {
-//			HashMap<String, String> item = new HashMap<String, String>();
-//			item.put("food", mFoods[i]);
-//			item.put("place", mPlaces[i]);
-//			list.add(item);
-//		}
-		
-		//
 		mView = new MyView(this);
 		mView.setToContentView(this);
-		//
 		
 		mRole = RoleData.getPassingData();
 		for (int i = 0; i < 9; i++) {
@@ -70,29 +58,13 @@ public class DetailListActivity extends Activity {
 			}
 			item.put("result", sb.toString());
 			
-//			item.put("result", "win rate: " + mRole.getRoleEnemyData(i).getWinRate());
 			list.add(item);
 			
 			list2.add(new ListItem(getResources().getString(RoleType.getRoleTypeString(i)), sb.toString()));
-//			list2.add(new ListItem("aaa", "bbb"));
-//			list2.add(new ListItem("aaa", "bbb"));
-//			list2.add(new ListItem("aaa", "bbb"));
-//			list2.add(new ListItem("aaa", "bbb"));
-//			list2.add(new ListItem("aaa", "bbb"));
-//			list2.add(new ListItem("aaa", "bbb"));
 		}
 
-		adapter = new SimpleAdapter(this, list,
-				android.R.layout.simple_list_item_2, new String[] { "type",
-						"result" }, new int[] { android.R.id.text1,
-						android.R.id.text2 });
 
 		mView.mListView.setAdapter(new DetailListAdapter(list2));
-		
-//		mView.mListView.setAdapter(adapter);
-//		setListAdapter(adapter);
-
-//		getListView().setTextFilterEnabled(true);
 		
 	}
 	

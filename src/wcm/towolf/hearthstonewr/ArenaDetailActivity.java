@@ -2,13 +2,11 @@ package wcm.towolf.hearthstonewr;
 
 import itri.u9lab.towolf.ratiofixer.RatioRelativeLayout;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 import wcm.towolf.hearthstonewr.model.ArenaEventDataProvider;
 import wcm.towolf.hearthstonewr.model.datatype.RoleType;
 import wcm.towolf.hearthstonewr.model.datatype.arena.ArenaHeroDetailData;
-import wcm.towolf.hearthstonewr.model.datatype.arena.ArenaHeroDetailData.ArenaVSHeroData;
 import wcm.towolf.hearthstonewr.view.arena.ArenaDetailView;
 import android.animation.ObjectAnimator;
 import android.app.Activity;

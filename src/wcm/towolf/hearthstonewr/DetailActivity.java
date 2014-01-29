@@ -1,40 +1,26 @@
 package wcm.towolf.hearthstonewr;
 
-import itri.u9lab.towolf.ratiofixer.RatioFixer;
-
 import java.text.DecimalFormat;
-
-import com.google.analytics.tracking.android.EasyTracker;
 
 import wcm.towolf.hearthstonewr.model.RoleDataProvider;
 import wcm.towolf.hearthstonewr.model.datatype.RoleData;
-import wcm.towolf.hearthstonewr.model.datatype.RoleType;
 import wcm.towolf.hearthstonewr.view.HeroChooseDialog;
-import wcm.towolf.hearthstonewr.view.MyAlertDialog;
 import wcm.towolf.hearthstonewr.view.HeroChooseView.ClickCallBack;
 import wcm.towolf.heartstonewr.detail.DetailListActivity;
 import wcm.towolf.heartstonewr.detail.DetailView;
 import wcm.towolf.heartstonewr.detail.DialogActivity;
-import wcm.towolf.heartstonewr.detail.WinLoseView;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.LightingColorFilter;
 import android.os.Bundle;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.Menu;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.Window;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+
+import com.google.analytics.tracking.android.EasyTracker;
 
 public class DetailActivity extends Activity {
 	DetailView dView;

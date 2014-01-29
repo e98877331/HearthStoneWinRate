@@ -1,15 +1,11 @@
 package wcm.towolf.hearthstonewr.view.arena;
 
 import itri.u9lab.towolf.ratiofixer.RatioFixer;
-
-import java.text.DecimalFormat;
-
 import wcm.towolf.hearthstonewr.R;
 import wcm.towolf.hearthstonewr.model.datatype.RoleType;
 import wcm.towolf.hearthstonewr.model.datatype.arena.ArenaEventData;
 import android.content.Context;
 import android.graphics.Color;
-import android.text.TextUtils.TruncateAt;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.widget.ImageView;

@@ -1,20 +1,19 @@
 package wcm.towolf.hearthstonewr.view.arena;
 
+import itri.u9lab.towolf.ratiofixer.RatioFixer;
+import itri.u9lab.towolf.ratiofixer.RatioRelativeLayout;
+
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-import itri.u9lab.towolf.ratiofixer.RatioFixer;
-import itri.u9lab.towolf.ratiofixer.RatioRelativeLayout;
 import wcm.towolf.hearthstonewr.R;
 import wcm.towolf.hearthstonewr.model.ArenaEventDataProvider;
 import wcm.towolf.hearthstonewr.model.datatype.RoleType;
 import wcm.towolf.hearthstonewr.model.datatype.arena.ArenaHeroDetailData;
 import wcm.towolf.hearthstonewr.model.datatype.arena.ArenaHeroDetailData.ArenaVSHeroData;
-import wcm.towolf.hearthstonewr.view.TopPanel;
 import android.content.Context;
 import android.graphics.Color;
 import android.text.TextUtils.TruncateAt;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
@@ -28,10 +27,6 @@ import android.widget.TableLayout;
 import android.widget.TextView;
 
 public class ArenaDetailPerClassView extends RatioRelativeLayout{
-
-	public TopPanel topPanel;
-	public NewEventPanel newEventPanel;
-	
 	public ListView listView;
 	
 	RatioFixer mRf;
@@ -42,13 +37,19 @@ public class ArenaDetailPerClassView extends RatioRelativeLayout{
 		mRf  = this.getRatioFixer();
 		mContext = context;
 		
+		RelativeLayout relativeLayout = new RelativeLayout(context);
+		relativeLayout.setBackgroundResource(R.drawable.rect_label);
+		this.addView(relativeLayout, 768, 200, 0, 0);
+		
 		TextView titleTextView = new TextView(context);
 		titleTextView.setText(getResources().getString(R.string.arena_vs_each_hero));
 		titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, 4.45f * 20.0f * mRf.getRatio());
 		titleTextView.setTextColor(Color.parseColor("#F3E5AB"));
-		titleTextView.setBackgroundResource(R.drawable.rect_label);
+//		titleTextView.setBackgroundResource(R.drawable.rect_label);
 		titleTextView.setGravity(Gravity.CENTER);
-		this.addView(titleTextView, 768, 200, 0, 0);
+		RelativeLayout.LayoutParams titleParams = new RelativeLayout.LayoutParams(mRf.getRealValue(568), mRf.getRealValue(200));
+		titleParams.setMargins(mRf.getRealValue(200), 0, 0, 0);
+		relativeLayout.addView(titleTextView, titleParams);
 		titleTextView.setEllipsize(TruncateAt.MARQUEE);
 		titleTextView.setSelected(true);
 		titleTextView.setSingleLine(true);
@@ -70,16 +71,13 @@ public class ArenaDetailPerClassView extends RatioRelativeLayout{
     		list.add(new RowView(context, vsd));
 //    	   Log.e("TAG","vs:" + RoleType.getDebugString(vsd.getVSRoleType(),this)+ " Win: " + vsd.getWins()+" Total:"+ vsd.getTotal());
     	}
-//		list.add(new RowView(context, R.drawable.paladin, "1", "2", "3%"));
-//		list.add(new RowView(context, R.drawable.priest, "4", "5", "6%"));
-//		list.add(new RowView(context, R.drawable.warrior, "1", "2", "3%"));
-//		list.add(new RowView(context, R.drawable.warlock, "1", "2", "3%"));
-//		list.add(new RowView(context, R.drawable.hunter, "1", "2", "3%"));
-//		list.add(new RowView(context, R.drawable.mage, "1", "2", "3%"));
-//		list.add(new RowView(context, R.drawable.druid, "1", "2", "3%"));
-//		list.add(new RowView(context, R.drawable.shaman, "1", "2", "3%"));
-//		list.add(new RowView(context, R.drawable.rogue, "1", "2", "3%"));
 		listView.setAdapter(new ArenaDetailListAdapter(list));
+
+        ImageView classImageView = new ImageView(context);
+		classImageView.setBackgroundResource(RoleType.getRoleRes(herodata.get(position - 1).getRoleType()));
+		RelativeLayout.LayoutParams classParams = new RelativeLayout.LayoutParams(mRf.getRealValue(120), mRf.getRealValue(180));
+		classParams.setMargins(mRf.getRealValue(70), mRf.getRealValue(10), 0, 0);
+		relativeLayout.addView(classImageView, classParams);
 	}
 	
 	class ArenaDetailListAdapter extends BaseAdapter {

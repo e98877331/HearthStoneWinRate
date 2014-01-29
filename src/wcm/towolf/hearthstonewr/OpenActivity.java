@@ -1,8 +1,5 @@
 package wcm.towolf.hearthstonewr;
 
-import com.google.analytics.tracking.android.EasyTracker;
-
-import wcm.towolf.hearthstonewr.view.HeroChooseDialog;
 import wcm.towolf.hearthstonewr.view.MyAlertDialog;
 import wcm.towolf.hearthstonewr.view.open.OpenView;
 import android.app.Activity;
@@ -12,7 +9,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.ShareActionProvider;
+
+import com.google.analytics.tracking.android.EasyTracker;
 
 public class OpenActivity extends Activity {
 

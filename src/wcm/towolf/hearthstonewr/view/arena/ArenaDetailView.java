@@ -1,22 +1,20 @@
 package wcm.towolf.hearthstonewr.view.arena;
 
-import java.io.Serializable;
+import itri.u9lab.towolf.ratiofixer.RatioFixer;
+import itri.u9lab.towolf.ratiofixer.RatioRelativeLayout;
+
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-import itri.u9lab.towolf.ratiofixer.RatioFixer;
-import itri.u9lab.towolf.ratiofixer.RatioRelativeLayout;
 import wcm.towolf.hearthstonewr.R;
 import wcm.towolf.hearthstonewr.model.ArenaEventDataProvider;
 import wcm.towolf.hearthstonewr.model.datatype.RoleType;
 import wcm.towolf.hearthstonewr.model.datatype.arena.ArenaHeroDetailData;
 import wcm.towolf.hearthstonewr.model.datatype.arena.ArenaHeroDetailData.ArenaVSHeroData;
 import wcm.towolf.hearthstonewr.view.TopPanel;
-import android.R.integer;
 import android.content.Context;
 import android.graphics.Color;
 import android.text.TextUtils.TruncateAt;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
@@ -158,6 +156,7 @@ public class ArenaDetailView extends RatioRelativeLayout{
 		TextView winTimes;
 		TextView winRounds;
 		TextView winRate;
+		ImageView arrowImageView;
 		
 //		ArenaHeroDetailData hero;
 		public ArrayList<ArenaVSHeroData> arenaVSHeroDatas;
@@ -188,16 +187,19 @@ public class ArenaDetailView extends RatioRelativeLayout{
 			winRate.setGravity(Gravity.CENTER);
 			winRate.setLayoutParams(new TableLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, 1.0f));
 			this.addView(winRate);
+			
+			arrowImageView = new ImageView(context);
+//			arrowImageView.setImageResource(R.drawable.arena_arrow);
+			TableLayout.LayoutParams lp = new TableLayout.LayoutParams(mRf.getRealValue(30), mRf.getRealValue(30), 1.0f);
+			lp.topMargin = mRf.getRealValue(40);
+			arrowImageView.setLayoutParams(lp);
+			this.addView(arrowImageView);
 		}
 		
 		public RowView(Context context, ArenaHeroDetailData hero) {
 			super(context);
 			
 			arenaVSHeroDatas = hero.getVsHeroList();
-			
-//			this.setLayoutParams(new LinearLayout.LayoutParams(mRf.getRealValue(768), mRf.getRealValue(103)));
-//			LinearLayout.LayoutParams lp = (LayoutParams) this.getLayoutParams();
-//			lp.height = mRf.getRealValue(103);
 			
 			int imageID = RoleType.getRoleRes(hero.getRoleType());
 			int times = hero.getWins();
@@ -234,6 +236,13 @@ public class ArenaDetailView extends RatioRelativeLayout{
 			winRate.setGravity(Gravity.CENTER);
 			winRate.setLayoutParams(new TableLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, 1.0f));
 			this.addView(winRate);
+			
+			arrowImageView = new ImageView(context);
+			arrowImageView.setImageResource(R.drawable.arena_arrow);
+			TableLayout.LayoutParams lp = new TableLayout.LayoutParams(mRf.getRealValue(30), mRf.getRealValue(30), 1.0f);
+			lp.topMargin = mRf.getRealValue(40);
+			arrowImageView.setLayoutParams(lp);
+			this.addView(arrowImageView);
 		}
 		
 	}

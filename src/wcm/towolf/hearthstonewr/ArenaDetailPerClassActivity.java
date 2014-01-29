@@ -1,18 +1,12 @@
 package wcm.towolf.hearthstonewr;
 
-import java.util.ArrayList;
-
-import com.google.analytics.tracking.android.EasyTracker;
-
-import wcm.towolf.hearthstonewr.model.ArenaEventDataProvider;
-import wcm.towolf.hearthstonewr.model.datatype.RoleType;
-import wcm.towolf.hearthstonewr.model.datatype.arena.ArenaHeroDetailData;
-import wcm.towolf.hearthstonewr.model.datatype.arena.ArenaHeroDetailData.ArenaVSHeroData;
 import wcm.towolf.hearthstonewr.view.arena.ArenaDetailPerClassView;
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.Log;
+
+import com.google.analytics.tracking.android.EasyTracker;
 
 public class ArenaDetailPerClassActivity extends Activity {
 	

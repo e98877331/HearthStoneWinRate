@@ -1,9 +1,6 @@
 package wcm.towolf.hearthstonewr;
 
 import java.util.ArrayList;
-import java.util.Random;
-
-import com.google.analytics.tracking.android.EasyTracker;
 
 import wcm.towolf.hearthstonewr.model.ArenaEventDataProvider;
 import wcm.towolf.hearthstonewr.model.datatype.arena.ArenaEventData;
@@ -26,9 +23,9 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.ListView;
+
+import com.google.analytics.tracking.android.EasyTracker;
 
 public class ArenaActivity extends Activity {
 	ArenaView mView;

@@ -1,5 +1,6 @@
 package wcm.towolf.hearthstonewr;
 
+import wcm.towolf.hearthstonewr.test.ArenaTest;
 import wcm.towolf.hearthstonewr.view.MyAlertDialog;
 import wcm.towolf.hearthstonewr.view.open.OpenView;
 import android.app.Activity;
@@ -59,9 +60,11 @@ public class OpenActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent i = new Intent(OpenActivity.this, ExportActivity.class);
-				// i.putExtra("RoleData",mAdapter.getItem(arg2));
-				startActivity(i);
+//				Intent i = new Intent(OpenActivity.this, ExportActivity.class);
+//				// i.putExtra("RoleData",mAdapter.getItem(arg2));
+//				startActivity(i);
+				
+				ArenaTest.addTestEvents();
 			}
 		});
 		mView.setToContentView(this);

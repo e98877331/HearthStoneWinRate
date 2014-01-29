@@ -14,6 +14,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
@@ -102,7 +103,6 @@ public class ArenaActivity extends Activity {
 
 		mProvider = new ArenaEventDataProvider();
 		
-		mData = mProvider.getAllArenaEventData();
 		
 		mView = new ArenaView(this);
 		
@@ -121,12 +121,12 @@ public class ArenaActivity extends Activity {
 			}
 		});
 
-		setNewEventPanel();
 		
 		mListView = mView.listView;
         //mListView.setAdapter(new MainAdapter());
 		reloadListData();
 		
+		setNewEventPanel();
 		
 		// for onLongClick delete item purpose
 		registerForContextMenu(mListView);
@@ -269,6 +269,9 @@ public class ArenaActivity extends Activity {
 	}
 	
 	public  void reloadListData() {
+		
+	//	long tt = System.currentTimeMillis();
+
 		mData = mProvider.getAllArenaEventData();
    mTopPanel.update(mData);
 		if (mAdapter == null) {
@@ -277,6 +280,7 @@ public class ArenaActivity extends Activity {
 		}
 		mAdapter.notifyDataSetChanged();
 
+	//	Log.e("ArenaActivity", "CYYRUNTimeReload: "+Long.toString(System.currentTimeMillis() - tt));
 	}
 	
 	

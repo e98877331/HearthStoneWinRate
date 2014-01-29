@@ -1,6 +1,7 @@
 package wcm.towolf.hearthstonewr.model.datatype;
 
 import wcm.towolf.hearthstonewr.R;
+import android.content.Context;
 
 public class RoleType {
 	
@@ -14,6 +15,8 @@ public class RoleType {
 	public static final int SHAMAN = 7;
 	public static final int WARLOCK = 8;
 	//worrior(0),hunter(1);
+	
+	
 	
 	public static int getRoleTypeString(int type) {
 		switch(type) {
@@ -68,4 +71,9 @@ public class RoleType {
 
 	}
 
+	public static String getDebugString(int roleType,Context c)
+	{
+		return c.getResources().getString(getRoleTypeString(roleType));
+//		getRoleTypeString(roleType);
+	}
 }

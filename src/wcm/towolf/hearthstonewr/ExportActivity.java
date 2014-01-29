@@ -27,20 +27,14 @@ import android.widget.TextView;
 
 import com.google.analytics.tracking.android.EasyTracker;
 
-public class ArenaDetailActivity extends Activity {
-	
-	ArenaDetailView mView;
+public class ExportActivity extends Activity {
 
-	final static String TAG = "ArenaDetailAcitvity";
+	final static String TAG = "CsvAcitvity";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-		
-		
-		CyyTest();
-	    
 		
 		RatioRelativeLayout rl = new RatioRelativeLayout(this);
 	
@@ -58,7 +52,7 @@ public class ArenaDetailActivity extends Activity {
 		iv.setImageResource(R.drawable.common_infinity);
 			
 		
-//		rl.setToContentView(this);
+		rl.setToContentView(this);
 		
 		LightingColorFilter lcf = new LightingColorFilter( 0, 0xFFFFFFFF); 
 		iv.setColorFilter(lcf);
@@ -70,19 +64,6 @@ public class ArenaDetailActivity extends Activity {
 		animCR1.setRepeatCount(ObjectAnimator.INFINITE);
 		animCR1.setInterpolator(null);
 		animCR1.start();
-		
-		mView = new ArenaDetailView(this);
-		mView.setToContentView(this);
-		
-		mView.listView.setOnItemClickListener(new OnItemClickListener() {
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view, int position,	long id) {
-				Intent intent = new Intent(ArenaDetailActivity.this, ArenaDetailPerClassActivity.class);
-				intent.putExtra("position", position);
-				startActivity(intent);
-				overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-			}
-		});
 	}
 	
 	@Override
@@ -97,21 +78,5 @@ public class ArenaDetailActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onStop();
 		EasyTracker.getInstance(this).activityStop(this); 
-	}
-	
-	public void CyyTest()
-	{
-	    long tt = System.currentTimeMillis();
-		ArenaEventDataProvider provider = new ArenaEventDataProvider();
-		ArrayList<ArenaHeroDetailData> herodata =  provider.getAllArenaHeroData();
-	    for(ArenaHeroDetailData hero: herodata)
-	    {
-	    	Log.e(TAG,"HeroType: "+ RoleType.getDebugString(hero.getRoleType(),this) + " Win:"+hero.getWins()+" Total:"+hero.getTotal());
-	    	for(ArenaHeroDetailData.ArenaVSHeroData vsd : hero.getVsHeroList())
-	    	{
-	    	   Log.e(TAG,"vs:" + RoleType.getDebugString(vsd.getVSRoleType(),this)+ " Win: " + vsd.getWins()+" Total:"+ vsd.getTotal());
-	    	}
-	    }
-		Log.e(TAG,"Run time:" +Long.toString(System.currentTimeMillis() - tt));
 	}
 }

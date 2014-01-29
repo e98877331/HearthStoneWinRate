@@ -6,6 +6,7 @@ import wcm.towolf.hearthstonewr.db.DBTBArenaEventList;
 import wcm.towolf.hearthstonewr.db.DBTBArenaGames;
 import wcm.towolf.hearthstonewr.model.datatype.RoleGame;
 import wcm.towolf.hearthstonewr.model.datatype.arena.ArenaEventData;
+import wcm.towolf.hearthstonewr.model.datatype.arena.ArenaHeroDetailData;
 
 public class ArenaEventDataProvider {
 	
@@ -38,6 +39,29 @@ public class ArenaEventDataProvider {
         }
         return eventData;
 	}
+	
+	
+	public ArrayList<ArenaHeroDetailData> getAllArenaHeroData()
+	{
+		
+		ArrayList<ArenaHeroDetailData> heroData = ArenaHeroDetailData.generateEmptyDataList();
+		
+		ArrayList<ArenaEventData> eventData = getAllArenaEventData();
+		
+		
+		
+		for(ArenaEventData event : eventData)
+		{
+		  for(RoleGame game :event.getGameList())
+		  {
+			  heroData.get(event.roleType).addGame(game);
+		  }
+		}
+		
+		
+		return heroData;
+	}
+	
 	
 	public ArrayList<RoleGame> getAllGames()
 	{

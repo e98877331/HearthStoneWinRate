@@ -9,25 +9,25 @@ import wcm.towolf.hearthstonewr.model.datatype.RoleGame;
 import wcm.towolf.hearthstonewr.model.datatype.RoleType;
 import android.util.Log;
 
-public class ArenaEventData implements IDataEntitiy{
-    
+public class ArenaEventData implements IDataEntitiy {
+
 	private final int MAX_WIN = 12;
 	private final int MAX_LOSE = 3;
-	
+
 	private static final String TAG = "ArenaEventData";
 	// passing between activity purpose
 	private static ArenaEventData mPassingData;
-    
-	
+
 	// now use enemy data by now
 	// ArrayList<RoleEnemyData> mRoleEnemyDataList;
 
 	public static final int NAME_LENGTH = 40;
+	ArrayList<RoleGame> mGames;
 
 	public int eventID;
 	public int roleType;
-    public String startDate;
-	
+	public String startDate;
+
 	public float winRate;
 
 	public int win, count;
@@ -36,28 +36,27 @@ public class ArenaEventData implements IDataEntitiy{
 	public int winLoseArray[] = { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
 			-1, -1, -1 };
 
-	public ArenaEventData(int pEventID, int pRoleType,String pStartDate) {
+	public ArenaEventData(int pEventID, int pRoleType, String pStartDate) {
 		eventID = pEventID;
 		roleType = pRoleType;
-        startDate = pStartDate;
+		startDate = pStartDate;
 	}
 
 	public void initWithRoleGames(ArrayList<RoleGame> gameList) {
 		// mRoleEnemyDataList = RoleEnemyData.generateDataList();
+		mGames = new ArrayList<RoleGame>();
 
 		int win = 0, count = 0;
 		for (int i = 0; i < gameList.size(); i++) {
 			RoleGame rg = gameList.get(i);
 			if (rg.getRoleID() == eventID) {
+				mGames.add(rg);
 				winLoseArray[count] = 0;
 
-				if (rg.getIsWin())
-				{
-					winLoseArray[count] =1;
+				if (rg.getIsWin()) {
+					winLoseArray[count] = 1;
 					++win;
-				}
-				else
-				{
+				} else {
 					winLoseArray[count] = 0;
 				}
 
@@ -95,12 +94,11 @@ public class ArenaEventData implements IDataEntitiy{
 		invalidate();
 	}
 
-	public void delete()
-	{
-	   ArenaEventDataProvider edp = new ArenaEventDataProvider();
-	   edp.deleteEvent(this.eventID);
+	public void delete() {
+		ArenaEventDataProvider edp = new ArenaEventDataProvider();
+		edp.deleteEvent(this.eventID);
 	}
-	
+
 	/*
 	 * getter and setter
 	 */
@@ -173,6 +171,10 @@ public class ArenaEventData implements IDataEntitiy{
 		return count - win;
 	}
 
+	public ArrayList<RoleGame> getGameList()
+	{
+		return mGames;
+	}
 	public float getWinRate() {
 		return (count == 0) ? (winRate = -1) : ((float) win / count);
 	}
@@ -180,10 +182,9 @@ public class ArenaEventData implements IDataEntitiy{
 	public int getRoleType() {
 		return roleType;
 	}
-	
-	public boolean isFinished()
-	{
-		if(win == MAX_WIN || ((count - win) == MAX_LOSE)) 
+
+	public boolean isFinished() {
+		if (win == MAX_WIN || ((count - win) == MAX_LOSE))
 			return true;
 		else
 			return false;

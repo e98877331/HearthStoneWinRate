@@ -6,18 +6,13 @@ import java.util.Random;
 import wcm.towolf.hearthstonewr.db.DBSchema;
 import wcm.towolf.hearthstonewr.model.RoleDataProvider;
 import wcm.towolf.hearthstonewr.model.datatype.RoleData;
-import wcm.towolf.hearthstonewr.view.MyAlertDialog;
-import wcm.towolf.hearthstonewr.view.TopPanel;
 import wcm.towolf.hearthstonewr.view.HeroChooseView.ClickCallBack;
+import wcm.towolf.hearthstonewr.view.TopPanel;
 import wcm.towolf.heartstonewr.main.CreateDeckDialog;
-import wcm.towolf.heartstonewr.main.CreateDeckView;
 import wcm.towolf.heartstonewr.main.MainView;
 import wcm.towolf.heartstonewr.main.MainViewListItem;
 import wcm.towolf.heartstonewr.main.NewDeckButton;
 import android.app.Activity;
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
@@ -29,7 +24,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -37,6 +31,8 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+
+import com.google.analytics.tracking.android.EasyTracker;
 
 public class MainActivity extends Activity {
 
@@ -161,6 +157,20 @@ public class MainActivity extends Activity {
 
 	}
 
+	@Override
+	protected void onStart() {
+		// TODO Auto-generated method stub
+		super.onStart();
+		
+		EasyTracker.getInstance(this).activityStart(this);
+	}
+	@Override
+	protected void onStop() {
+		// TODO Auto-generated method stub
+		super.onStop();
+		EasyTracker.getInstance(this).activityStop(this); 
+	}
+	
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub

@@ -42,6 +42,11 @@
     <string name="arena_newevent_now_playing">Now Playing</string>
     <string name="arena_newevent_new_event">New Round</string>
     <string name="arena_which_hero">Choose Your Hero</string>
+    <string name="arena_match_detail">Match Detail</string>
+    <string name="arena_vs_each_hero">V.S Each Hero</string>
+    <string name="arena_text_win">win</string>
+    <string name="arena_text_total">total</string>
+    <string name="arena_text_rate">win rate</string>
     <string name="open_normal_game">Normal Game</string>
     <string name="open_arena_game">Arena</string>
     <string name="open_export_csv">"Export csv (Coming SOOOOON!!)"</string>

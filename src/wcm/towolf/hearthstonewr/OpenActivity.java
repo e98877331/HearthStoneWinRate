@@ -20,6 +20,7 @@ public class OpenActivity extends Activity {
 	Button mNormalBtn;
 	Button mArenaBtn;
 	Button mExportBtn;
+	Button mShowPatchNoteBtn;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -60,13 +61,23 @@ public class OpenActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-//				Intent i = new Intent(OpenActivity.this, ExportActivity.class);
-//				// i.putExtra("RoleData",mAdapter.getItem(arg2));
-//				startActivity(i);
+				Intent i = new Intent(OpenActivity.this, ExportActivity.class);
+				// i.putExtra("RoleData",mAdapter.getItem(arg2));
+				startActivity(i);
 				
-				ArenaTest.addTestEvents();
+	//			ArenaTest.addTestEvents();
 			}
 		});
+		mShowPatchNoteBtn = mView.showPatchNoteBtn;
+		mShowPatchNoteBtn.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				MyAlertDialog.show(OpenActivity.this, R.string.update_note_title,R.string.update_note_content);
+			}
+		});
+		
 		mView.setToContentView(this);
 		mView.post(new Runnable() {
 			
@@ -97,10 +108,10 @@ public class OpenActivity extends Activity {
 	public void showPatchNoteAtFirstTime()
 	{
 		SharedPreferences settings = getSharedPreferences("Preference", 0);
-		boolean b = settings.getBoolean("isFirstTime",true);
+		boolean b = settings.getBoolean("isFirstTimeV11",true);
 	    if(b)
 	    {
-	    	settings.edit().putBoolean("isFirstTime", false).commit();
+	    	settings.edit().putBoolean("isFirstTimeV11", false).commit();
 	    	MyAlertDialog.show(this, R.string.update_note_title,R.string.update_note_content);
 	    	
 	    }

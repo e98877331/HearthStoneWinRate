@@ -11,6 +11,8 @@ public class OpenView extends RatioRelativeLayout{
 	public Button normalBtn;
 	public Button arenaBtn;
     public Button exportBtn;
+    
+    public Button showPatchNoteBtn;
 	
 	public OpenView(Context context) {
 		super(context);
@@ -36,6 +38,15 @@ public class OpenView extends RatioRelativeLayout{
 		exportBtn.setClickable(false);
 		exportBtn.setAlpha(0.5f);
 		this.addView(exportBtn,428, 122, 172, 560);
+		
+		
+		
+		showPatchNoteBtn = new Button(context);
+		showPatchNoteBtn.setBackgroundResource(R.drawable.rect_label);
+		showPatchNoteBtn.setText("Patch Note");
+		BasicClickEffect.setClickEffect(showPatchNoteBtn);
+		this.addView(showPatchNoteBtn, 250, 100, 500, 1150);
+		
 		
 	}
 

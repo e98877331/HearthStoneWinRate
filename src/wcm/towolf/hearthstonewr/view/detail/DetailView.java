@@ -1,4 +1,4 @@
-package wcm.towolf.heartstonewr.detail;
+package wcm.towolf.hearthstonewr.view.detail;
 
 import itri.u9lab.towolf.ratiofixer.RatioFixer;
 import itri.u9lab.towolf.ratiofixer.RatioRelativeLayout;

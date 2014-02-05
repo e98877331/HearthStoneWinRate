@@ -5,7 +5,8 @@ import java.util.Random;
 
 import wcm.towolf.hearthstonewr.db.DBSchema;
 import wcm.towolf.hearthstonewr.model.RoleDataProvider;
-import wcm.towolf.hearthstonewr.model.datatype.RoleData;
+import wcm.towolf.hearthstonewr.model.datatype.RoleType;
+import wcm.towolf.hearthstonewr.model.datatype.main.RoleData;
 import wcm.towolf.hearthstonewr.view.HeroChooseView.ClickCallBack;
 import wcm.towolf.hearthstonewr.view.TopPanel;
 import wcm.towolf.heartstonewr.main.CreateDeckDialog;
@@ -317,7 +318,7 @@ public class MainActivity extends Activity {
 
 				RoleData rd = mData.get(index);
 
-				((MainViewListItem) convertView).setData(rd.getRoleRes(),
+				((MainViewListItem) convertView).setData(RoleType.getRoleRes(rd.getRoleType()),
 						rd.roleName, rd.getWinRate());
 
 			}

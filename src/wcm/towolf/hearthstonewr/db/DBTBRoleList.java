@@ -3,7 +3,7 @@ package wcm.towolf.hearthstonewr.db;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import wcm.towolf.hearthstonewr.model.datatype.RoleData;
+import wcm.towolf.hearthstonewr.model.datatype.main.RoleData;
 import android.database.Cursor;
 
 public class DBTBRoleList {

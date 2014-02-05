@@ -41,12 +41,12 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="wcm.towolf.heartstonewr.detail.DialogActivity"
+            android:name="wcm.towolf.hearthstonewr.view.detail.DialogActivity"
             android:label="@string/detail_dialog_label"
             android:theme="@android:style/Theme.Dialog" >
         </activity>
         <activity
-            android:name="wcm.towolf.heartstonewr.detail.DetailListActivity"
+            android:name="wcm.towolf.hearthstonewr.view.detail.DetailListActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Light.NoTitleBar" >
         </activity>

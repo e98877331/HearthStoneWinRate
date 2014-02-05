@@ -1,4 +1,4 @@
-package wcm.towolf.hearthstonewr.model.datatype;
+package wcm.towolf.hearthstonewr.model.datatype.main;
 
 import java.util.ArrayList;
 

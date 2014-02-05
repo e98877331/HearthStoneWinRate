@@ -4,12 +4,13 @@ import java.text.DecimalFormat;
 
 import wcm.towolf.hearthstonewr.gahelper.GAHelper;
 import wcm.towolf.hearthstonewr.model.RoleDataProvider;
-import wcm.towolf.hearthstonewr.model.datatype.RoleData;
+import wcm.towolf.hearthstonewr.model.datatype.RoleType;
+import wcm.towolf.hearthstonewr.model.datatype.main.RoleData;
 import wcm.towolf.hearthstonewr.view.HeroChooseDialog;
 import wcm.towolf.hearthstonewr.view.HeroChooseView.ClickCallBack;
-import wcm.towolf.heartstonewr.detail.DetailListActivity;
-import wcm.towolf.heartstonewr.detail.DetailView;
-import wcm.towolf.heartstonewr.detail.DialogActivity;
+import wcm.towolf.hearthstonewr.view.detail.DetailListActivity;
+import wcm.towolf.hearthstonewr.view.detail.DetailView;
+import wcm.towolf.hearthstonewr.view.detail.DialogActivity;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -108,7 +109,7 @@ public class DetailActivity extends Activity {
 		dView = new DetailView(this);
 		dView.setToContentView(this);
 		
-		dView.mainImageView.setBackgroundResource(mRole.getRoleStoneRes());
+		dView.mainImageView.setBackgroundResource(RoleType.getRoleStoneRes(mRole.getRoleType()));
 		
 		dView.titleTextView.setOnClickListener(new OnClickListener() {
 			@Override
@@ -424,7 +425,7 @@ public class DetailActivity extends Activity {
 		Log.d("debug", "win:" + mRole.getWin());
 		Log.d("debug", "lose:" + mRole.getLose());
 		Log.d("debug", "win rate:" + mRole.getWinRate());
-		Log.d("debug", "role res:" + mRole.getRoleRes());
+		//Log.d("debug", "role res:" + mRole.getRoleRes());
 	}
 
 //	@Override

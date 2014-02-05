@@ -45,7 +45,7 @@ public class OpenView extends RatioRelativeLayout{
 		showPatchNoteBtn.setBackgroundResource(R.drawable.rect_label);
 		showPatchNoteBtn.setText("Patch Note");
 		BasicClickEffect.setClickEffect(showPatchNoteBtn);
-		this.addView(showPatchNoteBtn, 250, 100, 500, 1150);
+		this.addView(showPatchNoteBtn, 250, 100, 500, 1130);
 		
 		
 	}

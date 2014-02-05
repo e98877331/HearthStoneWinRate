@@ -2,6 +2,7 @@ package wcm.towolf.hearthstonewr;
 
 import java.text.DecimalFormat;
 
+import wcm.towolf.hearthstonewr.gahelper.GAHelper;
 import wcm.towolf.hearthstonewr.model.RoleDataProvider;
 import wcm.towolf.hearthstonewr.model.datatype.RoleData;
 import wcm.towolf.hearthstonewr.view.HeroChooseDialog;
@@ -139,6 +140,7 @@ public class DetailActivity extends Activity {
 					public void run(int roleType) {
 						mRole.addGame(roleType, true);
 						
+						GAHelper.event(DetailActivity.this, "ui_action", "button_press", "normal_game_button", (long) roleType);
 						updateView();
 						mHCD.dismiss();
 					}
@@ -159,7 +161,7 @@ public class DetailActivity extends Activity {
 					@Override
 					public void run(int roleType) {
 						mRole.addGame(roleType, false);
-						
+						GAHelper.event(DetailActivity.this, "ui_action", "button_press", "normal_game_button", (long) roleType);
 						updateView();
 						mHCD.dismiss();
 					}

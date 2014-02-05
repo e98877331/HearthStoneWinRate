@@ -2,6 +2,7 @@ package wcm.towolf.hearthstonewr;
 
 import java.util.ArrayList;
 
+import wcm.towolf.hearthstonewr.gahelper.GAHelper;
 import wcm.towolf.hearthstonewr.model.ArenaEventDataProvider;
 import wcm.towolf.hearthstonewr.model.datatype.arena.ArenaEventData;
 import wcm.towolf.hearthstonewr.view.HeroChooseDialog;
@@ -181,7 +182,8 @@ public class ArenaActivity extends Activity {
 			public void run(int roleType) {
 				// TODO Auto-generated method stub
 
-				GALog(roleType);
+				GAHelper.event(ArenaActivity.this, "ui_action", "button_press", "event_start_button", (long) roleType);
+				
 				
 				long eventID = mProvider.addEvent(roleType);
 				ArenaEventData aed = mProvider.getEvent((int) eventID);
@@ -262,21 +264,21 @@ public class ArenaActivity extends Activity {
 		// "CYYRUNTimeReload: "+Long.toString(System.currentTimeMillis() - tt));
 	}
 
-	private void GALog(int roleType) {
-
-		EasyTracker easyTracker = EasyTracker.getInstance(this);
-
-		// MapBuilder.createEvent().build() returns a Map of event fields and
-		// values
-		// that are set and sent with the hit.
-		easyTracker.send(MapBuilder.createEvent("ui_action", // Event category
-																// (required)
-				"button_press", // Event action (required)
-				"event_start_button", // Event label
-				(long)roleType) // Event value
-				.build());
-
-	}
+//	private void GALog(int roleType) {
+//
+//		EasyTracker easyTracker = EasyTracker.getInstance(this);
+//
+//		// MapBuilder.createEvent().build() returns a Map of event fields and
+//		// values
+//		// that are set and sent with the hit.
+//		easyTracker.send(MapBuilder.createEvent("ui_action", // Event category
+//																// (required)
+//				"button_press", // Event action (required)
+//				"event_start_button", // Event label
+//				1l) // Event value
+//				.build());
+//
+//	}
 
 	public class MainAdapter extends BaseAdapter {
 		// ArrayList<RoleData> mData;

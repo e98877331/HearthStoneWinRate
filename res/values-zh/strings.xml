@@ -30,7 +30,7 @@
     <string name="detail_undo_message">確定取消最後一筆此職業紀錄嗎?</string>
     <string name="detail_undo_yes">是</string>
     <string name="detail_undo_no">否</string>
-        <string name="common_warrior">戰士</string>
+    <string name="common_warrior">戰士</string>
     <string name="common_hunter">獵人</string>
     <string name="common_druid">德魯伊</string>
     <string name="common_mage">法師</string>
@@ -52,13 +52,9 @@
     <string name="open_normal_game">一般對戰</string>
     <string name="open_arena_game">競技場</string>
     <string name="open_export_csv">匯出CSV (Coming SOOOON!!)</string>
-    
-        <string name="update_note_title">v2.0 更新說明</string>
-    <string name="update_note_content">v2.0.1\n
-1.增加競技場模式\n
-2.普通模式下增加移動排組順序功能\n
-3.資料褲檔案現在位於android手機資料夾底下的 "HearthStoneWR/db/MyDatabase ,有需要的話可自行備份,程式開啓時將會讀取這個位置的檔案.\n
-4.增強效能</string>
-    
+    <string name="open_donate">贊助</string>
+    <string name="update_note_title">v2.1 更新說明</string>
+    <string name="update_note_content">1. 在競技場模式中增加比賽細節畫面(點選最上方面板顯示)\n
+2. 在一般對戰模式中增加將牌組移動到最上方的功能\n</string>
 
 </resources>

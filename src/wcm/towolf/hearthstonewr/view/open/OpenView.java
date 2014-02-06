@@ -13,7 +13,9 @@ public class OpenView extends RatioRelativeLayout{
     public Button exportBtn;
     
     public Button showPatchNoteBtn;
-	
+	public Button donateBtn;
+    
+    
 	public OpenView(Context context) {
 		super(context);
 		// TODO Auto-generated constructor stub
@@ -46,6 +48,14 @@ public class OpenView extends RatioRelativeLayout{
 		showPatchNoteBtn.setText("Patch Note");
 		BasicClickEffect.setClickEffect(showPatchNoteBtn);
 		this.addView(showPatchNoteBtn, 250, 100, 500, 1130);
+		
+
+		donateBtn = new Button(context);
+		donateBtn.setBackgroundResource(R.drawable.rect_label);
+		donateBtn.setText(R.string.open_donate);
+		BasicClickEffect.setClickEffect(donateBtn);
+		this.addView(donateBtn, 250, 100, 10, 1130);
+		
 		
 		
 	}

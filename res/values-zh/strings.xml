@@ -45,7 +45,7 @@
     <string name="arena_newevent_new_event">新的一輪</string>
     <string name="arena_which_hero">使用哪位英雄</string>
     <string name="arena_match_detail">比賽細節</string>
-    <string name="arena_vs_each_hero">對各職業</string>
+    <string name="arena_vs_each_hero">對各職業細節</string>
     <string name="arena_text_win">勝場</string>
     <string name="arena_text_total">總場次</string>
     <string name="arena_text_rate">勝率</string>

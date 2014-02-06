@@ -99,6 +99,20 @@ public class DBTBRoleList {
 		mDBHelper.delete(TABLE, "Role_ID = ?", value);
 	}
 	
+	public void setPositionToFirst(RoleData data)
+	{
+		try {
+			DBHelper.beginTransaction();
+			mDBHelper.execSQL("UPDATE " + TABLE + " SET Position = "+Integer.toString(-1) + " WHERE Role_ID = "+Integer.toString(data.roleID));
+		    mDBHelper.execSQL("UPDATE " + TABLE + " SET Position = Position + 1");
+		    DBHelper.setTransactionSuccessful();
+		    DBHelper.endTransaction();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	public void swapPosition(RoleData a, RoleData b)
 	{
 	    int temp = a.position;
@@ -106,9 +120,12 @@ public class DBTBRoleList {
 	    b.position = temp;
 	    //"UPDATE Hero_List SET Position  = Role_ID"
 	    
-	    try {	
+	    try {
+	    	DBHelper.beginTransaction();
 			mDBHelper.execSQL("UPDATE " + TABLE + " SET Position = "+Integer.toString(a.position) + " WHERE Role_ID = "+Integer.toString(a.roleID));
 			mDBHelper.execSQL("UPDATE " + TABLE + " SET Position = "+Integer.toString(b.position) + " WHERE Role_ID = "+Integer.toString(b.roleID));
+			DBHelper.setTransactionSuccessful();
+		    DBHelper.endTransaction();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -53,6 +53,13 @@
     <string name="open_arena_game">競技場</string>
     <string name="open_export_csv">匯出CSV (Coming SOOOON!!)</string>
     <string name="open_donate">贊助</string>
+    
+        <string name="dialog_donate_title">贊助資訊</string>
+    <string name="dialog_donate_content">感謝您使用這個app，目前我沒有在app中加入廣告的打算（因為頗醜），但是開發app需要啤酒支援, 所以如果您喜歡這個app,您可以贊助我一點點啤酒錢來加速開發ＸＤ。\n\n
+        請點擊上方PayPal圖示進行贊助!! \n\n
+        如果您贊助的金額超過500元新臺幣，請順便附上您的綽號，我會在之後的更新把您加入即將新增的致謝畫面中。 
+        </string>
+    
     <string name="update_note_title">v2.1 更新說明</string>
     <string name="update_note_content">1. 在競技場模式中增加比賽細節畫面(點選最上方面板顯示)\n
 2. 在一般對戰模式中增加將牌組移動到最上方的功能\n</string>

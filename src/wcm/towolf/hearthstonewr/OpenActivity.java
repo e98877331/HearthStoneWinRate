@@ -1,7 +1,9 @@
 package wcm.towolf.hearthstonewr;
 
+import itri.u9lab.towolf.ratiofixer.RatioFixer;
 import wcm.towolf.hearthstonewr.test.ArenaTest;
 import wcm.towolf.hearthstonewr.view.MyAlertDialog;
+import wcm.towolf.hearthstonewr.view.open.DonateDialog;
 import wcm.towolf.hearthstonewr.view.open.OpenView;
 import android.app.Activity;
 import android.content.Intent;
@@ -21,15 +23,19 @@ public class OpenActivity extends Activity {
 	Button mArenaBtn;
 	Button mExportBtn;
 	Button mShowPatchNoteBtn;
+	Button mDonateBtn;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		
- 
+       
 		
 		mView = new OpenView(this);
+		//using global ratio fixer
+		RatioFixer.setGlobalRatioFixer(mView.getRatioFixer());
+		
 		mNormalBtn = mView.normalBtn;
 		mNormalBtn.setOnClickListener(new OnClickListener() {
 			
@@ -75,6 +81,18 @@ public class OpenActivity extends Activity {
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 				MyAlertDialog.show(OpenActivity.this, R.string.update_note_title,R.string.update_note_content);
+			}
+		});
+		
+		mDonateBtn = mView.donateBtn;
+		mDonateBtn.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+//			   DonateDialog dialog = new DonateDialog(OpenActivity.this);
+//			   dialog.show();
+				DonateDialog.show(OpenActivity.this);
 			}
 		});
 		

@@ -53,6 +53,11 @@
     <string name="open_export_csv">"Export csv (Coming SOOOOON!!)"</string>
     <string name="open_donate">Donate</string>
     
+    <string name="dialog_donate_title">Donation Information</string>
+    <string name="dialog_donate_content">Thanks for using the app, since I am not planning to add advertise in the app(annnoying), but Coding needs beer, so if you like the app, 
+        you can buy me some beer to speedup the development :).\n\n Click PayPal icon above to do so!! \n\n
+        If you donate more than 20 USD, please note your nickname when donating, I\'ll add it to acknowledge board in later version of the app.</string>
+    
     <string name="update_note_title">v2.1 Patch Note</string>
     <string name="update_note_content">1. Add match detail view in arena mode (show it by clicking top panel in arena mode).\n
 2. Add \"Move deck to top\" function in normal mode.\n</string>

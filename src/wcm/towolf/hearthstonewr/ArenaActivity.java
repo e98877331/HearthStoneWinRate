@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import wcm.towolf.hearthstonewr.gahelper.GAHelper;
 import wcm.towolf.hearthstonewr.model.ArenaEventDataProvider;
+import wcm.towolf.hearthstonewr.model.datatype.RoleType;
 import wcm.towolf.hearthstonewr.model.datatype.arena.ArenaEventData;
 import wcm.towolf.hearthstonewr.view.HeroChooseDialog;
 import wcm.towolf.hearthstonewr.view.HeroChooseView.ClickCallBack;
@@ -181,8 +182,8 @@ public class ArenaActivity extends Activity {
 			@Override
 			public void run(int roleType) {
 				// TODO Auto-generated method stub
-
-				GAHelper.event(ArenaActivity.this, "ui_action", "button_press", "event_start_button", (long) roleType);
+				//Log an Arena event starts
+				GAHelper.event(ArenaActivity.this, "ui_action", "event_start_button_press",RoleType.getDebugString(roleType, ArenaActivity.this), (long) roleType);
 				
 				
 				long eventID = mProvider.addEvent(roleType);
@@ -215,6 +216,10 @@ public class ArenaActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				//log on arena game win
+				
+				int roleType = mNewEventPanel.getCurrentEvent().roleType;
+				GAHelper.event(ArenaActivity.this, "ui_action", "event_win_button_press",RoleType.getDebugString(roleType, ArenaActivity.this), 0);
 				mNewEventPanel.win();
 				// reloadListData();
 			}
@@ -225,6 +230,9 @@ public class ArenaActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				int roleType = mNewEventPanel.getCurrentEvent().roleType;
+				GAHelper.event(ArenaActivity.this, "ui_action", "event_lose_button_press",RoleType.getDebugString(roleType, ArenaActivity.this), 0);
+				
 				mNewEventPanel.lose();
 				// reloadListData();
 			}

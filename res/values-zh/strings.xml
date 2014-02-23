@@ -55,9 +55,9 @@
     <string name="open_donate">贊助</string>
     
         <string name="dialog_donate_title">贊助資訊</string>
-    <string name="dialog_donate_content">感謝您使用這個app，目前我沒有在app中加入廣告的打算（因為頗醜），但是開發app需要啤酒支援, 所以如果您喜歡這個app,您可以贊助我一點點啤酒錢來加速開發ＸＤ。\n\n
-        請點擊上方PayPal圖示進行贊助!! \n\n
-        如果您贊助的金額超過500元新臺幣，請順便附上您的綽號，我會在之後的更新把您加入即將新增的致謝畫面中。 
+    <string name="dialog_donate_content">感謝您使用這個app,希望拙作對您有幫助.\n 開發app需要啤酒支援, 所以如果您喜歡這個app,您可以贊助我一點點啤酒錢幫助開發ＸＤ\n\n
+        請點擊上方PayPal圖示進行贊助!!(單位為美金) \n\n
+        贊助的同時記得在\'tell me something\'欄位填上您的暱稱，我會在之後的更新把您加入即將新增的致謝畫面中. 
         </string>
     
     <string name="update_note_title">v2.1 更新說明</string>

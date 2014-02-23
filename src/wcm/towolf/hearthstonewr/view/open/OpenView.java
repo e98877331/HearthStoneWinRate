@@ -55,7 +55,7 @@ public class OpenView extends RatioRelativeLayout{
 		donateBtn.setText(R.string.open_donate);
 		
 		BasicClickEffect.setClickEffect(donateBtn);
-		//this.addView(donateBtn, 250, 100, 20, 1130);
+		this.addView(donateBtn, 250, 100, 20, 1130);
 		
 		
 		

@@ -15,11 +15,11 @@ public class GAHelper {
 		// MapBuilder.createEvent().build() returns a Map of event fields and
 		// values
 		// that are set and sent with the hit.
-		easyTracker.send(MapBuilder.createEvent("ui_action", // Event category
+		easyTracker.send(MapBuilder.createEvent(category, // Event category
 																// (required)
-				"button_press", // Event action (required)
-				"event_start_button", // Event label
-				1l) // Event value
+				action, // Event action (required)
+				label, // Event label
+				value) // Event value
 				.build());
 		
 	}

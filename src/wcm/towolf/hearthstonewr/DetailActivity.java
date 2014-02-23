@@ -141,7 +141,7 @@ public class DetailActivity extends Activity {
 					public void run(int roleType) {
 						mRole.addGame(roleType, true);
 						
-						GAHelper.event(DetailActivity.this, "ui_action", "button_press", "normal_game_button", (long) roleType);
+						GAHelper.event(DetailActivity.this, "ui_action", "normal_game_button_press", RoleType.getDebugString(roleType, DetailActivity.this), (long) roleType);
 						updateView();
 						mHCD.dismiss();
 					}
@@ -162,7 +162,7 @@ public class DetailActivity extends Activity {
 					@Override
 					public void run(int roleType) {
 						mRole.addGame(roleType, false);
-						GAHelper.event(DetailActivity.this, "ui_action", "button_press", "normal_game_button", (long) roleType);
+						GAHelper.event(DetailActivity.this, "ui_action", "normal_game_button_press", RoleType.getDebugString(roleType, DetailActivity.this), (long) roleType);
 						updateView();
 						mHCD.dismiss();
 					}

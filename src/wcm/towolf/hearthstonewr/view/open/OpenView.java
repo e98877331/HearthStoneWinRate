@@ -8,6 +8,7 @@ import android.widget.Button;
 
 public class OpenView extends RatioRelativeLayout{
 
+	public Button ackBtn;
 	public Button normalBtn;
 	public Button arenaBtn;
     public Button exportBtn;
@@ -20,6 +21,12 @@ public class OpenView extends RatioRelativeLayout{
 		super(context);
 		// TODO Auto-generated constructor stub
 		this.setBackgroundResource(R.drawable.main_bg);
+		
+		ackBtn = new Button(context);
+		ackBtn.setBackgroundResource(R.drawable.rect_label);
+		ackBtn.setText(R.string.open_acknowledgements);
+		BasicClickEffect.setClickEffect(ackBtn);
+		this.addView(ackBtn, 428, 122, 172, 100);
 		
 		normalBtn = new Button(context);
 		normalBtn.setBackgroundResource(R.drawable.rect_label);

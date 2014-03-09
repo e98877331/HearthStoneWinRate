@@ -48,10 +48,12 @@
     <string name="arena_text_win">win</string>
     <string name="arena_text_total">total</string>
     <string name="arena_text_rate">win rate</string>
+    <string name="open_acknowledgements">Acknowledgements</string>
     <string name="open_normal_game">Normal Game</string>
     <string name="open_arena_game">Arena</string>
     <string name="open_export_csv">"Export csv (Coming SOOOOON!!)"</string>
     <string name="open_donate">Donate</string>
+   <string name="open_dialog_acknowledgements_title">Acknowledgements</string>
     
     <string name="dialog_donate_title">Donation Information</string>
     <string name="dialog_donate_content">Thanks for using the app and wish the app helps you. Coding needs beer,so if you like the app, 

@@ -5,7 +5,6 @@ import itri.u9lab.towolf.ratiofixer.RatioRelativeLayout;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import wcm.towolf.hearthstonewr.R;
@@ -26,9 +25,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class DetailListActivity extends Activity {
-	ArrayList<HashMap<String, String>> list = new ArrayList<HashMap<String, String>>();
-	
-	ArrayList<ListItem> list2 = new ArrayList<ListItem>();
+	ArrayList<ListItem> list = new ArrayList<ListItem>();
 	
 	RoleData mRole;
 	
@@ -43,9 +40,7 @@ public class DetailListActivity extends Activity {
 		
 		mRole = RoleData.getPassingData();
 		for (int i = 0; i < 9; i++) {
-			HashMap<String, String> item = new HashMap<String, String>();
 			mRole.getRoleEnemyData(i);
-			item.put("type", getResources().getString(RoleType.getRoleTypeString(i)));
 			
 			RoleEnemyData red = mRole.getRoleEnemyData(i);
 			StringBuilder sb = new StringBuilder();
@@ -56,15 +51,13 @@ public class DetailListActivity extends Activity {
 			} else {
 				sb.append(getResources().getString(R.string.detail_no_record));
 			}
-			item.put("result", sb.toString());
 			
-			list.add(item);
 			
-			list2.add(new ListItem(getResources().getString(RoleType.getRoleTypeString(i)), sb.toString()));
+			list.add(new ListItem(getResources().getString(RoleType.getRoleTypeString(i)), sb.toString()));
 		}
 
 
-		mView.mListView.setAdapter(new DetailListAdapter(list2));
+		mView.mListView.setAdapter(new DetailListAdapter(list));
 		
 	}
 	
@@ -87,7 +80,6 @@ public class DetailListActivity extends Activity {
 
 		public MyView(Context context) {
 			super(context);
-			// TODO Auto-generated constructor stub
 			
 			rf = this.getRatioFixer();
 			
@@ -101,17 +93,12 @@ public class DetailListActivity extends Activity {
 			mTextView.setText(getResources().getString(R.string.detail_list_title));
 			mTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, 4.45f * 20.0f * rf.getRatio());
 			mTextView.setTextColor(Color.parseColor("#FFF8C6"));
-//			mTextView.setBackgroundColor(Color.parseColor("#D2B48C"));
 			mTextView.setBackgroundResource(R.drawable.rect_label);
 			mTextView.setGravity(Gravity.CENTER);
 			topLayout.addView(mTextView);
 			
-//			mTextView = new TextView(context);
-//			this.addView(mTextView, 768, 200, 0, 0);
-			
 			mListView = new ListView(context);
 			mListView.setDivider(null);
-//			mListView.setBackgroundColor(Color.parseColor("#FFE4B5"));
 			this.addView(mListView, 768, 1030, 0, 200);
 		}
 		
@@ -165,9 +152,6 @@ public class DetailListActivity extends Activity {
 
 			rf = mView.getRatioFixer();
 			
-//			this.setBackgroundColor(Color.TRANSPARENT);
-//			this.setBackgroundResource(R.drawable.main_list_item_bg);
-			
 			RelativeLayout relativeLayout = new RelativeLayout(context);
 			relativeLayout.setBackgroundResource(R.drawable.main_list_item_bg);
 			this.addView(relativeLayout, rf.getLayoutParam(768, 200, 0, 0));
@@ -175,13 +159,11 @@ public class DetailListActivity extends Activity {
 			classTextView = new TextView(context);
 			classTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, 4.45f * 15.0f * rf.getRatio());
 			classTextView.setTextColor(Color.parseColor("#FFF8C6"));
-//			classTextView.setBackgroundColor(Color.BLUE);
 			relativeLayout.addView(classTextView, rf.getLayoutParam(768, 100, 0, 0));
 			
 			rateTextView = new TextView(context);
 			rateTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, 4.45f * 10.0f * rf.getRatio());
 			rateTextView.setTextColor(Color.parseColor("#FFF8C6"));
-//			rateTextView.setBackgroundColor(Color.RED);
 			relativeLayout.addView(rateTextView, rf.getLayoutParam(768, 100, 0, 100));
 		}
 		

@@ -46,9 +46,10 @@ public class ArenaDetailPerClassView extends RatioRelativeLayout{
 		titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, 4.45f * 20.0f * mRf.getRatio());
 		titleTextView.setTextColor(Color.parseColor("#F3E5AB"));
 //		titleTextView.setBackgroundResource(R.drawable.rect_label);
+//		titleTextView.setBackgroundColor(Color.BLUE);
 		titleTextView.setGravity(Gravity.CENTER);
 		RelativeLayout.LayoutParams titleParams = new RelativeLayout.LayoutParams(mRf.getRealValue(568), mRf.getRealValue(200));
-		titleParams.setMargins(mRf.getRealValue(200), 0, 0, 0);
+		titleParams.setMargins(mRf.getRealValue(140), 0, 0, 0);
 		relativeLayout.addView(titleTextView, titleParams);
 		titleTextView.setEllipsize(TruncateAt.MARQUEE);
 		titleTextView.setSelected(true);
@@ -66,8 +67,7 @@ public class ArenaDetailPerClassView extends RatioRelativeLayout{
 		ArenaEventDataProvider provider = new ArenaEventDataProvider();
 		ArrayList<ArenaHeroDetailData> herodata =  provider.getAllArenaHeroData();
 		ArrayList<ArenaVSHeroData> arenaVSHeroDatas = herodata.get(position - 1).getVsHeroList();
-    	for(ArenaHeroDetailData.ArenaVSHeroData vsd : arenaVSHeroDatas)
-    	{
+    	for(ArenaHeroDetailData.ArenaVSHeroData vsd : arenaVSHeroDatas)	{
     		list.add(new RowView(context, vsd));
 //    	   Log.e("TAG","vs:" + RoleType.getDebugString(vsd.getVSRoleType(),this)+ " Win: " + vsd.getWins()+" Total:"+ vsd.getTotal());
     	}
@@ -76,7 +76,7 @@ public class ArenaDetailPerClassView extends RatioRelativeLayout{
         ImageView classImageView = new ImageView(context);
 		classImageView.setBackgroundResource(RoleType.getRoleRes(herodata.get(position - 1).getRoleType()));
 		RelativeLayout.LayoutParams classParams = new RelativeLayout.LayoutParams(mRf.getRealValue(120), mRf.getRealValue(180));
-		classParams.setMargins(mRf.getRealValue(70), mRf.getRealValue(10), 0, 0);
+		classParams.setMargins(mRf.getRealValue(10), mRf.getRealValue(10), 0, 0);
 		relativeLayout.addView(classImageView, classParams);
 	}
 	
@@ -112,8 +112,6 @@ public class ArenaDetailPerClassView extends RatioRelativeLayout{
 				view = (RowView) convertView;
 			}
 			
-			// init convertView
-			
 			return view;
 		}
 
@@ -135,8 +133,6 @@ public class ArenaDetailPerClassView extends RatioRelativeLayout{
 		TextView winTimes;
 		TextView winRounds;
 		TextView winRate;
-		
-//		ArenaVSHeroData vsd;
 
 		public RowView(Context context) {
 			super(context);

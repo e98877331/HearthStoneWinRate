@@ -70,6 +70,34 @@ public class RoleType {
 		}
 
 	}
+	
+	public static int getRoleStoneRes(int roleType) {
+	// if(pRoleType == RoleType.worrior)
+	// return R.drawable.ic_launcher;
+	switch (roleType) {
+	case RoleType.DRUID:
+		return R.drawable.druid_stone;
+	case RoleType.HUNTER:
+		return R.drawable.hunter_stone;
+	case RoleType.MAGE:
+		return R.drawable.mage_stone;
+	case RoleType.PALADIN:
+		return R.drawable.paladin_stone;
+	case RoleType.PRIEST:
+		return R.drawable.priest_stone;
+	case RoleType.ROGUE:
+		return R.drawable.rogue_stone;
+	case RoleType.SHAMAN:
+		return R.drawable.shaman_stone;
+	case RoleType.WARLOCK:
+		return R.drawable.warlock_stone;
+	case RoleType.WARRIOR:
+		return R.drawable.warrior_stone;
+	default:
+		return R.drawable.ic_launcher;
+	}
+
+}
 
 	public static String getDebugString(int roleType,Context c)
 	{

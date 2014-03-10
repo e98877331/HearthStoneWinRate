@@ -167,7 +167,10 @@ public class NewEventPanel extends RelativeLayout{
 		loseView.setValue(lose);
 	}
 	
-	
+	public ArenaEventData getCurrentEvent()
+	{
+		return currentEvent;
+	}
 /*
  * private method
  */

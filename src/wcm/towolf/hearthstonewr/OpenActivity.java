@@ -1,11 +1,14 @@
 package wcm.towolf.hearthstonewr;
 
-import wcm.towolf.hearthstonewr.test.ArenaTest;
+import itri.u9lab.towolf.ratiofixer.RatioFixer;
 import wcm.towolf.hearthstonewr.view.MyAlertDialog;
+import wcm.towolf.hearthstonewr.view.open.AcknowledgementDialog;
+import wcm.towolf.hearthstonewr.view.open.DonateDialog;
 import wcm.towolf.hearthstonewr.view.open.OpenView;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -17,19 +20,35 @@ public class OpenActivity extends Activity {
 
 	OpenView mView;
 	
+	
+	Button mAckBtn;
 	Button mNormalBtn;
 	Button mArenaBtn;
 	Button mExportBtn;
 	Button mShowPatchNoteBtn;
+	Button mDonateBtn;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		
- 
+		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+       
 		
 		mView = new OpenView(this);
+		//using global ratio fixer
+		RatioFixer.setGlobalRatioFixer(mView.getRatioFixer());
+		
+		mAckBtn = mView.ackBtn;
+		mAckBtn.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				AcknowledgementDialog.show(OpenActivity.this);
+			}
+		});
+		
 		mNormalBtn = mView.normalBtn;
 		mNormalBtn.setOnClickListener(new OnClickListener() {
 			
@@ -75,6 +94,18 @@ public class OpenActivity extends Activity {
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 				MyAlertDialog.show(OpenActivity.this, R.string.update_note_title,R.string.update_note_content);
+			}
+		});
+		
+		mDonateBtn = mView.donateBtn;
+		mDonateBtn.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+//			   DonateDialog dialog = new DonateDialog(OpenActivity.this);
+//			   dialog.show();
+				DonateDialog.show(OpenActivity.this);
 			}
 		});
 		

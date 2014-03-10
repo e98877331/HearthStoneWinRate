@@ -3,7 +3,7 @@ package wcm.towolf.hearthstonewr.model.datatype.arena;
 import java.util.ArrayList;
 
 import wcm.towolf.hearthstonewr.model.datatype.RoleGame;
-import wcm.towolf.hearthstonewr.model.datatype.RoleGameList;
+import wcm.towolf.hearthstonewr.model.datatype.main.RoleGameList;
 
 public class ArenaHeroDetailData extends RoleGameList{
 private static int NUMBER_OF_HERO_TYPE =9;

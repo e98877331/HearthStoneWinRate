@@ -8,6 +8,7 @@
     <string name="main_context_menu_title">選項</string>
     <string name="main_context_menu_delete_btn">刪除此筆資料</string>
     <string name="main_context_menu_move_up">向上移動一格</string>
+    <string name="main_context_menu_move_to_first">移動到最頂端</string>
     <string name="main_create_btn">建立牌組</string>
     <string name="main_create_view_title">建立牌組</string>
     <string name="main_create_view_name">牌組名稱</string>
@@ -29,7 +30,7 @@
     <string name="detail_undo_message">確定取消最後一筆此職業紀錄嗎?</string>
     <string name="detail_undo_yes">是</string>
     <string name="detail_undo_no">否</string>
-        <string name="common_warrior">戰士</string>
+    <string name="common_warrior">戰士</string>
     <string name="common_hunter">獵人</string>
     <string name="common_druid">德魯伊</string>
     <string name="common_mage">法師</string>
@@ -44,20 +45,25 @@
     <string name="arena_newevent_new_event">新的一輪</string>
     <string name="arena_which_hero">使用哪位英雄</string>
     <string name="arena_match_detail">比賽細節</string>
-    <string name="arena_vs_each_hero">對各職業</string>
+    <string name="arena_vs_each_hero">對各職業細節</string>
     <string name="arena_text_win">勝場</string>
     <string name="arena_text_total">總場次</string>
     <string name="arena_text_rate">勝率</string>
+    <string name="open_acknowledgements">特別感謝</string>
     <string name="open_normal_game">一般對戰</string>
     <string name="open_arena_game">競技場</string>
     <string name="open_export_csv">匯出CSV (Coming SOOOON!!)</string>
+    <string name="open_donate">贊助</string>
+    <string name="open_dialog_acknowledgements_title">感謝以下帥哥(正妹)的贊助!!</string>
     
-        <string name="update_note_title">v2.0 更新說明</string>
-    <string name="update_note_content">v2.0.1\n
-1.增加競技場模式\n
-2.普通模式下增加移動排組順序功能\n
-3.資料褲檔案現在位於android手機資料夾底下的 "HearthStoneWR/db/MyDatabase ,有需要的話可自行備份,程式開啓時將會讀取這個位置的檔案.\n
-4.增強效能</string>
+        <string name="dialog_donate_title">贊助資訊</string>
+    <string name="dialog_donate_content">感謝您使用這個app,希望拙作對您有幫助.\n 開發app需要啤酒支援, 所以如果您喜歡這個app,您可以贊助我一點點啤酒錢幫助開發ＸＤ\n\n
+        請點擊上方PayPal圖示進行贊助!!(單位為美金) \n\n
+        贊助的同時記得在\'tell me something\'欄位填上您的暱稱，我會在之後的更新把您加入即將新增的致謝畫面中. 
+        </string>
     
+    <string name="update_note_title">v2.1 更新說明</string>
+    <string name="update_note_content">1. 在競技場模式中增加比賽細節畫面(點選最上方面板顯示)\n
+2. 在一般對戰模式中增加將牌組移動到最上方的功能\n</string>
 
 </resources>

@@ -1,8 +1,8 @@
-package wcm.towolf.heartstonewr.detail;
+package wcm.towolf.hearthstonewr.view.detail;
 
 
 import wcm.towolf.hearthstonewr.R;
-import wcm.towolf.hearthstonewr.model.datatype.RoleData;
+import wcm.towolf.hearthstonewr.model.datatype.main.RoleData;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;

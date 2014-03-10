@@ -3,9 +3,12 @@ package wcm.towolf.hearthstonewr;
 import java.util.ArrayList;
 import java.util.Random;
 
+import wcm.towolf.hearthstonewr.db.DBHelper;
 import wcm.towolf.hearthstonewr.db.DBSchema;
+import wcm.towolf.hearthstonewr.db.DBTBRoleList;
 import wcm.towolf.hearthstonewr.model.RoleDataProvider;
-import wcm.towolf.hearthstonewr.model.datatype.RoleData;
+import wcm.towolf.hearthstonewr.model.datatype.RoleType;
+import wcm.towolf.hearthstonewr.model.datatype.main.RoleData;
 import wcm.towolf.hearthstonewr.view.HeroChooseView.ClickCallBack;
 import wcm.towolf.hearthstonewr.view.TopPanel;
 import wcm.towolf.heartstonewr.main.CreateDeckDialog;
@@ -192,6 +195,7 @@ public class MainActivity extends Activity {
 		// for (int i = 0; i<5; i++) {
 		menu.add(Menu.NONE, 0, 0, R.string.main_context_menu_delete_btn);
 		menu.add(Menu.NONE, 1, 1, R.string.main_context_menu_move_up);
+		menu.add(Menu.NONE, 2, 3, R.string.main_context_menu_move_to_first);
 		// }
 	}
 
@@ -203,17 +207,27 @@ public class MainActivity extends Activity {
 		// String[] menuItems = getResources().getStringArray(R.array.menu);
 		// String menuItemName = menuItems[menuItemIndex];
 		// String listItemName = "listitem Name";//Countries[info.position];
+		
+		//case delete
 		if (menuItemIndex == 0) {
 			deleteRoleDataFromList(info.position);
 			reloadListData();
 
 		}
+		//case move up
 		else if(menuItemIndex == 1)
 		{
 			int swapTarget = info.position -1;
 			if(swapTarget == -1)
 				swapTarget = 0;
 			mDataProvider.swapPostion(mData.get(info.position), mData.get(swapTarget));
+			reloadListData();
+		}
+		//case move to top
+		else if( menuItemIndex == 2)
+		{
+			DBTBRoleList dbRoleList = new DBTBRoleList(DBHelper.sharedInstance());
+			dbRoleList.setPositionToFirst(mData.get(info.position));
 			reloadListData();
 		}
 
@@ -317,7 +331,7 @@ public class MainActivity extends Activity {
 
 				RoleData rd = mData.get(index);
 
-				((MainViewListItem) convertView).setData(rd.getRoleRes(),
+				((MainViewListItem) convertView).setData(RoleType.getRoleRes(rd.getRoleType()),
 						rd.roleName, rd.getWinRate());
 
 			}

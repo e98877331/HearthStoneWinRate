@@ -2,7 +2,7 @@ package wcm.towolf.heartstonewr.main;
 
 import itri.u9lab.towolf.ratiofixer.RatioFixer;
 import wcm.towolf.hearthstonewr.R;
-import wcm.towolf.hearthstonewr.model.datatype.RoleData;
+import wcm.towolf.hearthstonewr.model.datatype.main.RoleData;
 import wcm.towolf.hearthstonewr.view.HeroChooseView;
 import wcm.towolf.hearthstonewr.view.HeroChooseView.ClickCallBack;
 import android.content.Context;

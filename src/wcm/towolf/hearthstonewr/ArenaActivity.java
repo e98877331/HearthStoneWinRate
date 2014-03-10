@@ -2,7 +2,9 @@ package wcm.towolf.hearthstonewr;
 
 import java.util.ArrayList;
 
+import wcm.towolf.hearthstonewr.gahelper.GAHelper;
 import wcm.towolf.hearthstonewr.model.ArenaEventDataProvider;
+import wcm.towolf.hearthstonewr.model.datatype.RoleType;
 import wcm.towolf.hearthstonewr.model.datatype.arena.ArenaEventData;
 import wcm.towolf.hearthstonewr.view.HeroChooseDialog;
 import wcm.towolf.hearthstonewr.view.HeroChooseView.ClickCallBack;
@@ -180,8 +182,9 @@ public class ArenaActivity extends Activity {
 			@Override
 			public void run(int roleType) {
 				// TODO Auto-generated method stub
-
-				GALog(roleType);
+				//Log an Arena event starts
+				GAHelper.event(ArenaActivity.this, "ui_action", "event_start_button_press",RoleType.getDebugString(roleType, ArenaActivity.this), (long) roleType);
+				
 				
 				long eventID = mProvider.addEvent(roleType);
 				ArenaEventData aed = mProvider.getEvent((int) eventID);
@@ -213,6 +216,10 @@ public class ArenaActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				//log on arena game win
+				
+				int roleType = mNewEventPanel.getCurrentEvent().roleType;
+				GAHelper.event(ArenaActivity.this, "ui_action", "event_win_button_press",RoleType.getDebugString(roleType, ArenaActivity.this), 0);
 				mNewEventPanel.win();
 				// reloadListData();
 			}
@@ -223,6 +230,9 @@ public class ArenaActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				int roleType = mNewEventPanel.getCurrentEvent().roleType;
+				GAHelper.event(ArenaActivity.this, "ui_action", "event_lose_button_press",RoleType.getDebugString(roleType, ArenaActivity.this), 0);
+				
 				mNewEventPanel.lose();
 				// reloadListData();
 			}
@@ -262,21 +272,21 @@ public class ArenaActivity extends Activity {
 		// "CYYRUNTimeReload: "+Long.toString(System.currentTimeMillis() - tt));
 	}
 
-	private void GALog(int roleType) {
-
-		EasyTracker easyTracker = EasyTracker.getInstance(this);
-
-		// MapBuilder.createEvent().build() returns a Map of event fields and
-		// values
-		// that are set and sent with the hit.
-		easyTracker.send(MapBuilder.createEvent("ui_action", // Event category
-																// (required)
-				"button_press", // Event action (required)
-				"event_start_button", // Event label
-				(long)roleType) // Event value
-				.build());
-
-	}
+//	private void GALog(int roleType) {
+//
+//		EasyTracker easyTracker = EasyTracker.getInstance(this);
+//
+//		// MapBuilder.createEvent().build() returns a Map of event fields and
+//		// values
+//		// that are set and sent with the hit.
+//		easyTracker.send(MapBuilder.createEvent("ui_action", // Event category
+//																// (required)
+//				"button_press", // Event action (required)
+//				"event_start_button", // Event label
+//				1l) // Event value
+//				.build());
+//
+//	}
 
 	public class MainAdapter extends BaseAdapter {
 		// ArrayList<RoleData> mData;

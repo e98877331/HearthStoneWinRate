@@ -6,7 +6,8 @@
     <string name="menu_settings">Settings</string>
     <string name="main_context_menu_title">Menu</string>
     <string name="main_context_menu_delete_btn">Delete the deck</string>
-    <string name="main_context_menu_move_up">Move Up</string>
+    <string name="main_context_menu_move_up">Move up</string>
+    <string name="main_context_menu_move_to_first">Move to top</string>
     <string name="main_create_btn">New Deck</string>
     <string name="main_create_view_title">Add New Deck</string>
     <string name="main_create_view_name">Deck Name</string>
@@ -43,19 +44,25 @@
     <string name="arena_newevent_new_event">New Round</string>
     <string name="arena_which_hero">Choose Your Hero</string>
     <string name="arena_match_detail">Match Detail</string>
-    <string name="arena_vs_each_hero">V.S Each Hero</string>
+    <string name="arena_vs_each_hero">V.S Each Hero Detail</string>
     <string name="arena_text_win">win</string>
     <string name="arena_text_total">total</string>
     <string name="arena_text_rate">win rate</string>
+    <string name="open_acknowledgements">Acknowledgements</string>
     <string name="open_normal_game">Normal Game</string>
     <string name="open_arena_game">Arena</string>
     <string name="open_export_csv">"Export csv (Coming SOOOOON!!)"</string>
+    <string name="open_donate">Donate</string>
+   <string name="open_dialog_acknowledgements_title">Acknowledgements</string>
     
-    <string name="update_note_title">v2.0 Patch Note</string>
-    <string name="update_note_content">1.Add arena mode!!\n 
-2.You can now change deck position in normal mode.\n
-3.Database file is now locate at "HearthStoneWR/db/MyDatabase" on your device. You can backup it if necessary.\n
-4.Performance improvement\n</string>
+    <string name="dialog_donate_title">Donation Information</string>
+    <string name="dialog_donate_content">Thanks for using the app and wish the app helps you. Coding needs beer,so if you like the app, 
+        you can buy me some beer to support the development :).\n\n Click the above PayPal icon to donate!! \n\n
+        Please add your nickname to \"tell me something\" field when donating, I\'ll put you on acknowledgements screen in later version of the app.</string>
+    
+    <string name="update_note_title">v2.1 Patch Note</string>
+    <string name="update_note_content">1. Add match detail view in arena mode (show it by clicking top panel in arena mode).\n
+2. Add \"Move deck to top\" function in normal mode.\n</string>
     
 
 </resources>

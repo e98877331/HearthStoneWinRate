@@ -346,6 +346,27 @@ public class DBHelper extends SQLiteOpenHelper {
 		}
 		return db.update(table, cv, where, whereValue);
 	}
+	
+	
+	/**
+	 * transaction
+	 */
+
+	public static void beginTransaction()
+	{
+		sharedInstance().getWritableDatabase().beginTransaction();
+	}
+	
+	public static void setTransactionSuccessful()
+	{
+		sharedInstance().getWritableDatabase().setTransactionSuccessful();
+	}
+	
+	public static void endTransaction()
+	{
+		sharedInstance().getWritableDatabase().endTransaction();
+	}
+	
 
 	/**
 	 * Gets the message.

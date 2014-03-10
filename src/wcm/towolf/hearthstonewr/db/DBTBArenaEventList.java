@@ -2,9 +2,9 @@ package wcm.towolf.hearthstonewr.db;
 
 import java.util.ArrayList;
 
-import wcm.towolf.hearthstonewr.model.datatype.RoleData;
 import wcm.towolf.hearthstonewr.model.datatype.RoleGame;
 import wcm.towolf.hearthstonewr.model.datatype.arena.ArenaEventData;
+import wcm.towolf.hearthstonewr.model.datatype.main.RoleData;
 import android.database.Cursor;
 
 public class DBTBArenaEventList extends DBTableBase{

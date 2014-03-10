@@ -8,16 +8,25 @@ import android.widget.Button;
 
 public class OpenView extends RatioRelativeLayout{
 
+	public Button ackBtn;
 	public Button normalBtn;
 	public Button arenaBtn;
     public Button exportBtn;
     
     public Button showPatchNoteBtn;
-	
+	public Button donateBtn;
+    
+    
 	public OpenView(Context context) {
 		super(context);
 		// TODO Auto-generated constructor stub
 		this.setBackgroundResource(R.drawable.main_bg);
+		
+		ackBtn = new Button(context);
+		ackBtn.setBackgroundResource(R.drawable.rect_label);
+		ackBtn.setText(R.string.open_acknowledgements);
+		BasicClickEffect.setClickEffect(ackBtn);
+		this.addView(ackBtn, 428, 122, 172, 100);
 		
 		normalBtn = new Button(context);
 		normalBtn.setBackgroundResource(R.drawable.rect_label);
@@ -45,7 +54,16 @@ public class OpenView extends RatioRelativeLayout{
 		showPatchNoteBtn.setBackgroundResource(R.drawable.rect_label);
 		showPatchNoteBtn.setText("Patch Note");
 		BasicClickEffect.setClickEffect(showPatchNoteBtn);
-		this.addView(showPatchNoteBtn, 250, 100, 500, 1150);
+		this.addView(showPatchNoteBtn, 250, 100, 500, 1130);
+		
+
+		donateBtn = new Button(context);
+		donateBtn.setBackgroundResource(R.drawable.rect_label);
+		donateBtn.setText(R.string.open_donate);
+		
+		BasicClickEffect.setClickEffect(donateBtn);
+		this.addView(donateBtn, 250, 100, 20, 1130);
+		
 		
 		
 	}

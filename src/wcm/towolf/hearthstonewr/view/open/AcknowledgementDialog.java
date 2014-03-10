@@ -1,24 +1,20 @@
 package wcm.towolf.hearthstonewr.view.open;
 
 import itri.u9lab.towolf.ratiofixer.RatioFixer;
-
-import java.util.ArrayList;
-
-import wcm.towolf.hearthstonewr.ArenaActivity;
 import wcm.towolf.hearthstonewr.R;
-import wcm.towolf.hearthstonewr.model.datatype.arena.ArenaEventData;
-import wcm.towolf.hearthstonewr.view.arena.ArenaViewListItem;
-import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.graphics.LightingColorFilter;
 import android.text.TextUtils.TruncateAt;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -49,45 +45,66 @@ public class AcknowledgementDialog {
 	
 	public static void show(Context context)
 	{
-		 AlertDialog.Builder dialog = new AlertDialog.Builder(context);
-		 dialog.setTitle(R.string.open_dialog_acknowledgements_title); //設定dialog 的title顯示內容
+//		 AlertDialog.Builder dialog = new AlertDialog.Builder(context);
+//		 dialog.setTitle(R.string.open_dialog_acknowledgements_title); //設定dialog 的title顯示內容
+//		 
+//		 dialog.setIcon(android.R.drawable.ic_dialog_info);//設定dialog 的ICON
+//		 dialog.setCancelable(true); //關閉 Android 系統的主要功能鍵(menu,home等...)
+		 Dialog dialog = new Dialog(context);
 		 
-		 dialog.setIcon(android.R.drawable.ic_dialog_info);//設定dialog 的ICON
-		 dialog.setCancelable(true); //關閉 Android 系統的主要功能鍵(menu,home等...)
-//		 dialog.setMessage("aggdagdsgdgdgdg");
-//		 ImageView iv = new ImageView(context);
-//		 iv.setBackgroundResource(R.drawable.paypal_logo);
+		 
 		 DialogView dv = new DialogView(context);
+		 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		 dialog.setContentView(dv,mRF.getLayoutParam(700, 900, 0,0));
 		 
-		 dialog.setView(dv);
+		 //dialog.setView(dv);
 		 
 		 
-		 dialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {  
-			    public void onClick(DialogInterface dialog, int which) {
-			    	//BasicClickEffect.setClickEffect((Button)view);
-			    
-			    }  
-			}); 
+//		 dialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {  
+//			    public void onClick(DialogInterface dialog, int which) {
+//			    	//BasicClickEffect.setClickEffect((Button)view);
+//			    
+//			    }  
+//			}); 
+		 //dialog.
 		 dialog.show();
+			Window window = dialog.getWindow();
+
+			window.setLayout(mRF.getRealValue(750), mRF.getRealValue(950));
 	}
 	
 	private static class DialogView extends RelativeLayout
 	{
 
+		TextView mTitle;
 		ListView mListView;
+		
 		public DialogView(final Context context) {
 			super(context);
 			// TODO Auto-generated constructor stub
 			
-			RatioFixer rf = RatioFixer.getGlobalRatioFixer();
-			this.setLayoutParams(rf.getLayoutParam(700, 800, 0,0));
+			//this.setLayoutParams(rf.getLayoutParam(700, 800, 0,0));
+			this.setBackgroundResource(R.drawable.detail_bg);
+			
+			
+			mTitle = new TextView(context);
+			mTitle.setText(R.string.open_dialog_acknowledgements_title);
+			mTitle.setGravity(Gravity.CENTER);
+			mTitle.setBackgroundResource(R.drawable.rect_label);
+			mTitle.setTextColor(Color.parseColor("#000000"));
+			mTitle.setTextSize(TypedValue.COMPLEX_UNIT_PX,mRF.getRealValue(50));
 			
 			mListView = new ListView(context);
+			mListView.setVerticalScrollBarEnabled(false);
 			mListView.setDivider(null);
 			mListView.setAdapter(new MyAdapter(context));
 			
-			this.addView(mListView);
 			
+			
+			
+			this.addView(mListView,mRF.getLayoutParam(700, 750, 0, 150));
+			//overlapping
+			this.addView(mTitle,mRF.getLayoutParam(700, 165, 2, 0));
 			
 			
 		}

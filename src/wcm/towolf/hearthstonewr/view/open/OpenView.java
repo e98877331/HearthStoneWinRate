@@ -1,17 +1,28 @@
 package wcm.towolf.hearthstonewr.view.open;
 
+import itri.u9lab.towolf.ratiofixer.RatioFixer;
 import itri.u9lab.towolf.ratiofixer.RatioRelativeLayout;
 import wcm.towolf.hearthstonewr.R;
 import wcm.towolf.hearthstonewr.util.BasicClickEffect;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.content.Context;
-import android.view.View;
-import android.view.animation.AlphaAnimation;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.Animation;
-import android.view.animation.LinearInterpolator;
+import android.view.animation.AnimationSet;
+import android.view.animation.AnimationUtils;
+import android.view.animation.DecelerateInterpolator;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
+import android.widget.ImageView;
 
 public class OpenView extends RatioRelativeLayout{
 
+	public ImageView gd;
+	
 	public Button ackBtn;
 	public Button normalBtn;
 	public Button arenaBtn;
@@ -48,6 +59,52 @@ public class OpenView extends RatioRelativeLayout{
 //		    });
 //		
 		this.addView(ackBtn, 428, 122, 172, ystand);
+		
+		
+		gd = new ImageView(context);
+		gd.setImageResource(R.drawable.mask);
+		gd.setAlpha(0f);
+		this.addView(gd,100,110,172,ystand+6);
+RatioFixer rf = this.getRatioFixer();
+		
+
+
+		ValueAnimator squashAnim1 = ObjectAnimator.ofFloat(gd, "x", rf.getRealValue(172),
+				rf.getRealValue( 500 ));
+        squashAnim1.setDuration(1000);
+       // squashAnim1.setRepeatCount(1);
+        squashAnim1.setRepeatMode(ValueAnimator.RESTART);
+        squashAnim1.setInterpolator(new AccelerateDecelerateInterpolator());
+		//squashAnim1.start();
+        
+        ObjectAnimator animAlpha1 = ObjectAnimator.ofFloat(gd, "alpha", 0f, 1f);
+        animAlpha1.setDuration(300);
+        animAlpha1.setRepeatMode(ValueAnimator.RESTART);
+        
+        ObjectAnimator animAlpha2 = ObjectAnimator.ofFloat(gd, "alpha", 1f, 0f);
+        animAlpha2.setDuration(300);
+        animAlpha2.setStartDelay(700);
+        animAlpha2.setRepeatMode(ValueAnimator.RESTART);
+        
+        final AnimatorSet animSet = new AnimatorSet();
+        animSet.playTogether(squashAnim1,animAlpha1,animAlpha2);
+        animSet.setStartDelay(2000);
+        
+        animSet.addListener(new AnimatorListenerAdapter() {
+        	 
+        	@Override
+        	public void onAnimationEnd(Animator animation) {
+        	    super.onAnimationEnd(animation);
+        	    animSet.start();
+        	}
+        	 
+        	});
+        animSet.start();
+        
+	//	gd.startAnimation(animationSet);
+		
+		
+		
 		
 		normalBtn = new Button(context);
 		normalBtn.setBackgroundResource(R.drawable.rect_label);

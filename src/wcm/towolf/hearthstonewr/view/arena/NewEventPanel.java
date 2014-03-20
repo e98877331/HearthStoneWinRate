@@ -3,6 +3,7 @@ package wcm.towolf.hearthstonewr.view.arena;
 import itri.u9lab.towolf.ratiofixer.RatioFixer;
 import wcm.towolf.hearthstonewr.ArenaActivity;
 import wcm.towolf.hearthstonewr.R;
+import wcm.towolf.hearthstonewr.model.bigdatalogger.ArenaBigDataLogger;
 import wcm.towolf.hearthstonewr.model.datatype.RoleType;
 import wcm.towolf.hearthstonewr.model.datatype.arena.ArenaEventData;
 import wcm.towolf.hearthstonewr.util.BasicClickEffect;
@@ -183,8 +184,13 @@ public class NewEventPanel extends RelativeLayout{
 			@Override
 			public void run(int roleType) {
 				// TODO Auto-generated method stub
+				
+				int crt = currentEvent.roleType;
+				ArenaBigDataLogger.sharedInstance().enqueueGame(crt, roleType, true);
+				
 			   currentEvent.addGame(roleType, true);
 			   setData(currentEvent);
+			   
 			   
 			   if(currentEvent.win ==12)
 			   {
@@ -203,6 +209,10 @@ public class NewEventPanel extends RelativeLayout{
 			@Override
 			public void run(int roleType) {
 				// TODO Auto-generated method stub
+				
+				int crt = currentEvent.roleType;
+				ArenaBigDataLogger.sharedInstance().enqueueGame(crt, roleType, false);
+				
 			   currentEvent.addGame(roleType, false);
 			   setData(currentEvent);
 			   

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import wcm.towolf.hearthstonewr.gahelper.GAHelper;
 import wcm.towolf.hearthstonewr.model.ArenaEventDataProvider;
+import wcm.towolf.hearthstonewr.model.bigdatalogger.ArenaBigDataLogger;
 import wcm.towolf.hearthstonewr.model.datatype.RoleType;
 import wcm.towolf.hearthstonewr.model.datatype.arena.ArenaEventData;
 import wcm.towolf.hearthstonewr.view.HeroChooseDialog;
@@ -220,6 +221,8 @@ public class ArenaActivity extends Activity {
 				
 				int roleType = mNewEventPanel.getCurrentEvent().roleType;
 				GAHelper.event(ArenaActivity.this, "ui_action", "event_win_button_press",RoleType.getDebugString(roleType, ArenaActivity.this), 0);
+				
+				
 				mNewEventPanel.win();
 				// reloadListData();
 			}

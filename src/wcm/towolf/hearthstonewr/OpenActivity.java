@@ -1,6 +1,7 @@
 package wcm.towolf.hearthstonewr;
 
 import itri.u9lab.towolf.ratiofixer.RatioFixer;
+import wcm.towolf.hearthstonewr.model.bigdatalogger.ArenaBigDataLogger;
 import wcm.towolf.hearthstonewr.view.MyAlertDialog;
 import wcm.towolf.hearthstonewr.view.open.AcknowledgementDialog;
 import wcm.towolf.hearthstonewr.view.open.DonateDialog;
@@ -80,6 +81,7 @@ public class OpenActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				ArenaBigDataLogger.sharedInstance().dequeueAllToServer();
 				Intent i = new Intent(OpenActivity.this, ExportActivity.class);
 				// i.putExtra("RoleData",mAdapter.getItem(arg2));
 				startActivity(i);

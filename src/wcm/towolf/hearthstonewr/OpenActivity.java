@@ -26,6 +26,7 @@ public class OpenActivity extends Activity {
 	Button mNormalBtn;
 	Button mArenaBtn;
 	Button mExportBtn;
+	Button mWorldDataBtn;
 	Button mShowPatchNoteBtn;
 	Button mDonateBtn;
 	
@@ -89,6 +90,22 @@ public class OpenActivity extends Activity {
 	//			ArenaTest.addTestEvents();
 			}
 		});
+		
+		mWorldDataBtn = mView.worldDataBtn;
+		mWorldDataBtn.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				ArenaBigDataLogger.sharedInstance().dequeueAllToServer();
+				Intent i = new Intent(OpenActivity.this, ExportActivity.class);
+				// i.putExtra("RoleData",mAdapter.getItem(arg2));
+				startActivity(i);
+				
+	//			ArenaTest.addTestEvents();
+			}
+		});
+		
 		mShowPatchNoteBtn = mView.showPatchNoteBtn;
 		mShowPatchNoteBtn.setOnClickListener(new OnClickListener() {
 			
@@ -130,12 +147,19 @@ public class OpenActivity extends Activity {
 		super.onStart();
 		
 		EasyTracker.getInstance(this).activityStart(this);
+		mView.startAnimation();
+		
 	}
 	@Override
 	protected void onStop() {
 		// TODO Auto-generated method stub
 		super.onStop();
-		EasyTracker.getInstance(this).activityStop(this); 
+		EasyTracker.getInstance(this).activityStop(this);
+		mView.stopAnimation();
+		
+		
+		
+		
 	}
 	
 	public void showPatchNoteAtFirstTime()

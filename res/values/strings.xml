@@ -51,7 +51,8 @@
     <string name="open_acknowledgements">Acknowledgements</string>
     <string name="open_normal_game">Normal Game</string>
     <string name="open_arena_game">Arena</string>
-    <string name="open_export_csv">"Export csv (Coming SOOOOON!!)"</string>
+    <string name="open_export_csv">"Export CSV (Coming SOOOOON!!)"</string>
+    <string name="open_world_data">Global Data</string>
     <string name="open_donate">Donate</string>
    <string name="open_dialog_acknowledgements_title">Acknowledgements</string>
     

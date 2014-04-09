@@ -54,7 +54,12 @@
     <string name="open_export_csv">"Export CSV (Coming SOOOOON!!)"</string>
     <string name="open_world_data">Global Data</string>
     <string name="open_donate">Donate</string>
-   <string name="open_dialog_acknowledgements_title">Acknowledgements</string>
+    <string name="open_dialog_acknowledgements_title">Acknowledgements</string>
+    <string name="world_data_detail">World Data Detail</string>
+    <string name="world_data_pics">Personal Information Collection Statements\n\n
+        The personal data collected in this application will be used to analysis the world win rate </string>
+    <string name="world_data_pics_agree">I agree.</string>
+    <string name="world_data_pics_confirm">confirm</string>
     
     <string name="dialog_donate_title">Donation Information</string>
     <string name="dialog_donate_content">Thanks for using the app and wish the app helps you. Coding needs beer,so if you like the app, 

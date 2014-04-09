@@ -98,7 +98,7 @@ public class OpenActivity extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				ArenaBigDataLogger.sharedInstance().dequeueAllToServer();
-				Intent i = new Intent(OpenActivity.this, ExportActivity.class);
+				Intent i = new Intent(OpenActivity.this, WorldDataActivity.class);
 				// i.putExtra("RoleData",mAdapter.getItem(arg2));
 				startActivity(i);
 				

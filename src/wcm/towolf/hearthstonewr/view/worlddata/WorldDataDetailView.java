@@ -1,4 +1,4 @@
-package wcm.towolf.hearthstonewr.view.arena;
+package wcm.towolf.hearthstonewr.view.worlddata;
 
 import itri.u9lab.towolf.ratiofixer.RatioFixer;
 import itri.u9lab.towolf.ratiofixer.RatioRelativeLayout;
@@ -26,7 +26,7 @@ import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
-public class ArenaDetailView extends RatioRelativeLayout{
+public class WorldDataDetailView extends RatioRelativeLayout{
 
 	public ListView listView;
 
@@ -35,14 +35,14 @@ public class ArenaDetailView extends RatioRelativeLayout{
 
 	public ArrayList<RowView> rowViews = new ArrayList<RowView>();
 
-	public ArenaDetailView(Context context) {
+	public WorldDataDetailView(Context context) {
 		super(context);
 
 		mRf  = this.getRatioFixer();
 		mContext = context;
 		
 		TextView titleTextView = new TextView(context);
-		titleTextView.setText(getResources().getString(R.string.arena_match_detail));
+		titleTextView.setText(getResources().getString(R.string.world_data_detail));
 		titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, 4.45f * 20.0f * mRf.getRatio());
 		titleTextView.setTextColor(Color.parseColor("#F3E5AB"));
 		titleTextView.setBackgroundResource(R.drawable.rect_label);
@@ -76,14 +76,14 @@ public class ArenaDetailView extends RatioRelativeLayout{
 //		list.add(new RowView(context, R.drawable.druid, "1", "2", "3%"));
 //		list.add(new RowView(context, R.drawable.shaman, "1", "2", "3%"));
 //		list.add(new RowView(context, R.drawable.rogue, "1", "2", "3%"));
-		listView.setAdapter(new ArenaDetailListAdapter(rowViews));
+		listView.setAdapter(new WorldDataDetailListAdapter(rowViews));
 	}
 	
-	class ArenaDetailListAdapter extends BaseAdapter {
+	class WorldDataDetailListAdapter extends BaseAdapter {
 		
 		ArrayList<?> list;
 		
-		public ArenaDetailListAdapter(ArrayList<?> list) {
+		public WorldDataDetailListAdapter(ArrayList<?> list) {
 			this.list = list;
 		}
 

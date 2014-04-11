@@ -4,9 +4,7 @@ import itri.u9lab.towolf.ratiofixer.RatioFixer;
 import wcm.towolf.hearthstonewr.R;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.graphics.Color;
-import android.graphics.LightingColorFilter;
 import android.text.TextUtils.TruncateAt;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -14,17 +12,39 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class AcknowledgementDialog {
 
-	private final static AcItem[] mData = {new AcItem("Dirty Mike","5.0 USD"),
-									new AcItem("Weichi","1.0 USD"),
-					
+	private final static AcItem[] mData = {new AcItem("Dirty Mike","5.0 USD",5.0f),
+									new AcItem("Weichi","1.0 USD",1.0f),
+//									new AcItem("chinyang","1.0 USD",1.0f),
+//									new AcItem("Lu","1.0 USD",1.0f),
+//									new AcItem("Ethan","1.0 USD",1.0f),
+//									new AcItem("Sue-Ming Yeh","2.0 USD",2.0f),
+//									new AcItem("Monika","1.0 USD",1.0f),
+//									new AcItem("Freedom","1.0 USD",1.0f),
+//									new AcItem("Steve","1.0 USD",1.0f),
+//									new AcItem("Roger","1.0 USD",1.0f),
+//									new AcItem("Towolf","5.0 USD",5.0f),
 									};
+	static
+	{
+		float sum = 0;
+		for(int i = 0; i< mData.length; i++)
+		{
+			sum += mData[i].value;
+		}
+		for(int i = 0; i< mData.length; i++)
+		{
+			double v = Math.sqrt(100*(mData[i].value/sum)) *10;
+			mData[i].valuePercentageString =   String.format("%.1f",v) ;
+		}
+		
+	}
+	
 	
 	static RatioFixer mRF = RatioFixer.getGlobalRatioFixer();
 	
@@ -62,6 +82,7 @@ public class AcknowledgementDialog {
 	{
 
 		TextView mTitle;
+		TextView mNameTitle,mValueTitle;
 		ListView mListView;
 		
 		public DialogView(final Context context) {
@@ -79,6 +100,33 @@ public class AcknowledgementDialog {
 			mTitle.setTextColor(Color.parseColor("#000000"));
 			mTitle.setTextSize(TypedValue.COMPLEX_UNIT_PX,mRF.getRealValue(50));
 			
+			
+			mNameTitle = new TextView(context);
+			mNameTitle.setText("Name");
+			mNameTitle.setGravity(Gravity.CENTER);
+			mNameTitle.setBackgroundResource(R.drawable.rect_leather_label);
+			mNameTitle.setTextColor(Color.parseColor("#000000"));
+			mNameTitle.setTextSize(TypedValue.COMPLEX_UNIT_PX,mRF.getRealValue(30));
+			mNameTitle.setEllipsize(TruncateAt.MARQUEE);
+	        mNameTitle.setSelected(true);
+	        mNameTitle.setSingleLine(true);
+	        int wpadding = mRF.getRealValue(15);
+	        mNameTitle.setPadding(wpadding, 0, wpadding, 0);
+			
+			mValueTitle = new TextView(context);
+			mValueTitle.setText("Donation");
+			mValueTitle.setGravity(Gravity.CENTER);
+			mValueTitle.setBackgroundResource(R.drawable.rect_leather_label);
+			mValueTitle.setTextColor(Color.parseColor("#000000"));
+			mValueTitle.setTextSize(TypedValue.COMPLEX_UNIT_PX,mRF.getRealValue(30));
+			
+			
+			this.addView(mNameTitle,mRF.getLayoutParam(345, 100, 8, 155));
+			this.addView(mValueTitle,mRF.getLayoutParam(345, 100, 347, 155));
+			
+			
+			
+			
 			mListView = new ListView(context);
 			mListView.setVerticalScrollBarEnabled(false);
 			mListView.setDivider(null);
@@ -87,7 +135,8 @@ public class AcknowledgementDialog {
 			
 			
 			
-			this.addView(mListView,mRF.getLayoutParam(700, 750, 0, 150));
+			
+			this.addView(mListView,mRF.getLayoutParam(700, 650, 0, 250));
 			//overlapping
 			this.addView(mTitle,mRF.getLayoutParam(700, 165, 2, 0));
 			
@@ -149,7 +198,7 @@ public class AcknowledgementDialog {
 		public void setData(AcItem item)
 		{
 			mName.setText(item.name);
-			mValue.setText(item.value);
+			mValue.setText(item.valuePercentageString);
 		}
 		
 		
@@ -206,12 +255,17 @@ public class AcknowledgementDialog {
 	private static class AcItem 
 	{
 		String name;
-		String value;
-		public AcItem(String name,String value)
+		String valueString;
+		float value;
+		String valuePercentageString;
+		public AcItem(String name,String valueString,float value)
 		{
 			this.name = name;
+			this.valueString = valueString;
 			this.value = value;
 		}
+		
+		
 		
 	}
 	

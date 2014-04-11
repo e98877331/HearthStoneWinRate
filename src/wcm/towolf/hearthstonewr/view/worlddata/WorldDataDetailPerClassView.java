@@ -7,7 +7,6 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import wcm.towolf.hearthstonewr.R;
-import wcm.towolf.hearthstonewr.model.bigdatalogger.WorldHeroData;
 import wcm.towolf.hearthstonewr.model.datatype.RoleType;
 import android.content.Context;
 import android.graphics.Color;
@@ -24,28 +23,31 @@ import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
-public class WorldDataDetailView extends RatioRelativeLayout{
-
+public class WorldDataDetailPerClassView extends RatioRelativeLayout{
 	public ListView listView;
-
+	
 	RatioFixer mRf;
 	Context mContext;
-
-	public ArrayList<RowView> rowViews = new ArrayList<RowView>();
-
-	public WorldDataDetailView(Context context) {
+	
+	public WorldDataDetailPerClassView(Context context, int roletype, int[] win, int[] total) {
 		super(context);
-
 		mRf  = this.getRatioFixer();
 		mContext = context;
 		
+		RelativeLayout relativeLayout = new RelativeLayout(context);
+		relativeLayout.setBackgroundResource(R.drawable.rect_label);
+		this.addView(relativeLayout, 768, 200, 0, 0);
+		
 		TextView titleTextView = new TextView(context);
-		titleTextView.setText(getResources().getString(R.string.world_data_detail));
+		titleTextView.setText(getResources().getString(R.string.arena_vs_each_hero));
 		titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, 4.45f * 20.0f * mRf.getRatio());
 		titleTextView.setTextColor(Color.parseColor("#F3E5AB"));
-		titleTextView.setBackgroundResource(R.drawable.rect_label);
+//		titleTextView.setBackgroundResource(R.drawable.rect_label);
+//		titleTextView.setBackgroundColor(Color.BLUE);
 		titleTextView.setGravity(Gravity.CENTER);
-		this.addView(titleTextView, 768, 200, 0, 0);
+		RelativeLayout.LayoutParams titleParams = new RelativeLayout.LayoutParams(mRf.getRealValue(568), mRf.getRealValue(200));
+		titleParams.setMargins(mRf.getRealValue(140), 0, 0, 0);
+		relativeLayout.addView(titleTextView, titleParams);
 		titleTextView.setEllipsize(TruncateAt.MARQUEE);
 		titleTextView.setSelected(true);
 		titleTextView.setSingleLine(true);
@@ -54,43 +56,30 @@ public class WorldDataDetailView extends RatioRelativeLayout{
 		
 		listView = new ListView(context);
 		listView.setBackgroundResource(R.drawable.main_bg);
-		this.addView(listView, 768, 1030, 0, 200);
+		this.addView(listView,768,1030,0,200);
 		
-//		ArrayList<RowView> list = new ArrayList<RowView>();
-		rowViews.add(new RowView(context));
+		ArrayList<RowView> list = new ArrayList<RowView>();
+		list.add(new RowView(context));
 		
-//		ArenaEventDataProvider provider = new ArenaEventDataProvider();
-//		ArrayList<ArenaHeroDetailData> herodata =  provider.getAllArenaHeroData();
-//	    for(ArenaHeroDetailData hero: herodata) {	    	
-//	    	RowView rowView = new RowView(context, hero);
-//			rowViews.add(rowView);;
-//	    }
+		if (win.length == total.length) {
+			for (int i = 0; i < 9; i++) {
+				list.add(new RowView(context, i, win[i], total[i]));
+			}
+		}
+		listView.setAdapter(new ArenaDetailListAdapter(list));
 
-//		list.add(new RowView(context, R.drawable.priest, "4", "5", "6%"));
-//		list.add(new RowView(context, R.drawable.warrior, "1", "2", "3%"));
-//		list.add(new RowView(context, R.drawable.warlock, "1", "2", "3%"));
-//		list.add(new RowView(context, R.drawable.hunter, "1", "2", "3%"));
-//		list.add(new RowView(context, R.drawable.mage, "1", "2", "3%"));
-//		list.add(new RowView(context, R.drawable.druid, "1", "2", "3%"));
-//		list.add(new RowView(context, R.drawable.shaman, "1", "2", "3%"));
-//		list.add(new RowView(context, R.drawable.rogue, "1", "2", "3%"));
-//		listView.setAdapter(new WorldDataDetailListAdapter(rowViews));
+		ImageView classImageView = new ImageView(context);
+		classImageView.setBackgroundResource(RoleType.getRoleRes(roletype));
+		RelativeLayout.LayoutParams classParams = new RelativeLayout.LayoutParams(mRf.getRealValue(120), mRf.getRealValue(180));
+		classParams.setMargins(mRf.getRealValue(10), mRf.getRealValue(10), 0, 0);
+		relativeLayout.addView(classImageView, classParams);
 	}
 	
-	public void setData(ArrayList<WorldHeroData> worldHeroDatas) {
-	    for(WorldHeroData data: worldHeroDatas) {	    	
-	    	RowView rowView = new RowView(mContext, data);
-			rowViews.add(rowView);
-	    }
-		
-		listView.setAdapter(new WorldDataDetailListAdapter(rowViews));
-	}
-	
-	class WorldDataDetailListAdapter extends BaseAdapter {
+	class ArenaDetailListAdapter extends BaseAdapter {
 		
 		ArrayList<?> list;
 		
-		public WorldDataDetailListAdapter(ArrayList<?> list) {
+		public ArenaDetailListAdapter(ArrayList<?> list) {
 			this.list = list;
 		}
 
@@ -118,8 +107,6 @@ public class WorldDataDetailView extends RatioRelativeLayout{
 				view = (RowView) convertView;
 			}
 			
-			// init convertView
-			
 			return view;
 		}
 
@@ -133,7 +120,7 @@ public class WorldDataDetailView extends RatioRelativeLayout{
 		
 	}
 
-	public class RowView extends LinearLayout {
+	class RowView extends LinearLayout {
 		
 		RelativeLayout relativeLayout;
 		
@@ -141,7 +128,6 @@ public class WorldDataDetailView extends RatioRelativeLayout{
 		TextView winTimes;
 		TextView winRounds;
 		TextView winRate;
-		ImageView arrowImageView;
 
 		public RowView(Context context) {
 			super(context);
@@ -169,39 +155,22 @@ public class WorldDataDetailView extends RatioRelativeLayout{
 			winRate.setGravity(Gravity.CENTER);
 			winRate.setLayoutParams(new TableLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, 1.0f));
 			this.addView(winRate);
-			
-			arrowImageView = new ImageView(context);
-//			arrowImageView.setImageResource(R.drawable.arena_arrow);
-			TableLayout.LayoutParams lp = new TableLayout.LayoutParams(mRf.getRealValue(30), mRf.getRealValue(30), 1.0f);
-			lp.topMargin = mRf.getRealValue(40);
-			arrowImageView.setLayoutParams(lp);
-			this.addView(arrowImageView);
 		}
 		
-		public WorldHeroData worldHeroData;
-		
-		public RowView(Context context, WorldHeroData worldHeroData) {
+		public RowView(Context context, int i, int win, int total) {
 			super(context);
-			
-			this.worldHeroData = worldHeroData;
-			
-			int imageID = RoleType.getRoleRes(worldHeroData.roleType);
-			int times = 0;
-			for (int wins : worldHeroData.winGamesArray) {
-				times += wins;
-			}
-			int rounds = 0;
-			for (int total : worldHeroData.totalGamesArray) {
-				rounds += total;
-			}
-			String rate = "";
-			if (rounds == 0) {
-				rate = "--";
-			} else {
-				float f = (float) times / rounds;
+						
+			int imageID = RoleType.getRoleRes(i);
+			int times = win;
+			int rounds = total;
+	    	String rate = "";
+	    	if (total == 0) {
+	    		rate = "--";
+	    	} else {
+				float f = (float) win / total;
 				DecimalFormat fnum = new DecimalFormat("##0.00");
 				rate = fnum.format(f * 100) + "%";
-			}
+	    	}
 			
 			classImageView = new ImageView(context);
 			classImageView.setImageResource(imageID);
@@ -226,15 +195,8 @@ public class WorldDataDetailView extends RatioRelativeLayout{
 			winRate.setGravity(Gravity.CENTER);
 			winRate.setLayoutParams(new TableLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, 1.0f));
 			this.addView(winRate);
-			
-			arrowImageView = new ImageView(context);
-			arrowImageView.setImageResource(R.drawable.arena_arrow);
-			TableLayout.LayoutParams lp = new TableLayout.LayoutParams(mRf.getRealValue(30), mRf.getRealValue(30), 1.0f);
-			lp.topMargin = mRf.getRealValue(40);
-			arrowImageView.setLayoutParams(lp);
-			this.addView(arrowImageView);
 		}
 		
 	}
-
+	
 }

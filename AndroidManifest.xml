@@ -67,6 +67,8 @@
         </activity>
         <activity android:name="WorldDataActivity">
         </activity>
+        <activity android:name="WorldDataDetailPerClassActivity">
+        </activity>
     </application>
 
 </manifest>

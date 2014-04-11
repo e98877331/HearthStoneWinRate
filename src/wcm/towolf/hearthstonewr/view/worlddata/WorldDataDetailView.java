@@ -56,7 +56,7 @@ public class WorldDataDetailView extends RatioRelativeLayout{
 		
 		listView = new ListView(context);
 		listView.setBackgroundResource(R.drawable.main_bg);
-		this.addView(listView,768,1030,0,200);
+		this.addView(listView, 768, 1030, 0, 200);
 		
 //		ArrayList<RowView> list = new ArrayList<RowView>();
 		rowViews.add(new RowView(context));

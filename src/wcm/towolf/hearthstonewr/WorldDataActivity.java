@@ -1,11 +1,14 @@
 package wcm.towolf.hearthstonewr;
 
+import java.util.ArrayList;
+
 import wcm.towolf.hearthstonewr.view.worlddata.PicsView;
 import wcm.towolf.hearthstonewr.view.worlddata.WorldDataDetailView;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -20,9 +23,9 @@ public class WorldDataActivity extends Activity {
 	PicsView pView;
 
 	final static String TAG = "WorldDataDetailAcitvity";
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		
@@ -43,7 +46,7 @@ public class WorldDataActivity extends Activity {
 		boolean isPicsConfirmed = settings.getBoolean("isPicsConfirmed", false);
 	    if (!isPicsConfirmed) {
 			pView = new PicsView(this);
-			mView.addView(pView, 720, 1230, 0, 0);
+			mView.addView(pView, 720, 1030, 0, 200);
 			pView.button.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
@@ -55,7 +58,45 @@ public class WorldDataActivity extends Activity {
 					}
 				}
 			});
+			
+			return;
 	    }
+	    
+	    // API call
+//	    new GetWorldDataTask("type").execute();
+	}
+	
+	public class GetWorldDataTask extends AsyncTask<Void, Void, ArrayList<?>> {
+
+		String type;
+
+		public GetWorldDataTask(String type) {
+			this.type = type;
+		}
+
+		@Override
+		protected ArrayList<?> doInBackground(Void... params) {
+//			RObject<ADInfo> ro = RA.getADInfo(mContext, "APP001", ad_id);
+//			if (ro.raExp == null && ro.obj != null) {
+//				Log.e(TAG, ro.obj.toString());
+//			} else {
+//				Log.e(TAG, ro.raExp.toString());
+//			}
+
+			return null;
+		}
+
+		protected void onPostExecute(ArrayList<?> result) {
+//			if (result != null) {
+//				if (DBHelper.getInstance(mContext).readADInfo(ad_id) == null) {
+//					mLayout.adN.setVisibility(View.VISIBLE);
+//					XApplication.isAdNShowing = true;
+//				}
+//				DBHelper.getInstance(mContext).writeADInfo(result);
+//				
+//				setADInfoListener();
+//			}
+		}
 	}
 	
 	@Override

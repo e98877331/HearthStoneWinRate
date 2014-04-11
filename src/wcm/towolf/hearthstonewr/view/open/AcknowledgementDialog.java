@@ -23,22 +23,7 @@ public class AcknowledgementDialog {
 
 	private final static AcItem[] mData = {new AcItem("Dirty Mike","5.0 USD"),
 									new AcItem("Weichi","1.0 USD"),
-									new AcItem("Weichi","1.0 USD"),
-									new AcItem("Weichi","1.0 USD"),
-									new AcItem("Weichi","1.0 USD"),
-									new AcItem("Weichi","1.0 USD"),
-									new AcItem("Weichi","1.0 USD"),
-									new AcItem("Weichi","1.0 USD"),
-									new AcItem("Weichi","1.0 USD"),
-									new AcItem("Weichi","1.0 USD"),
-									new AcItem("Weichi","1.0 USD"),
-									new AcItem("Weichi","1.0 USD"),
-									new AcItem("Weichi","1.0 USD"),
-									new AcItem("Weichi","1.0 USD"),
-									new AcItem("Weichi","1.0 USD"),
-									new AcItem("Weichi","1.0 USD"),
-									new AcItem("Weichi","1.0 USD"),
-									new AcItem("Weichi","1.0 USD"),
+					
 									};
 	
 	static RatioFixer mRF = RatioFixer.getGlobalRatioFixer();
@@ -150,6 +135,7 @@ public class AcknowledgementDialog {
 			
 			rl.addView(mName,mRF.getLayoutParam(345, 100, 5, 5));
 			rl.addView(mValue,mRF.getLayoutParam(345, 100, 350, 5));
+//			rl.addView(mName,mRF.getLayoutParam(690, 100, 5, 5));
 			
 			this.addView(rl, mRF.getLayoutParam(700, 110, 0, 0));
 			

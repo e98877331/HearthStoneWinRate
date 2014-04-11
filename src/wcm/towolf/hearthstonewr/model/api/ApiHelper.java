@@ -12,6 +12,7 @@ import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.params.CoreProtocolPNames;
+import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -20,9 +21,10 @@ import wcm.towolf.hearthstonewr.model.bigdatalogger.WorldHeroData;
 
 public class ApiHelper {
 
-	private static HttpClient mClient = null;
+	//not use singlton client because of strange bug, too lazy to debug
+//	private static HttpClient mClient = null;
 	
-	public static void sendArenaLog(ArenaBigDataLogger.Game game)
+	public static boolean sendArenaLog(ArenaBigDataLogger.Game game)
 	{
 		
 
@@ -36,11 +38,16 @@ public class ApiHelper {
 		try {
 			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 			HttpResponse response = ApiHelper.sharedClient().execute(httppost);
+			response.getEntity().consumeContent();
+			ApiHelper.sharedClient().execute(httppost);
+			return true;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return false;
 		}
 
+		
 		//執行
 	}
 	
@@ -90,13 +97,20 @@ public class ApiHelper {
 	
 	public static HttpClient sharedClient()
 	{
-		if(mClient == null)
-		{
-			mClient = new DefaultHttpClient();
-			mClient.getParams().setParameter(CoreProtocolPNames.PROTOCOL_VERSION, HttpVersion.HTTP_1_1);
-		}
+//		if(mClient == null)
+//		{
+//			mClient = new DefaultHttpClient();
+//			mClient.getParams().setParameter(CoreProtocolPNames.PROTOCOL_VERSION, HttpVersion.HTTP_1_1);
+//		}
+//		
+//		return mClient;
 		
-		return mClient;
+		
+		HttpClient hc = new DefaultHttpClient();
+		hc.getParams().setParameter(CoreProtocolPNames.PROTOCOL_VERSION, HttpVersion.HTTP_1_1);
+		return hc;
+		
+		
 	}
 	
 }

@@ -186,7 +186,7 @@ public class NewEventPanel extends RelativeLayout{
 				// TODO Auto-generated method stub
 				
 				int crt = currentEvent.roleType;
-				ArenaBigDataLogger.sharedInstance().enqueueGame(crt, roleType, true);
+				ArenaBigDataLogger.sharedInstance().newGame(crt, roleType, true);
 				
 			   currentEvent.addGame(roleType, true);
 			   setData(currentEvent);
@@ -211,7 +211,7 @@ public class NewEventPanel extends RelativeLayout{
 				// TODO Auto-generated method stub
 				
 				int crt = currentEvent.roleType;
-				ArenaBigDataLogger.sharedInstance().enqueueGame(crt, roleType, false);
+				ArenaBigDataLogger.sharedInstance().newGame(crt, roleType, false);
 				
 			   currentEvent.addGame(roleType, false);
 			   setData(currentEvent);

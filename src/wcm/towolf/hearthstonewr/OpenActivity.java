@@ -95,7 +95,7 @@ public class OpenActivity extends Activity {
 					public void run() {
 						// TODO Auto-generated method stub
 						ArrayList<WorldHeroData> whd = ApiHelper.getWorldArenaData();
-						Log.e("tttt", "dfdfd");
+						
 					}
 				}).start();
 				
@@ -114,7 +114,7 @@ public class OpenActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				ArenaBigDataLogger.sharedInstance().dequeueAllToServer();
+//				ArenaBigDataLogger.sharedInstance().dequeueAllToServer();
 				
 
 				

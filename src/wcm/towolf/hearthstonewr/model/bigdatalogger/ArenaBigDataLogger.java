@@ -11,17 +11,25 @@ public class ArenaBigDataLogger {
 	private ArrayList<Game> mGames;
 	private long lastEnqueueTime = 0;
 	
+	private boolean isDequeuing = false;
+	
 	public ArenaBigDataLogger() {
 		// TODO Auto-generated constructor stub
 		
 		mGames = new ArrayList<ArenaBigDataLogger.Game>();
 	}
 	
+	public void newGame(int roleType, int vsRoleType, boolean isWin)
+	{
+		enqueueGame(roleType, vsRoleType, isWin);
+		dequeueAllToServer();
+	}
+	
 	public void enqueueGame(int roleType, int vsRoleType, boolean isWin)
 	{
 		long currentTime = System.currentTimeMillis();
 		
-		if((currentTime - lastEnqueueTime < 5) && lastEnqueueTime != 0)
+		if((currentTime - lastEnqueueTime < 5*1000*60) && lastEnqueueTime != 0)
 			return;
 		
 		lastEnqueueTime = currentTime;
@@ -30,17 +38,33 @@ public class ArenaBigDataLogger {
 	
 	public void dequeueAllToServer()
 	{
+		//case of empty queue
+		if(mGames.size() == 0)
+		{
+			return;
+		}
+		
+		
 		new Thread(new Runnable() {
 			
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
+				if(isDequeuing == true)
+					return;
 				
+				isDequeuing = true;
 				for(int i = 0 ;i< mGames.size();i++)
 				{
-					ApiHelper.sendArenaLog(mGames.get(i));
+					boolean result = ApiHelper.sendArenaLog(mGames.get(i));
+					if(result)
+					{
+						mGames.remove(i);
+					}
 				}
-				mGames.clear();
+				
+				isDequeuing = false;
+				//mGames.clear();
 			}
 		}).start();
 	}

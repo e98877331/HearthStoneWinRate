@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import wcm.towolf.hearthstonewr.gahelper.GAHelper;
 import wcm.towolf.hearthstonewr.model.ArenaEventDataProvider;
-import wcm.towolf.hearthstonewr.model.bigdatalogger.ArenaBigDataLogger;
 import wcm.towolf.hearthstonewr.model.datatype.RoleType;
 import wcm.towolf.hearthstonewr.model.datatype.arena.ArenaEventData;
 import wcm.towolf.hearthstonewr.view.HeroChooseDialog;
@@ -29,7 +28,6 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 
 import com.google.analytics.tracking.android.EasyTracker;
-import com.google.analytics.tracking.android.MapBuilder;
 
 public class ArenaActivity extends Activity {
 	ArenaView mView;

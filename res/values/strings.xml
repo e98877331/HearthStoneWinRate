@@ -60,6 +60,10 @@
         The personal data collected in this application will be used to analysis the world win rate </string>
     <string name="world_data_pics_agree">I agree.</string>
     <string name="world_data_pics_confirm">confirm</string>
+    <string name="world_data_dialog_title">Hint</string>
+    <string name="world_data_dialog_message">Please check the Internet service.</string>
+    <string name="world_data_dialog_button">OK</string>
+    <string name="world_data_dialog_progress_message">loading . . .</string>
     
     <string name="dialog_donate_title">Donation Information</string>
     <string name="dialog_donate_content">Thanks for using the app and wish the app helps you. Coding needs beer,so if you like the app, 

@@ -1,7 +1,12 @@
 package wcm.towolf.hearthstonewr;
 
 import itri.u9lab.towolf.ratiofixer.RatioFixer;
+
+import java.util.ArrayList;
+
+import wcm.towolf.hearthstonewr.model.api.ApiHelper;
 import wcm.towolf.hearthstonewr.model.bigdatalogger.ArenaBigDataLogger;
+import wcm.towolf.hearthstonewr.model.bigdatalogger.WorldHeroData;
 import wcm.towolf.hearthstonewr.view.MyAlertDialog;
 import wcm.towolf.hearthstonewr.view.open.AcknowledgementDialog;
 import wcm.towolf.hearthstonewr.view.open.DonateDialog;
@@ -11,6 +16,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -83,6 +89,17 @@ public class OpenActivity extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				ArenaBigDataLogger.sharedInstance().dequeueAllToServer();
+				new Thread(new Runnable() {
+					
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						ArrayList<WorldHeroData> whd = ApiHelper.getWorldArenaData();
+						Log.e("tttt", "dfdfd");
+					}
+				}).start();
+				
+				
 				Intent i = new Intent(OpenActivity.this, ExportActivity.class);
 				// i.putExtra("RoleData",mAdapter.getItem(arg2));
 				startActivity(i);
@@ -98,6 +115,10 @@ public class OpenActivity extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				ArenaBigDataLogger.sharedInstance().dequeueAllToServer();
+				
+
+				
+				
 				Intent i = new Intent(OpenActivity.this, WorldDataActivity.class);
 				// i.putExtra("RoleData",mAdapter.getItem(arg2));
 				startActivity(i);

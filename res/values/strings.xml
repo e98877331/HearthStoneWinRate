@@ -55,13 +55,13 @@
     <string name="open_world_data">Global Data</string>
     <string name="open_donate">Donate</string>
     <string name="open_dialog_acknowledgements_title">Acknowledgements</string>
-    <string name="world_data_detail">World Data Detail</string>
+    <string name="world_data_detail">Global Arena Data Statistic</string>
     <string name="world_data_pics">Personal Information Collection Statements\n\n
-        The personal data collected in this application will be used to analysis the world win rate </string>
+        I agree to share anonymous data for statistic purpose by this application. </string>
     <string name="world_data_pics_agree">I agree.</string>
     <string name="world_data_pics_confirm">confirm</string>
     <string name="world_data_dialog_title">Hint</string>
-    <string name="world_data_dialog_message">Please check the Internet service.</string>
+    <string name="world_data_dialog_message">Nerwork unreachable or server error</string>
     <string name="world_data_dialog_button">OK</string>
     <string name="world_data_dialog_progress_message">loading . . .</string>
     

@@ -88,16 +88,16 @@ public class OpenActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				ArenaBigDataLogger.sharedInstance().dequeueAllToServer();
-				new Thread(new Runnable() {
-					
-					@Override
-					public void run() {
-						// TODO Auto-generated method stub
-						ArrayList<WorldHeroData> whd = ApiHelper.getWorldArenaData();
-						
-					}
-				}).start();
+//				ArenaBigDataLogger.sharedInstance().dequeueAllToServer();
+//				new Thread(new Runnable() {
+//					
+//					@Override
+//					public void run() {
+//						// TODO Auto-generated method stub
+//						ArrayList<WorldHeroData> whd = ApiHelper.getWorldArenaData();
+//						
+//					}
+//				}).start();
 				
 				
 				Intent i = new Intent(OpenActivity.this, ExportActivity.class);

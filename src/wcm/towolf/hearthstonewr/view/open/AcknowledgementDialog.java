@@ -198,7 +198,7 @@ public class AcknowledgementDialog {
 		public void setData(AcItem item)
 		{
 			mName.setText(item.name);
-			mValue.setText(item.valuePercentageString);
+			mValue.setText(item.valueString);
 		}
 		
 		

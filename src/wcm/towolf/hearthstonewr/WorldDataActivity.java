@@ -87,7 +87,7 @@ public class WorldDataActivity extends Activity {
 	    }
 	    
 	    // API call
-		dialog = ProgressDialog.show(WorldDataActivity.this, null, getResources().getString(R.string.world_data_dialog_progress_message));
+		
 	    new GetWorldDataTask("type").execute();
 	}
 	
@@ -105,6 +105,13 @@ public class WorldDataActivity extends Activity {
 			return arrayList;
 		}
 
+		@Override
+		protected void onPreExecute() {
+			// TODO Auto-generated method stub
+			super.onPreExecute();
+			
+			dialog = ProgressDialog.show(WorldDataActivity.this, null, getResources().getString(R.string.world_data_dialog_progress_message));
+		}
 		protected void onPostExecute(ArrayList<WorldHeroData> result) {
 			dialog.dismiss();
 			

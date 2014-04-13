@@ -53,11 +53,14 @@
     <string name="open_arena_game">Arena</string>
     <string name="open_export_csv">"Export CSV (Coming SOOOOON!!)"</string>
     <string name="open_world_data">Global Data</string>
+    <string name="open_world_data_dialog">This page provides global statistics for all users of this application, only arena games are counted currently.
+        \n\n The function is still at beta stage. The server might be unstable and become out of service occasionally. Sorry for the inconvenience. 
+ </string>
     <string name="open_donate">Donate</string>
     <string name="open_dialog_acknowledgements_title">Acknowledgements</string>
     <string name="world_data_detail">Global Arena Data Statistic</string>
     <string name="world_data_pics">Personal Information Collection Statements\n\n
-        I agree to share anonymous data for statistic purpose by this application. </string>
+        I agree to anonymously share data for statistic purpose by this application. </string>
     <string name="world_data_pics_agree">I agree.</string>
     <string name="world_data_pics_confirm">confirm</string>
     <string name="world_data_dialog_title">Hint</string>

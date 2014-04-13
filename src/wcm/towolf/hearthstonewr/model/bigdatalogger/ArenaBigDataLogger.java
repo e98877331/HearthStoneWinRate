@@ -29,7 +29,7 @@ public class ArenaBigDataLogger {
 	{
 		long currentTime = System.currentTimeMillis();
 		
-		if((currentTime - lastEnqueueTime < 5*1000*60) && lastEnqueueTime != 0)
+		if((currentTime - lastEnqueueTime < 5*1000*60 * 14 /*14minute*/) && lastEnqueueTime != 0)
 			return;
 		
 		lastEnqueueTime = currentTime;

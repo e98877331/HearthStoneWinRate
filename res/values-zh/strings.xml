@@ -53,6 +53,8 @@
     <string name="open_normal_game">一般對戰</string>
     <string name="open_arena_game">競技場</string>
     <string name="open_world_data">全球資料統計</string>
+    <string name="open_world_data_dialog">此頁面提供全球此應用程式使用者的對戰資料統計,目前僅提供競技場對戰的資訊。
+        \n\n此功能目前處於測試階段,伺服器狀況可能會不穩導致功能暫時無法使用,儘請見諒</string>
     <string name="open_export_csv">匯出CSV (Coming SOOOON!!)</string>
     <string name="open_donate">贊助</string>
     <string name="open_dialog_acknowledgements_title">感謝以下 帥哥/正妹 的贊助!!</string>

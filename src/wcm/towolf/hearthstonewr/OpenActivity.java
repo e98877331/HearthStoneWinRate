@@ -1,22 +1,17 @@
 package wcm.towolf.hearthstonewr;
 
 import itri.u9lab.towolf.ratiofixer.RatioFixer;
-
-import java.util.ArrayList;
-
-import wcm.towolf.hearthstonewr.model.api.ApiHelper;
-import wcm.towolf.hearthstonewr.model.bigdatalogger.ArenaBigDataLogger;
-import wcm.towolf.hearthstonewr.model.bigdatalogger.WorldHeroData;
 import wcm.towolf.hearthstonewr.view.MyAlertDialog;
 import wcm.towolf.hearthstonewr.view.open.AcknowledgementDialog;
 import wcm.towolf.hearthstonewr.view.open.DonateDialog;
 import wcm.towolf.hearthstonewr.view.open.OpenView;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -116,12 +111,22 @@ public class OpenActivity extends Activity {
 				// TODO Auto-generated method stub
 //				ArenaBigDataLogger.sharedInstance().dequeueAllToServer();
 				
+				AlertDialog.Builder alertDialog = new AlertDialog.Builder(OpenActivity.this);
+				alertDialog.setTitle(getResources().getString(R.string.world_data_dialog_title));
+				alertDialog.setMessage(getResources().getString(R.string.open_world_data_dialog)).setCancelable(false);
+				alertDialog.setNeutralButton(getResources().getString(R.string.world_data_dialog_button), new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						Intent i = new Intent(OpenActivity.this, WorldDataActivity.class);
+						// i.putExtra("RoleData",mAdapter.getItem(arg2));
+						startActivity(i);
+					}
+				});
+				alertDialog.show();
+				
+				
+				
 
-				
-				
-				Intent i = new Intent(OpenActivity.this, WorldDataActivity.class);
-				// i.putExtra("RoleData",mAdapter.getItem(arg2));
-				startActivity(i);
 				
 	//			ArenaTest.addTestEvents();
 			}

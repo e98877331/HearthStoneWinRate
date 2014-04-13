@@ -75,7 +75,7 @@
         </string>
     
     <string name="update_note_title">v2.1 更新說明</string>
-    <string name="update_note_content">1. 在競技場模式中增加比賽細節畫面(點選最上方面板顯示)\n
-2. 在一般對戰模式中增加將牌組移動到最上方的功能\n</string>
+    <string name="update_note_content">1. 加入全球資料統計系統\n
+2. 加入致謝畫面\n</string>
 
 </resources>

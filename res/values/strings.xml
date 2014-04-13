@@ -73,9 +73,9 @@
         you can buy me some beer to support the development :).\n\n Click the above PayPal icon to donate!! \n\n
         Please add your nickname to \"tell me something\" field when donating, I\'ll put you on acknowledgements screen in later version of the app.</string>
     
-    <string name="update_note_title">v2.1 Patch Note</string>
-    <string name="update_note_content">1. Add match detail view in arena mode (show it by clicking top panel in arena mode).\n
-2. Add \"Move deck to top\" function in normal mode.\n</string>
+    <string name="update_note_title">v2.2 Patch Note</string>
+    <string name="update_note_content">1. Global data statistic page added.\n
+2. Acknowledgement page added\n</string>
     
 
 </resources>

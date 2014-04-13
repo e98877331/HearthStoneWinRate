@@ -123,11 +123,7 @@ public class OpenActivity extends Activity {
 					}
 				});
 				alertDialog.show();
-				
-				
-				
 
-				
 	//			ArenaTest.addTestEvents();
 			}
 		});
@@ -191,10 +187,10 @@ public class OpenActivity extends Activity {
 	public void showPatchNoteAtFirstTime()
 	{
 		SharedPreferences settings = getSharedPreferences("Preference", 0);
-		boolean b = settings.getBoolean("isFirstTimeV11",true);
+		boolean b = settings.getBoolean("isFirstTimeV16",true);
 	    if(b)
 	    {
-	    	settings.edit().putBoolean("isFirstTimeV11", false).commit();
+	    	settings.edit().putBoolean("isFirstTimeV16", false).commit();
 	    	MyAlertDialog.show(this, R.string.update_note_title,R.string.update_note_content);
 	    	
 	    }

@@ -75,7 +75,7 @@ public class WorldDataActivity extends Activity {
 						pView.setVisibility(View.GONE);
 				    	settings.edit().putBoolean("isPicsConfirmed", true).commit();
 				    	
-						dialog = ProgressDialog.show(WorldDataActivity.this, null, "please wait");
+//						dialog = ProgressDialog.show(WorldDataActivity.this, null, "please wait");
 					    new GetWorldDataTask("type").execute();
 					} else {
 						finish();

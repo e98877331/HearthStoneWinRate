@@ -2,6 +2,7 @@ package wcm.towolf.hearthstonewr;
 
 import java.util.ArrayList;
 
+import wcm.towolf.hearthstonewr.gahelper.GAHelper;
 import wcm.towolf.hearthstonewr.model.api.ApiHelper;
 import wcm.towolf.hearthstonewr.model.bigdatalogger.WorldHeroData;
 import wcm.towolf.hearthstonewr.view.worlddata.PicsView;
@@ -74,10 +75,12 @@ public class WorldDataActivity extends Activity {
 					if (pView.isChecked()) {
 						pView.setVisibility(View.GONE);
 				    	settings.edit().putBoolean("isPicsConfirmed", true).commit();
-				    	
+				    	GAHelper.event(WorldDataActivity.this, "ShareData", "ShareDataAgreement", "Agree", 0);
 //						dialog = ProgressDialog.show(WorldDataActivity.this, null, "please wait");
 					    new GetWorldDataTask("type").execute();
 					} else {
+						//check the following item in on stop
+//						GAHelper.event(WorldDataActivity.this, "ShareData", "ShareDataAgreement", "Not Agree", 0);
 						finish();
 					}
 				}
@@ -135,6 +138,11 @@ public class WorldDataActivity extends Activity {
 	protected void onStop() {
 		// TODO Auto-generated method stub
 		super.onStop();
+		final SharedPreferences settings = getSharedPreferences("Preference", 0);
+		boolean isPicsConfirmed = settings.getBoolean("isPicsConfirmed", false);
+		if(isPicsConfirmed == false)
+		GAHelper.event(WorldDataActivity.this, "ShareData", "ShareDataAgreement", "Not Agree", 0);
+		
 		EasyTracker.getInstance(this).activityStop(this);
 		
 		if (dialog != null && dialog.isShowing()) {

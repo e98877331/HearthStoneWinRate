@@ -12,12 +12,12 @@ import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.params.CoreProtocolPNames;
-import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import wcm.towolf.hearthstonewr.model.bigdatalogger.ArenaBigDataLogger;
 import wcm.towolf.hearthstonewr.model.bigdatalogger.WorldHeroData;
+import android.util.Log;
 
 public class ApiHelper {
 
@@ -39,7 +39,6 @@ public class ApiHelper {
 			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 			HttpResponse response = ApiHelper.sharedClient().execute(httppost);
 			response.getEntity().consumeContent();
-			ApiHelper.sharedClient().execute(httppost);
 			return true;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

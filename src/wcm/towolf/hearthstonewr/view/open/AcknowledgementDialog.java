@@ -20,7 +20,7 @@ public class AcknowledgementDialog {
 
 	private final static AcItem[] mData = {new AcItem("Dirty Mike","5.0 USD",5.0f),
 									new AcItem("Weichi","1.0 USD",1.0f),
-//									new AcItem("chinyang","1.0 USD",1.0f),
+									new AcItem("ZHANG ZHENXIN","5.0 USD",5.0f),
 //									new AcItem("Lu","1.0 USD",1.0f),
 //									new AcItem("Ethan","1.0 USD",1.0f),
 //									new AcItem("Sue-Ming Yeh","2.0 USD",2.0f),

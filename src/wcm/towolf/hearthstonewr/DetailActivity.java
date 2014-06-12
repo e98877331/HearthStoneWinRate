@@ -11,6 +11,7 @@ import wcm.towolf.hearthstonewr.view.HeroChooseView.ClickCallBack;
 import wcm.towolf.hearthstonewr.view.detail.DetailListActivity;
 import wcm.towolf.hearthstonewr.view.detail.DetailView;
 import wcm.towolf.hearthstonewr.view.detail.DialogActivity;
+import wcm.towolf.hearthstonewr.view.detail.GameHistoryListView;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -21,6 +22,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 
 import com.google.analytics.tracking.android.EasyTracker;
 
@@ -44,7 +46,8 @@ public class DetailActivity extends Activity {
 	Context mContext;
 	
 	HeroChooseDialog mHCD;
-	
+
+	GameHistoryListView mGameHistoryListView;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -192,6 +195,17 @@ public class DetailActivity extends Activity {
 			}
 		});
 		
+		
+		dView.showHistoryButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				mGameHistoryListView = new GameHistoryListView(DetailActivity.this, roleID);
+//				dView.addView(new GameHistoryListView(DetailActivity.this, roleID));
+				dView.addView(mGameHistoryListView, 768, 1230, 0, 0);
+			}
+		});
 //		bView = new BoxView(this);
 //		bView.setVisibility(View.GONE);
 //		dView.addView(bView, 768, 1230, 0, 0);
@@ -226,6 +240,23 @@ public class DetailActivity extends Activity {
 		printDebugInfo();
 	}
 	
+	
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+//		super.onBackPressed();
+		
+		if(mGameHistoryListView != null)
+		{
+			((ViewGroup)mGameHistoryListView.getParent()).removeView(mGameHistoryListView);
+			mGameHistoryListView = null;
+		}
+		else
+		{
+			super.onBackPressed();
+		}
+		
+	}
 //	public class BoxView extends RelativeLayout {
 //		TextView title;
 //		RoleImageView hunter;

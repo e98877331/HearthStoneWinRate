@@ -12,6 +12,7 @@
     <string name="main_create_btn">建立牌組</string>
     <string name="main_create_view_title">建立牌組</string>
     <string name="main_create_view_name">牌組名稱</string>
+    <string name="detail_history_list_btn">遊戲歷程</string>
     <string name="detail_no_record">尚無記錄</string>
     <string name="detail_win_btn">戰勝</string>
     <string name="detail_lose_btn">戰敗</string>
@@ -74,8 +75,7 @@
         贊助的同時記得在\'tell me something\'欄位填上您的暱稱，我會在之後的更新把您加入即將新增的致謝畫面中. 
         </string>
     
-    <string name="update_note_title">v2.1 更新說明</string>
-    <string name="update_note_content">1. 加入全球資料統計系統\n
-2. 加入致謝畫面\n</string>
+    <string name="update_note_title">v2.3 更新說明</string>
+    <string name="update_note_content">1. 在一般模式中加入顯示遊戲歷程按鈕.</string>
 
 </resources>

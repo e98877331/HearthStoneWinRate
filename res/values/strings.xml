@@ -12,6 +12,7 @@
     <string name="main_create_view_title">Add New Deck</string>
     <string name="main_create_view_name">Deck Name</string>
     <string name="detail_no_record">No record so far</string>
+    <string name="detail_history_list_btn">Game history</string>
     <string name="detail_win_btn">win</string>
     <string name="detail_lose_btn">lose</string>
     <string name="detail_undo_btn">undo</string>
@@ -73,9 +74,8 @@
         you can buy me some beer to support the development :).\n\n Click the above PayPal icon to donate!! \n\n
         Please add your nickname to \"tell me something\" field when donating, I\'ll put you on acknowledgements screen in later version of the app.</string>
     
-    <string name="update_note_title">v2.2 Patch Note</string>
-    <string name="update_note_content">1. Global data statistic page added.\n
-2. Acknowledgement page added\n</string>
+    <string name="update_note_title">v2.3 Patch Note</string>
+    <string name="update_note_content">1. Show game history button added in construct mode</string>
     
 
 </resources>

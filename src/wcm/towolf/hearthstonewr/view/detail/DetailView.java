@@ -29,6 +29,8 @@ public class DetailView extends RatioRelativeLayout{
 	public Button winButton;
 	public Button loseButton;
 	public Button undoButton;
+	
+	public Button showHistoryButton;
 //	public Button loseDecreaseButton;
 	
 	RatioFixer rf;
@@ -111,6 +113,23 @@ public class DetailView extends RatioRelativeLayout{
 //		totalCounterTextView.setBackgroundColor(Color.parseColor("#E2C2DE"));
 		totalCounterTextView.setGravity(Gravity.CENTER);
 		this.addView(totalCounterTextView, 256, 200, 512, 768);
+		
+		showHistoryButton = new Button(context);
+		showHistoryButton.setText(getResources().getString(R.string.detail_history_list_btn));
+		showHistoryButton.setBackgroundResource(R.drawable.rect_label);
+		this.addView(showHistoryButton, 200, 150, 10,210);
+		showHistoryButton.setOnTouchListener(new OnTouchListener() {
+			
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				// TODO Auto-generated method stub
+				if(event.getAction() ==MotionEvent.ACTION_DOWN)
+					  v.getBackground().setColorFilter(new LightingColorFilter(0xFF999999, 0xFF000000));
+				else if(event.getAction() ==MotionEvent.ACTION_UP)
+					v.getBackground().clearColorFilter();
+				return false;
+			}
+		});		
 		
 		winButton = new Button(context);
 		winButton.setText(getResources().getString(R.string.detail_win_btn));
